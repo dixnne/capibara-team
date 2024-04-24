@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CuteCatsService } from '../../shared/cute-cats.service';
 import { FactsService } from '../../shared/facts.service';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
   selector: 'app-facts',
   standalone: true,
-  imports: [],
+  imports: [SkeletonModule],
   templateUrl: './facts.component.html',
   styleUrl: './facts.component.css'
 })
