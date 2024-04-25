@@ -1,0 +1,75 @@
+
+<button type="button" (click)="setIndex()" class="btn btn-outline-dark" data-bs-toggle="modal" attr.data-bs-target="#modal{{index}}">
+    Ver Más 
+    <i class="pi pi-angle-double-right" style="font-size: 1rem"></i>
+</button>
+
+<div class="modal fade" id="modal{{index}}" tabindex="-1" attr.aria-labelledby="modal{{index}}Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modal{{index}}Label">{{data[index].name}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class=" d-flex justify-content-center align-items-center">
+                    <img 
+                    height="250px"
+                    class="mb-2 rounded-5" 
+                    [src]="pet === 'dog' ? data[index].image.url : 'https://cdn2.thecatapi.com/images/' + data[index].reference_image_id + '.jpg'" 
+                    alt="{{data[index].name}}"
+                />
+                </div>
+                <p class="">
+                    <i class="pi pi-map-marker" style="font-size: 1rem"></i>
+                    @if (data[index].origin) {
+                        {{data[index].origin}}
+                    } @else if (data[index].country_code) {
+                        {{data[index].country_code}} 
+                        <span class="fi fi-{{data[index].country_code | lowercase}}"></span>
+                    } @else {
+                        Not specified
+                    }
+                </p>
+                <p class="">
+                    @if (data[index].breed_group) {
+                        <span style="font-size: 1rem" class="material-symbols-outlined">
+                            pets
+                        </span>
+                        Breed group: {{data[index].breed_group}}
+                    }
+                </p>
+                <p class="">
+                    @if (data[index].life_span) {
+                        <span style="font-size: 1rem" class="material-symbols-outlined">
+                            date_range
+                        </span>
+                        Life span: {{data[index].life_span}}
+                    }
+                </p>
+                <p class="">
+                    @if (data[index].temperament) {
+                        <i class="pi pi-face-smile" style="font-size: 1rem"></i>
+                        Temperament: {{data[index].temperament}}
+                    }
+                </p>
+                <p class="">
+                    @if (data[index].bred_for) {
+                        <span style="font-size: 1rem" class="material-symbols-outlined">
+                            pet_supplies
+                        </span>
+                        Bred for: {{data[index].bred_for}}
+                    }
+                </p>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                    <button (click)="prev()" type="button" class="btn btn-outline-primary">
+                        <i class="pi pi-angle-left" style="font-size: 1rem"></i>
+                    </button>
+                    <button (click)="next()" type="button" class="btn btn-primary">
+                        <i class="pi pi-angle-right" style="font-size: 1rem"></i>
+                    </button>
+            </div>
+        </div>
+    </div>
+</div>
