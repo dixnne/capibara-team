@@ -13,11 +13,6 @@ import { BreedComponent } from '../breed/breed.component';
 export class CatsComponent {
 
   breeds: any = [];
-  activeImage: any = {
-    url: "",
-    height: 0,
-    width: 0
-  }
 
   constructor(public catBreedsService: CatBreedsService) {
     this.retrieveData();
@@ -34,20 +29,5 @@ export class CatsComponent {
   successRequest(data: any): void {
     console.log(data);
     this.breeds = data;
-  }
-
-  getBreedImage(breedID: string): any {
-    console.log("Getting Breed Image (id = " + breedID + ")");
-    this.catBreedsService.returnABreed(breedID).subscribe({
-      next: this.successRequestImage.bind(this),
-      error: (err) => {console.log(err)}
-    });
-  }
-
-  successRequestImage(data: any): void {
-    console.log(data);
-    this.activeImage.url = data[0].url;
-    this.activeImage.width = data[0].width;
-    this.activeImage.height = data[0].height;
   }
 }
