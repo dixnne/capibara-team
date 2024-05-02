@@ -1,6 +1,6 @@
 <section class="bg-sunflower p-4">
     <h1 class="text-center pumpkin display-3 acme-regular">Cat Facts</h1>
-    @if (cuteCats.lenght != 0) {
+    @if (cuteCats.lenght != 0 && catFacts.lenght != 0) {
         <div class="">
             <div class="row" data-masonry="{&quot;percentPosition&quot;: true }" style="position: relative; height: 690px;">
                 @for (cat of cuteCats; track $index) {
@@ -22,6 +22,65 @@
                         </div>
                     </div>
                 }
+            </div>
+        </div>
+    } @else {
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
+                <div class="col-sm-4 col-lg-2 d-flex py-4 justify-content-center align-items-center">
+                    <p-skeleton size="10rem"></p-skeleton>
+                </div>
             </div>
         </div>
     }
