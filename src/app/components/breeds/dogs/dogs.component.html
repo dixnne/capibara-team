@@ -17,6 +17,9 @@
                                 <i class="pi pi-map-marker" style="font-size: 1rem"></i>
                                 @if (breed.origin) {
                                     {{breed.origin}}
+                                    @if (breed.country_code) {
+                                        <span class="fi fi-{{breed.country_code | lowercase}}"></span>
+                                    }
                                 } @else if (breed.country_code) {
                                     {{breed.country_code}} <span class="fi fi-{{breed.country_code | lowercase}}"></span>
                                 } @else {

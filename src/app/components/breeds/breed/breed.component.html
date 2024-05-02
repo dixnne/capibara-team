@@ -48,6 +48,14 @@
                     }
                 </p>
                 <p class="">
+                    @if (data[index].alt_names) {
+                        <span style="font-size: 1rem" class="material-symbols-outlined">
+                            checklist
+                        </span>
+                        Alt names: {{data[index].alt_names}}
+                    }
+                </p>
+                <p class="">
                     @if (data[index].temperament) {
                         <i class="pi pi-face-smile" style="font-size: 1rem"></i>
                         Temperament: {{data[index].temperament}}
