@@ -1,6 +1,7 @@
-<section>
-    <nav class="py-2 bg-greensea border-bottom">
-        <div class="container d-flex flex-wrap">
+<section class="bg-yellow pb-2">
+    <nav class="pb-2 bg-orange">
+      <app-header></app-header>
+        <div class="container d-flex flex-wrap pt-2">
           <ul class="nav me-auto">
             <li class="nav-item"><a href="/home" class="nav-link link-light text-success-emphasis px-2 active" aria-current="page">Home</a></li>
             <li class="nav-item"><a href="/facts" class="nav-link link-light text-success-emphasis px-2">Cat Facts</a></li>
@@ -9,11 +10,9 @@
             <li class="nav-item"><a href="#" class="nav-link link-light text-success-emphasis px-2">About</a></li>
             <li class="nav-item"><a href="/us" class="nav-link link-light text-success-emphasis px-2">Know Us</a></li>
           </ul>
-          <ul class="nav">
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Login</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Sign up</a></li>
-          </ul>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
         </div>
     </nav>
-    <app-header></app-header>
 </section>

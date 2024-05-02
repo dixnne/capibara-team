@@ -1,0 +1,21 @@
+<div id="content-cards" class="bg-white">
+    @for(pet of myPets; track pet; let idx = $index){
+        <div class="card bg-greensea" style="width: 18rem;">
+            <h5 class="card-title">{{pet.name}}</h5>
+            <img src={{pet.img}} class="card-img-top" id="{{idx}}" alt="" (mouseover)="changeImg($event)" (mouseleave)="returnImg($event)">
+            <div class="card-body">
+                <p class="card-text">Datos</p>
+                <p class="card-text">Edad aproximada: {{pet.age}} años</p>
+                <p class="card-text">{{pet.details}}</p>
+                <a [routerLink]="['/us',idx]"  class="btn btn-primary">Conoceme</a>
+            </div>
+        </div>
+    }
+</div>
+<!--
+<div class="flex-auto">
+     <p-paginator class="p-paginator-first"  [first]="10" [rows]="3" [totalRecords]="trn" [showPageLinks]="3" [rowsPerPageOptions]="[5,10,15,20]"></p-paginator>
+</div>
+-->
+
+
