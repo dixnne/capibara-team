@@ -1,1 +1,39 @@
-<p>dogs works!</p>
+<section class="py-5">
+    <div class="container">
+        @if (breeds.lenght != 0) {
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                @for (breed of breeds;track breed; let index = $index) {
+                    <div class="col">
+                      <div class="card shadow h-100">
+                        <img [src]="breed.image.url" height="200px" class="card-img-top" alt="{{breed.name}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{breed.name}}</h5>
+                            <div class="mb-1">
+                                @if (breed.breed_group) {
+                                    <span class="badge text-bg-warning">{{breed.breed_group}}</span>
+                                }
+                            </div>
+                            <p class="card-text">
+                                <i class="pi pi-map-marker" style="font-size: 1rem"></i>
+                                @if (breed.origin) {
+                                    {{breed.origin}}
+                                    @if (breed.country_code) {
+                                        <span class="fi fi-{{breed.country_code | lowercase}}"></span>
+                                    }
+                                } @else if (breed.country_code) {
+                                    {{breed.country_code}} <span class="fi fi-{{breed.country_code | lowercase}}"></span>
+                                } @else {
+                                    Not specified
+                                }
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <app-breed [pet]="'dog'" [data]="breeds" [originalIndex]="index" [index]="index"></app-breed>
+                        </div>
+                      </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
