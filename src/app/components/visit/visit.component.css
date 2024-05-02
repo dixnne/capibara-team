@@ -1,0 +1,64 @@
+#Card-mascota {
+  display: flex;
+  flex-direction: row;
+  font-family: "Acme", sans-serif;
+  margin: 3rem;
+  background-color: var(--carrot);
+  border-radius: 30px;
+  box-shadow: 10px 10px 20px var(--greensea);
+  padding: 2% 2%;
+  #left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white-color);
+    .card-title {
+      text-align: center;
+      color: var(--greensea);
+      text-shadow: 2px 2px var(--black-base);
+      border-radius: 20px;
+      padding: 1% 1%;
+    }
+    .card-img-top {
+      width: 60%;
+      padding: 3%;
+      border-radius: 30px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+    .card-body {
+      width: 90%;
+      .card-text {
+        text-shadow: 2px 2px var(--pumpkin);
+      }
+    }
+  }
+  #right {
+    color: var(--white-color);
+    margin-top: 5rem;
+    h3 {
+      width: 70%;
+      padding-left: 2rem;
+      background-color: var(--greensea);
+      border-radius: 30px;
+    }
+    h5,
+    p {
+      text-shadow: 3px 3px var(--pumpkin);
+      padding-top: 1rem;
+    }
+    .btn {
+      width: 70%;
+      background-color: var(--greensea);
+      margin-bottom: 2rem;
+    }
+  }
+}
+h1 {
+  text-align: center;
+  font-size: 50px;
+  color: var(--black-base);
+  text-shadow: 3px 3px var(--greensea);
+  margin-top: 3%;
+}
