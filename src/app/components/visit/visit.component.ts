@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Mascota } from '../../services/mascota';
-import { MascotaService } from '../../services/mascota.service';
 import { ActivatedRoute } from '@angular/router';
+import { PetsService } from '../../shared/pets.service';
+import { Pet } from '../../interfaces/pet';
 
 @Component({
   selector: 'app-visit',
@@ -11,14 +11,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './visit.component.css',
 })
 export class VisitComponent {
-  @Input() mascota!: Mascota;
+  @Input() pet!: Pet;
   idx: number = 0;
   constructor(
-    public mascotaservice: MascotaService,
+    public petsService: PetsService,
     public activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.mascota = mascotaservice.getUnaMascota(params['id']);
+      this.pet = petsService.getAPet(params['id']);
       this.idx = params['id'];
     });
   }

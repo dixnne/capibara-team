@@ -1,18 +1,18 @@
-import { Component } from '@angular/core';
-import { MascotaService } from '../../services/mascota.service';
-import { Mascota } from '../../services/mascota';
-import { RouterLink } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Pet } from '../../interfaces/pet';
+import { PetsService } from '../../shared/pets.service';
 import { PaginatorModule } from 'primeng/paginator';
 
 @Component({
-  selector: 'app-us',
+  selector: 'app-team',
   standalone: true,
   imports: [RouterLink, PaginatorModule],
-  templateUrl: './us.component.html',
-  styleUrl: './us.component.css',
+  templateUrl: './team.component.html',
+  styleUrl: './team.component.css'
 })
-export class UsComponent {
-  misMascotas: Mascota[] = [];
+export class TeamComponent {
+  myPets: Pet[] = [];
   trn: number = 0;
   arrImgs2 = [
     { id: '0', img: '../../../assets/images/amy_2.jpg' },
@@ -60,11 +60,11 @@ export class UsComponent {
     { id: '19', img: '../../../assets/images/merida.jpg' },
     { id: '20', img: '../../../assets/images/tobias.jpg' },
   ];
-  constructor(public mservice: MascotaService) {}
+  constructor(public petService: PetsService) {}
 
   ngOnInit(): void {
-    this.misMascotas = this.mservice.getMascotas();
-    this.trn = this.misMascotas.length;
+    this.myPets = this.petService.getPets();
+    this.trn = this.myPets.length;
   }
 
   /*onPageChange(event) {
