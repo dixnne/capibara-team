@@ -4,12 +4,20 @@ import { FactsComponent } from './components/facts/facts.component';
 import { BreedsComponent } from './components/breeds/breeds.component';
 import { VisitComponent } from './components/visit/visit.component';
 import { TeamComponent } from './components/team/team.component';
+import { PetsComponent } from './components/pets/pets.component';
+import { AboutComponent } from './components/about/about.component';
+import { DatesComponent } from './components/dates/dates.component';
+import { DevComponent } from './components/team/dev/dev.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'facts', component: FactsComponent },
   { path: 'breeds', component: BreedsComponent },
-  { path: 'us', component: TeamComponent },
+  { path: 'pets', component: PetsComponent },
+  { path: 'team', component: TeamComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'dates', component: DatesComponent },
   { path: 'us/:id', component: VisitComponent },
+  { path: 'dev/:id', component: DevComponent }
 ];

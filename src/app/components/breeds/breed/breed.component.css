@@ -1,0 +1,15 @@
+.modal {
+    border: 5px var(--orange) solid;
+}
+
+.modal-content {
+    border: 5px var(--brown) solid;
+}
+
+.modal-footer, .modal-header {
+    background-color: var(--yellow);
+}
+
+.modal-body {
+    background-color: var(--white);
+}

@@ -1,0 +1,35 @@
+button.btn-tab {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: 0;
+}
+
+button.button-dogs{
+    background-color: var(--brown);
+    color: var(--white);
+    transition: 0.2s ease;
+}
+
+button.button-cats{
+    background-color: var(--orange);
+    color: var(--white);
+    transition: 0.2s ease;
+}
+
+button.button-light-dogs{
+    background-color: var(--white);
+    color: var(--white);
+    border: 5px var(--brown) solid;
+    border-top: 0;
+    color: var(--brown);
+    transition: 0.2s ease;
+}
+
+button.button-light-cats{
+    background-color: var(--white);
+    color: var(--white);
+    border: 5px var(--orange) solid;
+    border-top: 0;
+    color: var(--orange);
+    transition: 0.2s ease;
+}

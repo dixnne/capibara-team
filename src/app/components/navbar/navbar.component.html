@@ -1,18 +1,19 @@
 <section class="bg-yellow pb-2">
     <nav class="pb-2 bg-orange">
-      <app-header></app-header>
+      <div class="bg-brown">
+        <app-header></app-header>
+      </div>
         <div class="container d-flex flex-wrap pt-2">
           <ul class="nav me-auto">
             <li class="nav-item"><a href="/home" class="nav-link link-light text-success-emphasis px-2 active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="/facts" class="nav-link link-light text-success-emphasis px-2">Cat Facts</a></li>
-            <li class="nav-item"><a href="/breeds" class="nav-link link-light text-success-emphasis px-2">Razas</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-light text-success-emphasis px-2">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link link-light text-success-emphasis px-2">About</a></li>
-            <li class="nav-item"><a href="/us" class="nav-link link-light text-success-emphasis px-2">Know Us</a></li>
+            <li class="nav-item"><a href="/about" class="nav-link link-light text-success-emphasis px-2">About</a></li>
+            <li class="nav-item"><a href="/team" class="nav-link link-light text-success-emphasis px-2">Team</a></li>
+            <li class="nav-item"><a href="/pets" class="nav-link link-light text-success-emphasis px-2">Pets</a></li>
+            <li class="nav-item"><a href="/dates" class="nav-link link-light text-success-emphasis px-2">Dates</a></li>
+            <li class="nav-item"><a href="/breeds" class="nav-link link-light text-success-emphasis px-2">Breeds</a></li>
+            <li class="nav-item"><a href="/facts" class="nav-link link-light text-success-emphasis px-2">Facts</a></li>
           </ul>
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-          </form>
+          <app-search></app-search>
         </div>
     </nav>
 </section>

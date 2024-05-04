@@ -1,5 +1,5 @@
 
-<button type="button" (click)="setIndex()" class="btn btn-outline-dark" data-bs-toggle="modal" attr.data-bs-target="#modal{{index}}">
+<button type="button" (click)="setIndex()" class="btn btn-light w-100 text-center" data-bs-toggle="modal" attr.data-bs-target="#modal{{index}}">
     Ver Más 
     <i class="pi pi-angle-double-right" style="font-size: 1rem"></i>
 </button>
@@ -8,7 +8,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="modal{{index}}Label">{{data[index].name}}</h1>
+                <h1 class="modal-title acme-regular fs-4 brown" id="modal{{index}}Label">{{data[index].name}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -71,10 +71,10 @@
                 </p>
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                    <button (click)="prev()" type="button" class="btn btn-outline-primary">
+                    <button (click)="prev()" type="button" class="btn btn-light">
                         <i class="pi pi-angle-left" style="font-size: 1rem"></i>
                     </button>
-                    <button (click)="next()" type="button" class="btn btn-primary">
+                    <button (click)="next()" type="button" class="btn btn-light">
                         <i class="pi pi-angle-right" style="font-size: 1rem"></i>
                     </button>
             </div>

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { DevsComponent } from './devs/devs.component';
 
 @Component({
   selector: 'app-team',
   standalone: true,
-  imports: [],
+  imports: [DevsComponent],
   templateUrl: './team.component.html',
   styleUrl: './team.component.css'
 })

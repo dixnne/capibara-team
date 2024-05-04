@@ -1,4 +1,4 @@
-<section class="py-5">
+<section class="py-5 bg-white">
     <div class="container">
         @if (breeds.lenght != 0) {
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
@@ -7,10 +7,10 @@
                       <div class="card shadow h-100">
                         <img [src]="'https://cdn2.thecatapi.com/images/' + breed.reference_image_id + '.jpg'" height="200px" class="card-img-top" alt="{{breed.name}}">
                         <div class="card-body">
-                            <h5 class="card-title">{{breed.name}}</h5>
+                            <h5 class="card-title acme-regular">{{breed.name}}</h5>
                             <div class="mb-1">
                                 @if (breed.breed_group) {
-                                    <span class="badge text-bg-warning">{{breed.breed_group}}</span>
+                                    <span class="badge">{{breed.breed_group}}</span>
                                 }
                             </div>
                             <p class="card-text">

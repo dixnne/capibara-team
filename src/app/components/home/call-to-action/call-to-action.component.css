@@ -1,0 +1,24 @@
+.title {
+    font-size: 4rem;
+}
+
+.text {
+    font-size: 2rem;
+}
+
+.cta {
+    padding: 10px 60px;
+    border: 5px solid var(--brown);
+    border-radius: 30px;
+    font-size: 2rem;
+    background-color: transparent;
+    text-decoration: none;
+    color: var(--brown);
+    transition: 0.2s ease;
+}
+
+.cta:hover {
+    background-color: var(--brown);
+    color: var(--white);
+    transition: 0.2s ease;
+}
