@@ -7,11 +7,13 @@ button.btn-tab {
 button.button-dogs{
     background-color: var(--brown);
     color: var(--white);
+    transition: 0.2s ease;
 }
 
 button.button-cats{
     background-color: var(--orange);
     color: var(--white);
+    transition: 0.2s ease;
 }
 
 button.button-light-dogs{
@@ -20,6 +22,7 @@ button.button-light-dogs{
     border: 5px var(--brown) solid;
     border-top: 0;
     color: var(--brown);
+    transition: 0.2s ease;
 }
 
 button.button-light-cats{
@@ -28,4 +31,5 @@ button.button-light-cats{
     border: 5px var(--orange) solid;
     border-top: 0;
     color: var(--orange);
+    transition: 0.2s ease;
 }
