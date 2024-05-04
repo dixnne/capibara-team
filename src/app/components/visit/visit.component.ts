@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { StepperModule } from 'primeng/stepper';
 import { PetsService } from '../../shared/pets.service';
 import { Pet } from '../../interfaces/pet';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-visit',
   standalone: true,
-  imports: [],
+  imports: [StepperModule, ButtonModule],
   templateUrl: './visit.component.html',
   styleUrl: './visit.component.css',
 })
