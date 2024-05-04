@@ -1,4 +1,4 @@
-import { Pet } from "../interfaces/pet";
+import { Pet } from '../interfaces/pet';
 
 export const Pets: Pet[] = [
   {
@@ -10,6 +10,7 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, independiente, convive con otros gatos, no convive con otras especies',
     img: '../../../assets/images/amy.jpg',
+    tag: ['frendly'],
   },
   {
     name: 'Tonton',
@@ -20,6 +21,7 @@ export const Pets: Pet[] = [
     details:
       'caracter jugeton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/tonton.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Molly',
@@ -30,6 +32,7 @@ export const Pets: Pet[] = [
     details:
       'caracter jugeton, convive con otros gatos, si convive con otras especies',
     img: '../../../assets/images/molly.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Pato',
@@ -40,6 +43,7 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, independiente, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/pato.jpg',
+    tag: ['sleppy'],
   },
   {
     name: 'Sasil',
@@ -50,6 +54,7 @@ export const Pets: Pet[] = [
     details:
       'caracter jugeton, convive con otros gatos, si convive con otras especies',
     img: '../../../assets/images/sasil.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Yuyis',
@@ -60,6 +65,7 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/yuyis.jpg',
+    tag: ['frendly'],
   },
   {
     name: 'Trixie',
@@ -70,6 +76,7 @@ export const Pets: Pet[] = [
     details:
       'caracter miedoso, convive con otros gatos, mo convive con otras especies',
     img: '../../../assets/images/trixie.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Rayito',
@@ -80,6 +87,7 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/rayito.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Itzia & Temmy',
@@ -90,6 +98,7 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/itzia&temmy.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Rocko',
@@ -100,6 +109,7 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/rocko.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Gorda',
@@ -110,6 +120,7 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/gorda.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Pipa',
@@ -120,6 +131,7 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/pipa.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Chimi',
@@ -130,6 +142,7 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/chimi.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Monkey',
@@ -140,6 +153,7 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/monkey.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Dizzy',
@@ -150,6 +164,7 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/dizzy.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Changa',
@@ -160,6 +175,7 @@ export const Pets: Pet[] = [
     details:
       'caracter Tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/changa.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Brother',
@@ -170,6 +186,7 @@ export const Pets: Pet[] = [
     details:
       'caracter uraño, no convive con otros gatos, si convive con otras especies',
     img: '../../../assets/images/brother.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Grogu',
@@ -180,6 +197,7 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/grogu.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Korra',
@@ -190,6 +208,7 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/korra.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Merida',
@@ -200,6 +219,7 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/merida.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
     name: 'Tobias',
@@ -210,5 +230,6 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/tobias.jpg',
+    tag: ['frendly', 'sleppy'],
   },
 ];

@@ -5,7 +5,7 @@
   margin: 3rem;
   background-color: var(--carrot);
   border-radius: 30px;
-  box-shadow: 10px 10px 20px var(--greensea);
+  box-shadow: 10px 10px 20px var(--yellow);
   padding: 2% 2%;
   #left {
     width: 50%;
@@ -13,24 +13,40 @@
     flex-direction: column;
     align-items: center;
     color: var(--white-color);
-    .card-title {
-      text-align: center;
-      color: var(--greensea);
-      text-shadow: 2px 2px var(--black-base);
-      border-radius: 20px;
-      padding: 1% 1%;
+    #top {
+      .card-title {
+        text-align: center;
+        color: var(--greensea);
+        text-shadow: 2px 2px var(--black-base);
+        border-radius: 20px;
+        padding: 1% 1%;
+      }
+      .card-img-top {
+        width: 50%;
+        padding-top: 5;
+        padding-bottom: 4;
+        padding-left: 4%;
+        padding-right: 5;
+        border-radius: 30px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+      }
     }
-    .card-img-top {
-      width: 60%;
-      padding: 3%;
-      border-radius: 30px;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-    }
-    .card-body {
-      width: 90%;
+    #card-body {
+      width: 50%;
       .card-text {
         text-shadow: 2px 2px var(--pumpkin);
+      }
+      .content-tags {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .tag {
+          margin: 1%;
+          .b-tag {
+            border-radius: 10px;
+          }
+        }
       }
     }
   }

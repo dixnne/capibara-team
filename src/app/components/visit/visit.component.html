@@ -1,16 +1,25 @@
 
 <h1>Registra tu visita</h1>
 <div id="Card-mascota" >
-    <div id="left">
+  <div id="left">
+    <div id="top">
         <h5 class="card-title">{{pet.name}}</h5>
-            <img src={{pet.img}} class="card-img-top" [id]="idx">
-            <div class="card-body">
-                <p class="card-text">Datos</p>
-                <p class="card-text">Edad aproximada: {{pet.age}} años</p>
-                <p class="card-text">{{pet.details}}</p>
-            </div>
+        <img src={{pet.img}} class="card-img-top" [id]="idx">
+    </div>      
+    <div id="card-body">
+        <div class="content-tags">
+         @for (tag of pet.tag; track tag; let ind= $index) {
+            <div class="tag"><button class="b-tag">{{tag}}</button></div>
+          }
+        </div>
+          <p class="card-text">Edad aproximada: {{pet.age}} años</p>
+          <p class="card-text">color: {{pet.color}}</p>
+          <p class="card-text">Rasa: {{pet.breed}}</p>
+          <p class="card-text">Tiempo en el Refugio: {{pet.stay}}</p>
+          <p class="card-text">{{pet.details}}</p>
     </div>
-    <div id="right">
+  </div>
+  <div id="right">
         <form>
             <fieldset>
               <legend>Elije la fecha e ingresa tus datos</legend>

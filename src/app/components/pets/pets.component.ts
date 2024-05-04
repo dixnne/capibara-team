@@ -9,7 +9,7 @@ import { PaginatorModule } from 'primeng/paginator';
   standalone: true,
   imports: [RouterLink, PaginatorModule],
   templateUrl: './pets.component.html',
-  styleUrl: './pets.component.css'
+  styleUrl: './pets.component.css',
 })
 export class PetsComponent {
   myPets: Pet[] = [];
@@ -66,7 +66,9 @@ export class PetsComponent {
     this.myPets = this.petService.getPets();
     this.trn = this.myPets.length;
   }
-
+  getPetsByTag(tag: string) {
+    this.myPets = this.petService.getPetsByTag(tag);
+  }
   /*onPageChange(event) {
     //event.first = Index of the first record
     //event.rows = Number of rows to display in new page

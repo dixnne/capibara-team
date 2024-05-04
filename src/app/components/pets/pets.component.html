@@ -1,12 +1,17 @@
 <div id="content-cards" class="bg-white">
     @for(pet of myPets; track pet; let idx = $index){
-        <div class="card bg-greensea" style="width: 18rem;">
-            <h5 class="card-title">{{pet.name}}</h5>
-            <img src={{pet.img}} class="card-img-top" id="{{idx}}" alt="" (mouseover)="changeImg($event)" (mouseleave)="returnImg($event)">
-            <div class="card-body">
-                <p class="card-text">Datos</p>
+        <div class="card bg-greensea col-sm-6" style="width: 18rem;">
+            <div class="left col-sm-3">
+                <img src={{pet.img}} class="card-img-top" id="{{idx}}" alt="" (mouseover)="changeImg($event)" (mouseleave)="returnImg($event)">
+            </div>
+            <div class="card-body col-sm-8">
+                <h5 class="card-title">{{pet.name}}</h5><br>
                 <p class="card-text">Edad aproximada: {{pet.age}} años</p>
-                <p class="card-text">{{pet.details}}</p>
+                <div class="content-tags">
+                    @for (tag of pet.tag; track tag; let ind= $index) {
+                        <div class="tag"><button class="b-tag" (click)="getPetsByTag(tag)">{{tag}}</button></div>
+                    }
+                </div>
                 <a [routerLink]="['/us',idx]"  class="btn btn-primary">Conoceme</a>
             </div>
         </div>
