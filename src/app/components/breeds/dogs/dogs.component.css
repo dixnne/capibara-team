@@ -1,3 +1,21 @@
 img.card-img-top{
     object-fit: cover;
 }
+
+.card {
+    border: 5px var(--brown) solid;
+    background-color: var(--brown);
+}
+
+.card-footer {
+    background-color: var(--brown);
+}
+
+.card-body {
+    background-color: var(--yellow);
+}
+
+.badge {
+    background-color: var(--white);
+    color: black;
+}
