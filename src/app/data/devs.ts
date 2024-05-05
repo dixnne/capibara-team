@@ -95,30 +95,43 @@ export const Devs: Dev[] = [
         pets: []
     },{
         id: 2,
-        name: "",
-        details: "",
+        name: "Jesús Tapia",
+        details: "I'm a very emotional person when working, who tries to help as much as possible, even if sometimes anyone can't even understand what I do.",
         image: "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
         tags: [
-            "",
+            "Sportsman",
+            "Reader and writer",
+            "Player",
         ],
         jobs: [
-            "",
+            "Feedback developer",
+            "LocalStorage report assistant",
+            "Search navbar developer"
         ],
         skills: {
             languages: [
-                "",
+                "Python",
+                "Javascript",
+                "C++",
+                "HTML"
             ],
             frameworks: [
-                "",
+                "Angular",
+                "Bootstrap",
+                "jQuery"
             ],
             technologies: [
-                "",
+                "Docker",
+                "Cloud Services"
             ],
             tools: [
-                "",
+                "Excel",
+                "Asana",
+                "Canva",
+                "Figma"
             ],
         },
-        pets: [0]
+        pets: [1]
     },{
         id: 3,
         name: "",
