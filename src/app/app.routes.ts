@@ -20,6 +20,6 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'dates', component: DatesComponent },
   { path: 'us/:id', component: VisitComponent },
-  { path: 'dev/:id', component: DevComponent }
+  { path: 'dev/:id', component: DevComponent },
   { path: 'tagpet/:tag', component: PetsByTagComponent },
 ];
