@@ -9,6 +9,7 @@ import { TeamComponent } from './components/team/team.component';
 import { AboutComponent } from './components/about/about.component';
 import { DatesComponent } from './components/dates/dates.component';
 import { VisitComponent } from './components/visit/visit.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ import { VisitComponent } from './components/visit/visit.component';
     TeamComponent, 
     AboutComponent, 
     DatesComponent, 
-    VisitComponent
+    VisitComponent,
+    FooterComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

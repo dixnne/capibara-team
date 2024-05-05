@@ -4,7 +4,7 @@
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
                 @for (breed of breeds; track breed; let index = $index) {
                     <div class="col">
-                      <div class="card shadow h-100">
+                      <div class="card zoom shadow h-100">
                         <img [src]="'https://cdn2.thecatapi.com/images/' + breed.reference_image_id + '.jpg'" height="200px" class="card-img-top" alt="{{breed.name}}">
                         <div class="card-body">
                             <h5 class="card-title acme-regular">{{breed.name}}</h5>

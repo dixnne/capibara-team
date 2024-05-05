@@ -10,6 +10,6 @@ export class FactsService {
   constructor(private http: HttpClient) { };
 
   toReturn() {
-    return this.http.get("https://catfact.ninja/facts?max_length=200&limit=20").pipe(take(1));
+    return this.http.get("https://catfact.ninja/facts?max_length=200&limit=42").pipe(take(1));
   }
 }

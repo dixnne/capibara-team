@@ -10,3 +10,23 @@
 img.card-img-top {
     object-fit: cover;
 }
+
+.border-orange {
+  border: 5px var(--orange) solid;
+}
+
+.border-yellow {
+  border: 5px var(--yellow) solid;
+}
+
+.border-brown {
+  border: 5px var(--brown) solid;
+}
+
+.zoom {
+  transition: transform .2s; 
+}
+
+.zoom:hover {
+  transform: scale(1.1); 
+}
