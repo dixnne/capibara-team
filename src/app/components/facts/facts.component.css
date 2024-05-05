@@ -22,3 +22,11 @@ img.card-img-top {
 .border-brown {
   border: 5px var(--brown) solid;
 }
+
+.zoom {
+  transition: transform .2s; 
+}
+
+.zoom:hover {
+  transform: scale(1.1); 
+}
