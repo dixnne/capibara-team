@@ -14,9 +14,11 @@
     background-color: transparent;
     text-decoration: none;
     color: var(--brown);
+    transition: 0.2s ease;
 }
 
 .cta:hover {
     background-color: var(--brown);
     color: var(--white);
+    transition: 0.2s ease;
 }

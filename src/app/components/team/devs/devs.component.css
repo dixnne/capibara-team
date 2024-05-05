@@ -1,0 +1,55 @@
+img {
+    object-fit: cover;
+}
+
+.logo {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    background-color: var(--yellow);
+}
+
+.logo > .material-symbols-outlined {
+    font-size: 9rem;
+    color: var(--brown);
+}
+
+.circle-lg {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.circle-md {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.circle-sm {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+}
+
+.dev1 {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.dev2 {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.dev3 {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.title {
+    font-size: 4rem;
+}

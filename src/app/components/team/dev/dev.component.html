@@ -1,0 +1,121 @@
+<section class="bg-yellow bg-half">
+    <div class="container">
+        <div class="d-md-flex">
+            <div class="col-md-3">
+                <img [src]="dev.image" class="dev-image mt-3 m-md-0 shadow" alt="">
+            </div>
+            <div class="col-md-7 p-4 rounded-5 bg-white dev-container shadow">
+                <div class="dev-content">
+                    <span class="fs-2 acme-regular brown">{{dev.name}}</span>
+                    <div class="d-flex mt-3">
+                        @for (tag of dev.tags; track $index) {
+                            <span class="badge brown bg-yellow me-3">{{tag}}</span>
+                        }
+                    </div>
+                    <p class="fs-5 mt-3">
+                        @for (job of dev.jobs; track $index) {
+                            @if ($index == dev.jobs.length -1) {
+                                {{job}}.
+                            } @else {
+                                {{job}},  
+                            }
+                        }
+                    </p>
+                    <p class="fs-6 mt-3">
+                        {{dev.details}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-white">
+    <div class="dev-skills row">
+        <div class="col-md-8">
+            <h2 class="acme-regular text-center">Skills</h2>
+            <div class="px-5 py-3 bg-orange row">
+                <div class="col-2 d-flex justify-content-end align-items-center">
+                    <span class="material-symbols-outlined fs-1">code_blocks</span>
+                </div>
+                <div class="col-10 d-flex flex-column align-items-start justify-content-center">
+                    <span class="fs-6 acme-regular">Languages</span>
+                    <span>
+                        @for (skill of dev.skills.languages; track $index) {
+                            @if ($index == dev.skills.languages.length - 1) {
+                                {{skill}}
+                            } @else {
+                                {{skill}} -   
+                            }
+                        }
+                    </span>
+                </div>
+            </div>
+            <div class="px-5 py-3 bg-yellow row">
+                <div class="col-10 d-flex flex-column align-items-end justify-content-center">
+                    <span class="fs-6 acme-regular">Frameworks / Libraries</span>
+                    <span>
+                        @for (skill of dev.skills.frameworks; track $index) {
+                            @if ($index == dev.skills.frameworks.length - 1) {
+                                {{skill}}
+                            } @else {
+                                {{skill}} -   
+                            }
+                        }
+                    </span>
+                </div>
+                <div class="col-2 d-flex justify-content-start align-items-center">
+                    <span class="material-symbols-outlined fs-1">book_5</span>
+                </div>
+            </div>
+            <div class="px-5 py-3 bg-orange row">
+                <div class="col-2 d-flex justify-content-end align-items-center">
+                    <span class="material-symbols-outlined fs-1">device_hub</span>
+                </div>
+                <div class="col-10 d-flex flex-column align-items-start justify-content-center">
+                    <span class="fs-6 acme-regular">Technologies</span>
+                    <span>
+                        @for (skill of dev.skills.technologies; track $index) {
+                            @if ($index == dev.skills.technologies.length - 1) {
+                                {{skill}}
+                            } @else {
+                                {{skill}} -   
+                            }
+                        }
+                    </span>
+                </div>
+            </div>
+            <div class="px-5 py-3 bg-yellow row">
+                <div class="col-10 d-flex flex-column align-items-end justify-content-center">
+                    <span class="fs-6 acme-regular">Tools</span>
+                    <span>
+                        @for (skill of dev.skills.tools; track $index) {
+                            @if ($index == dev.skills.tools.length - 1) {
+                                {{skill}}
+                            } @else {
+                                {{skill}} -   
+                            }
+                        }
+                    </span>
+                </div>
+                <div class="col-2 d-flex justify-content-start align-items-center">
+                    <span class="material-symbols-outlined fs-1">handyman</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 rounded-start-5 bg-brown p-5 shadow">
+            <h2 class="acme-regular text-center white">
+                <span class="material-symbols-outlined">pets</span>
+                Pets
+            </h2>
+            <div class="row">
+                @for (pet of pets; track $index;) {
+                    @if (inArray($index, dev.pets)) {
+                        <div class="col-4 p-2">
+                            <img [src]="pet.img" alt="" class="pet-icon rounded">
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>

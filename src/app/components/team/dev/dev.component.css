@@ -1,0 +1,42 @@
+.dev-image {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.pet-icon {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    object-position: 50% 20%;
+}
+
+@media (min-width: 1200px) {
+    .bg-half {
+        height: 30vh;
+    }
+    
+    .dev-container {
+        position: relative;
+        top: 10vh;
+        border: 5px var(--orange) solid;
+        height: 40vh;
+    }
+    
+    .dev-content {
+        padding-left: 120px;
+    }
+    
+    .dev-image {
+        position: relative;
+        left: 75%;
+        top: 17.5vh;
+        z-index: 3;
+    }
+
+    .dev-skills {
+        margin-top: 20vh;
+        min-height: 55vh;
+    }
+}
