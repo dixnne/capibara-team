@@ -1,7 +1,8 @@
-import { Pet } from "../interfaces/pet";
+import { Pet } from '../interfaces/pet';
 
 export const Pets: Pet[] = [
   {
+    id: 0,
     name: 'Amy',
     age: 3,
     color: 'Negro',
@@ -10,8 +11,10 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, independiente, convive con otros gatos, no convive con otras especies',
     img: '../../../assets/images/amy.jpg',
+    tag: ['frendly'],
   },
   {
+    id: 1,
     name: 'Tonton',
     age: 1,
     color: 'blanco y cafe',
@@ -20,8 +23,10 @@ export const Pets: Pet[] = [
     details:
       'caracter jugeton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/tonton.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 2,
     name: 'Molly',
     age: 2,
     color: 'blanco, cafe y naranja',
@@ -30,8 +35,10 @@ export const Pets: Pet[] = [
     details:
       'caracter jugeton, convive con otros gatos, si convive con otras especies',
     img: '../../../assets/images/molly.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 3,
     name: 'Pato',
     age: 1.5,
     color: 'negro y blanco',
@@ -40,8 +47,10 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, independiente, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/pato.jpg',
+    tag: ['sleppy'],
   },
   {
+    id: 4,
     name: 'Sasil',
     age: 1,
     color: 'blanco y amarillo',
@@ -50,8 +59,10 @@ export const Pets: Pet[] = [
     details:
       'caracter jugeton, convive con otros gatos, si convive con otras especies',
     img: '../../../assets/images/sasil.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 5,
     name: 'Yuyis',
     age: 1.5,
     color: 'blanco y cafe',
@@ -60,8 +71,10 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/yuyis.jpg',
+    tag: ['frendly'],
   },
   {
+    id: 6,
     name: 'Trixie',
     age: 1,
     color: 'blanco, cafe, negro y gris',
@@ -70,8 +83,10 @@ export const Pets: Pet[] = [
     details:
       'caracter miedoso, convive con otros gatos, mo convive con otras especies',
     img: '../../../assets/images/trixie.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 7,
     name: 'Rayito',
     age: 1.5,
     color: 'blanco y negro',
@@ -80,8 +95,10 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/rayito.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 8,
     name: 'Itzia & Temmy',
     age: 1.5,
     color: 'blanco y cefe',
@@ -90,8 +107,10 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/itzia&temmy.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 9,
     name: 'Rocko',
     age: 1.5,
     color: 'blanco y negro',
@@ -100,8 +119,10 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/rocko.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 10,
     name: 'Gorda',
     age: 1.5,
     color: 'blanco y gris',
@@ -110,8 +131,10 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/gorda.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 11,
     name: 'Pipa',
     age: 3,
     color: 'blanco',
@@ -120,8 +143,10 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/pipa.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 12,
     name: 'Chimi',
     age: 0.8,
     color: 'cafe y negro',
@@ -130,8 +155,10 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/chimi.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 13,
     name: 'Monkey',
     age: 6,
     color: 'blanco y negro',
@@ -140,8 +167,10 @@ export const Pets: Pet[] = [
     details:
       'caracter jugueton, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/monkey.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 14,
     name: 'Dizzy',
     age: 8,
     color: 'cafe, blanco y negro',
@@ -150,8 +179,10 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/dizzy.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 15,
     name: 'Changa',
     age: 8,
     color: 'blanco y negro',
@@ -160,8 +191,10 @@ export const Pets: Pet[] = [
     details:
       'caracter Tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/changa.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 16,
     name: 'Brother',
     age: 6,
     color: 'blanco, cafe, negro y gris',
@@ -170,8 +203,10 @@ export const Pets: Pet[] = [
     details:
       'caracter uraño, no convive con otros gatos, si convive con otras especies',
     img: '../../../assets/images/brother.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 17,
     name: 'Grogu',
     age: 1.5,
     color: 'negro y blanco',
@@ -180,8 +215,10 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/grogu.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 18,
     name: 'Korra',
     age: 1.5,
     color: 'Blanco y cafe',
@@ -190,8 +227,10 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/korra.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 19,
     name: 'Merida',
     age: 8,
     color: 'Blanco y cafe',
@@ -200,8 +239,10 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/merida.jpg',
+    tag: ['frendly', 'sleppy'],
   },
   {
+    id: 20,
     name: 'Tobias',
     age: 8,
     color: 'Blanco y negro',
@@ -210,5 +251,6 @@ export const Pets: Pet[] = [
     details:
       'caracter tranquilo, convive con otros perros, si convive con otras especies',
     img: '../../../assets/images/tobias.jpg',
+    tag: ['frendly', 'sleppy'],
   },
 ];

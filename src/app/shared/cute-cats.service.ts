@@ -10,6 +10,6 @@ export class CuteCatsService {
   constructor(private http: HttpClient) { };
 
   toReturn() {
-    return this.http.get("https://cataas.com/api/cats?tags=cute").pipe(take(1));
+    return this.http.get("https://cataas.com/api/cats?limit=20&tags=cute").pipe(take(1));
   }
 }

@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CuteCatsService } from '../../shared/cute-cats.service';
 import { FactsService } from '../../shared/facts.service';
 import { SkeletonModule } from 'primeng/skeleton';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-facts',
   standalone: true,
-  imports: [SkeletonModule],
+  imports: [SkeletonModule, CommonModule],
   templateUrl: './facts.component.html',
   styleUrl: './facts.component.css'
 })
@@ -32,13 +33,11 @@ export class FactsComponent {
   }
 
   successRequest(data: any): void {
-    console.log(data);
     this.cuteCats = data;
     console.log(this.cuteCats);
   }
 
   successRequestFacts(data: any): void {
-    console.log(data);
     this.catFacts = data.data;
     console.log(this.catFacts);
   }
