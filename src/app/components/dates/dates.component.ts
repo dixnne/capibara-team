@@ -3,7 +3,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dates',
@@ -11,31 +11,36 @@ import Swal from 'sweetalert2'
   imports: [CalendarComponent, ToastModule, ButtonModule],
   providers: [MessageService],
   templateUrl: './dates.component.html',
-  styleUrl: './dates.component.css'
+  styleUrl: './dates.component.css',
 })
 export class DatesComponent {
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService) {}
 
   //type: success, warn, error, info
-  toast(type: string, heading: string, text: string): void { 
-    this.messageService.add({severity: type, summary: heading, detail: text});
+  toast(type: string, heading: string, text: string): void {
+    this.messageService.add({ severity: type, summary: heading, detail: text });
   }
 
-  confirmAlert(title: string, text: string, confirmedTitle: string, confirmedText: string): void {
+  confirmAlert(
+    title: string,
+    text: string,
+    confirmedTitle: string,
+    confirmedText: string
+  ): void {
     Swal.fire({
       title: title,
       text: text,
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
           title: confirmedTitle,
           text: confirmedText,
-          icon: "success"
+          icon: 'success',
         });
       }
     });
@@ -45,7 +50,7 @@ export class DatesComponent {
     Swal.fire({
       title: title,
       text: text,
-      icon: "success"
+      icon: 'success',
     });
   }
 
@@ -53,7 +58,7 @@ export class DatesComponent {
     Swal.fire({
       title: title,
       text: text,
-      icon: "error"
+      icon: 'error',
     });
   }
 }
