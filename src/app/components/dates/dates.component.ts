@@ -62,6 +62,5 @@ export class DatesComponent {
       icon: 'error',
     });
   }
-=======
->>>>>>> 8237170fd45fce8c004e305d61adb501193e4412
+
 }
