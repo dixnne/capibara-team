@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { CalendarComponent } from './calendar/calendar.component';
+
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
@@ -8,12 +9,12 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-dates',
   standalone: true,
-  imports: [CalendarComponent, ToastModule, ButtonModule],
-  providers: [MessageService],
+  imports: [CalendarComponent],
   templateUrl: './dates.component.html',
   styleUrl: './dates.component.css',
 })
 export class DatesComponent {
+<<<<<<< HEAD
   constructor(private messageService: MessageService) {}
 
   //type: success, warn, error, info
@@ -61,4 +62,6 @@ export class DatesComponent {
       icon: 'error',
     });
   }
+=======
+>>>>>>> 8237170fd45fce8c004e305d61adb501193e4412
 }
