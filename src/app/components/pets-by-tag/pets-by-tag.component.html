@@ -1,18 +1,21 @@
 <div id="content-cards" class="bg-white">
-    @for(pet of tagPets; track pet; let idx = $index){
+    @for(pet of tagPets; track $index){
         <div class="card bg-greensea col-sm-6" style="width: 18rem;">
             <div class="left col-sm-3">
-                <img src={{pet.img}} class="card-img-top" id="{{idx}}" alt="" (mouseover)="changeImg($event)" (mouseleave)="returnImg($event)">
+                <img src={{pet.img}} class="card-img-top" id="{{pet.id}}" alt="" (mouseover)="changeImg($event)" (mouseleave)="returnImg($event)">
             </div>
             <div class="card-body col-sm-8">
                 <h5 class="card-title">{{pet.name}}</h5><br>
                 <p class="card-text">Edad aproximada: {{pet.age}} años</p>
-                <div class="content-tags">
-                    @for (tag of pet.tag; track tag; let ind= $index) {
-                        <div class="tag"><button class="b-tag">{{tag}}</button></div>
+                <div class="d-flex">
+                    @for (tag of pet.tag; track tag) {
+                        <span role="button" class="badge me-2" [ngClass]="{
+                            'bg-orange': tag === 'frendly',
+                            'bg-yellow': tag === 'sleppy'
+                        }" [routerLink]="['/tagpet',tag]">{{tag}}</span>
                     }
                 </div>
-                <a [routerLink]="['/us',idx]"  class="btn btn-primary">Conoceme</a>
+                <a [routerLink]="['/us',pet.id]"  class="btn btn-primary">Conoceme</a>
             </div>
         </div>
     }

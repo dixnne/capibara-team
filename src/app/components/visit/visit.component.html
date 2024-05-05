@@ -1,65 +1,96 @@
-
-<h1>Registra tu visita</h1>
-<div id="Card-mascota" >
-  <div id="left">
-    <div id="top">
-        <h5 class="card-title">{{pet.name}}</h5>
-        <img src={{pet.img}} class="card-img-top" [id]="idx">
-    </div>      
-    <div id="card-body">
-        <div class="content-tags">
-         @for (tag of pet.tag; track tag; let ind= $index) {
-            <div class="tag"><button class="b-tag">{{tag}}</button></div>
-          }
+<p-toast />
+<section class="py-5">
+  <div class="container">
+  <h1 class="acme-regular text-center">Registra tu visita</h1>
+    <div class="row bg-orange p-3 rounded-5 shadow">
+      <div class="col-md-6 p-3">
+        <div class="d-flex flex-column align-items-center">
+          <span class="acme-regular fs-2 white">{{pet.name}}</span>
+          <img src={{pet.img}} class="card-img-top" [id]="idx">
+        </div>      
+        <div>
+            <div class="bg-white py-2 rounded d-flex justify-content-center my-3">
+              @for (tag of pet.tag; track tag) {
+                  <span role="button" class="badge me-2" [ngClass]="{
+                      'bg-orange': tag === 'frendly',
+                      'bg-yellow brown': tag === 'sleppy'
+                  }" [routerLink]="['/tagpet',tag]">{{tag}}</span>
+              }
+            </div>
+            <div class="bg-yellow rounded p-4">
+              <p class="lead">
+                <span style="font-size: 1rem" class="material-symbols-outlined">
+                  update
+                </span>
+                Average age: {{pet.age}} years
+              </p>
+              <p class="lead">
+                <span style="font-size: 1rem" class="material-symbols-outlined">
+                  invert_colors
+                </span>
+                Color: {{pet.color}}
+              </p>
+              <p class="lead">
+                <span style="font-size: 1rem" class="material-symbols-outlined">
+                  pets
+                </span>
+                Breed: {{pet.breed}}
+              </p>
+              <p class="lead">
+                <span style="font-size: 1rem" class="material-symbols-outlined">
+                  event_upcoming
+                </span>
+                Time at the shelter: {{pet.stay}}
+              </p>
+              <p class="lead border-top border-dark pt-2">{{pet.details}}</p>
+            </div>
         </div>
-          <p class="card-text">Edad aproximada: {{pet.age}} años</p>
-          <p class="card-text">color: {{pet.color}}</p>
-          <p class="card-text">Rasa: {{pet.breed}}</p>
-          <p class="card-text">Tiempo en el Refugio: {{pet.stay}}</p>
-          <p class="card-text">{{pet.details}}</p>
+      </div>
+      <div class="col-md-6 p-3">
+        <span class="fs-2 acme-regular brown">Pick the date and insert your information</span>
+        <div class="bg-white p-3 rounded">
+          <p-stepper orientation="horizontal">
+            <p-stepperPanel header="Date">
+                <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+                    <div class="flex flex-column h-12rem">
+                        <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
+                          <div class="flex-auto">
+                            <app-calendar [maxDate]="maxDate" [minDate]="minDate"></app-calendar>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="flex py-4">
+                        <p-button label="Next" (onClick)="nextCallback.emit()" />
+                    </div
+                ></ng-template>
+            </p-stepperPanel>
+            <p-stepperPanel header="Data">
+                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
+                    <div class="flex flex-column h-12rem">
+                        <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
+                          <form action="">
+                            <fieldset>
+                              <div class="mb-3">
+                                <label type="text" class="form-label">Name</label>
+                                <input type="text" id="name" class="form-control">
+                              </div>
+                              <div class="mb-3">
+                                <label type="text" class="form-label">Phone</label>
+                                <input type="text" id="phone" class="form-control">
+                              </div>
+                            </fieldset>
+                          </form>
+                        </div>
+                    </div>
+                    <div class="flex py-4 gap-2">
+                        <p-button label="Back" severity="secondary" (onClick)="prevCallback.emit()" />
+                        <p-button label="Next" (onClick)="nextCallback.emit()" />
+                    </div>
+                </ng-template>
+            </p-stepperPanel>
+          </p-stepper>
+        </div>
+      </div>
     </div>
   </div>
-  <div id="right" class="card">
-    <h2>Elije la fecha e ingresa tus datos</h2>
-    <p-stepper orientation="horizontal">
-      <p-stepperPanel header="Date">
-          <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
-              <div class="flex flex-column h-12rem">
-                  <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
-                    <div class="flex-auto">
-                      Clendario component
-                    </div>
-                  </div>
-              </div>
-              <div class="flex py-4">
-                  <p-button label="Next" (onClick)="nextCallback.emit()" />
-              </div
-          ></ng-template>
-      </p-stepperPanel>
-      <p-stepperPanel header="Data">
-          <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
-              <div class="flex flex-column h-12rem">
-                  <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
-                    <form action="">
-                      <fieldset>
-                        <div class="mb-3">
-                          <label type="text" class="form-label">Name</label>
-                          <input type="text" id="name" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                          <label type="text" class="form-label">Phone</label>
-                          <input type="text" id="phone" class="form-control">
-                        </div>
-                      </fieldset>
-                    </form>
-                  </div>
-              </div>
-              <div class="flex py-4 gap-2">
-                  <p-button label="Back" severity="secondary" (onClick)="prevCallback.emit()" />
-                  <p-button label="Next" (onClick)="nextCallback.emit()" />
-              </div>
-          </ng-template>
-      </p-stepperPanel>
-  </p-stepper>
-  </div>
-</div>
+</section>

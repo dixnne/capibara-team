@@ -104,9 +104,9 @@ export const Devs: Dev[] = [
             "Player",
         ],
         jobs: [
-            "Feedback developer",
-            "LocalStorage report assistant",
-            "Search navbar developer"
+            "Front-End Developer",
+            "UX Developer",
+            "Project Management Assistant"
         ],
         skills: {
             languages: [

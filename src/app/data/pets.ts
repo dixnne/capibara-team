@@ -2,7 +2,7 @@ import { Pet } from '../interfaces/pet';
 
 export const Pets: Pet[] = [
   {
-    id: 1,
+    id: 0,
     name: 'Amy',
     age: 3,
     color: 'Negro',
@@ -14,7 +14,7 @@ export const Pets: Pet[] = [
     tag: ['frendly'],
   },
   {
-    id: 2,
+    id: 1,
     name: 'Tonton',
     age: 1,
     color: 'blanco y cafe',
@@ -26,7 +26,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 3,
+    id: 2,
     name: 'Molly',
     age: 2,
     color: 'blanco, cafe y naranja',
@@ -38,7 +38,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 4,
+    id: 3,
     name: 'Pato',
     age: 1.5,
     color: 'negro y blanco',
@@ -50,7 +50,7 @@ export const Pets: Pet[] = [
     tag: ['sleppy'],
   },
   {
-    id: 5,
+    id: 4,
     name: 'Sasil',
     age: 1,
     color: 'blanco y amarillo',
@@ -62,7 +62,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 6,
+    id: 5,
     name: 'Yuyis',
     age: 1.5,
     color: 'blanco y cafe',
@@ -74,7 +74,7 @@ export const Pets: Pet[] = [
     tag: ['frendly'],
   },
   {
-    id: 7,
+    id: 6,
     name: 'Trixie',
     age: 1,
     color: 'blanco, cafe, negro y gris',
@@ -86,7 +86,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 8,
+    id: 7,
     name: 'Rayito',
     age: 1.5,
     color: 'blanco y negro',
@@ -98,7 +98,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 9,
+    id: 8,
     name: 'Itzia & Temmy',
     age: 1.5,
     color: 'blanco y cefe',
@@ -110,7 +110,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 10,
+    id: 9,
     name: 'Rocko',
     age: 1.5,
     color: 'blanco y negro',
@@ -122,7 +122,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 11,
+    id: 10,
     name: 'Gorda',
     age: 1.5,
     color: 'blanco y gris',
@@ -134,7 +134,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 12,
+    id: 11,
     name: 'Pipa',
     age: 3,
     color: 'blanco',
@@ -146,7 +146,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 13,
+    id: 12,
     name: 'Chimi',
     age: 0.8,
     color: 'cafe y negro',
@@ -158,7 +158,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 14,
+    id: 13,
     name: 'Monkey',
     age: 6,
     color: 'blanco y negro',
@@ -170,7 +170,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 15,
+    id: 14,
     name: 'Dizzy',
     age: 8,
     color: 'cafe, blanco y negro',
@@ -182,7 +182,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 16,
+    id: 15,
     name: 'Changa',
     age: 8,
     color: 'blanco y negro',
@@ -194,7 +194,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 17,
+    id: 16,
     name: 'Brother',
     age: 6,
     color: 'blanco, cafe, negro y gris',
@@ -206,7 +206,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 18,
+    id: 17,
     name: 'Grogu',
     age: 1.5,
     color: 'negro y blanco',
@@ -218,7 +218,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 19,
+    id: 18,
     name: 'Korra',
     age: 1.5,
     color: 'Blanco y cafe',
@@ -230,7 +230,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 20,
+    id: 19,
     name: 'Merida',
     age: 8,
     color: 'Blanco y cafe',
@@ -242,7 +242,7 @@ export const Pets: Pet[] = [
     tag: ['frendly', 'sleppy'],
   },
   {
-    id: 21,
+    id: 20,
     name: 'Tobias',
     age: 8,
     color: 'Blanco y negro',

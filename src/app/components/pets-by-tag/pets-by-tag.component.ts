@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { PetsService } from '../../shared/pets.service';
 import { Pet } from '../../interfaces/pet';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pets-by-tag',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, RouterModule, CommonModule],
   templateUrl: './pets-by-tag.component.html',
   styleUrl: './pets-by-tag.component.css',
 })
@@ -60,10 +61,11 @@ export class PetsByTagComponent {
     { id: '19', img: '../../../assets/images/merida.jpg' },
     { id: '20', img: '../../../assets/images/tobias.jpg' },
   ];
-  constructor(public petsService: PetsService) {}
-  ngOnInit(): void {
-    this.tagPets = this.petsService.getPetsByTag(this.tag);
-    console.log(this.tagPets);
+  constructor(public petsService: PetsService, public activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe((params) => {
+      this.tagPets = this.petsService.getPetsByTag(params['tag']);
+      console.log(this.tagPets);
+    });
   }
   changeImg(event: MouseEvent) {
     this.arrImgs2.forEach((item, i) => {
