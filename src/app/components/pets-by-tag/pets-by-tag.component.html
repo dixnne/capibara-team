@@ -1,5 +1,5 @@
 <div id="content-cards" class="bg-white">
-    @for(pet of myPets; track pet; let idx = $index){
+    @for(pet of tagPets; track pet; let idx = $index){
         <div class="card bg-greensea col-sm-6" style="width: 18rem;">
             <div class="left col-sm-3">
                 <img src={{pet.img}} class="card-img-top" id="{{idx}}" alt="" (mouseover)="changeImg($event)" (mouseleave)="returnImg($event)">
@@ -9,7 +9,7 @@
                 <p class="card-text">Edad aproximada: {{pet.age}} años</p>
                 <div class="content-tags">
                     @for (tag of pet.tag; track tag; let ind= $index) {
-                        <div class="tag"><button class="b-tag" [routerLink]="['/tagpet',tag]">{{tag}}</button></div>
+                        <div class="tag"><button class="b-tag">{{tag}}</button></div>
                     }
                 </div>
                 <a [routerLink]="['/us',idx]"  class="btn btn-primary">Conoceme</a>
@@ -17,10 +17,3 @@
         </div>
     }
 </div>
-<!--
-<div class="flex-auto">
-     <p-paginator class="p-paginator-first"  [first]="10" [rows]="3" [totalRecords]="trn" [showPageLinks]="3" [rowsPerPageOptions]="[5,10,15,20]"></p-paginator>
-</div>
--->
-
-
