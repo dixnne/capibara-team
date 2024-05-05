@@ -54,30 +54,45 @@ export const Devs: Dev[] = [
         pets: [1,3,5,7,9,10,11,12,13,14,15,16,17,18,19,20]
     },{
         id: 1,
-        name: "",
-        details: "",
+        name: "Flavio Salgado",
+        details: "I'm just a serious person who wants to be a soldier, but I like my career. c:",
         image: "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
         tags: [
-            "",
+            "Monster lover",
+            "Gamer",
+            "Tactical Guy",
+            "Frustrated Lover",
         ],
         jobs: [
-            "",
+            "Front-End Developer",
+            "Creative Designer"
         ],
         skills: {
             languages: [
-                "",
+                "Java",
+                "Javascript",
+                "C++",
+                "HTML"
             ],
             frameworks: [
-                "",
+                "Angular",
+                "node.js",
+                "Bootstrap",
+                "jQuery"
             ],
             technologies: [
-                "",
+                "Databases",
+                "IAs",
+                "Cloud Services"
             ],
             tools: [
-                "",
+                "Trello",
+                "Canva",
+                "Asana",
+                "Media Editors"
             ],
         },
-        pets: [0]
+        pets: []
     },{
         id: 2,
         name: "",
