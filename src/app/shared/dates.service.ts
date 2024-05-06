@@ -8,14 +8,15 @@ import { Pets } from '../data/pets';
 })
 export class DatesService {
 
-  constructor() {}
-
   dates!: DateInfo[];
   nextId!: number;
   pets: Pet[] = Pets;
+  
+  constructor() {
+    this.dates = JSON.parse(localStorage.getItem('dates') || '[]');
+  }
 
   addDate(newDate: DateInfo): void {
-    this.getDates();
     newDate.dateID = this.nextId;
     this.dates.push(newDate);
     localStorage.setItem('dates', JSON.stringify(this.dates));
@@ -24,14 +25,13 @@ export class DatesService {
   }
 
   deleteDate(id: number): void {
-    this.getDates();
     this.dates.splice(this.dates.findIndex(date => {
       date.dateID == id;
     }), 1);
   }
 
-  getDates(): void {
-    this.dates = JSON.parse(localStorage.getItem('dates') || '[]');
+  getDates(): DateInfo[] {
+    return this.dates;
   }
 
   getNextId(): void {
@@ -39,7 +39,6 @@ export class DatesService {
   }
 
   getPetDates(pet: string): DateInfo[] {
-    this.getDates();
     let foundPet = this.pets.find(p => p.name == pet);
     return this.dates.filter(date => date.petId == foundPet?.id);
   }

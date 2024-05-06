@@ -33,6 +33,11 @@
   background-color: var(--brown);
 }
 
+#bootstrap-override .bg-white {
+  background-color: var(--white);
+}
+
+
 #bootstrap-override .white {
   color: var(--white);
 }

@@ -6,7 +6,6 @@
     align-items: center;
     gap: 30px;
     flex-wrap: wrap;
-    font-family: "Acme", sans-serif;
     .card {
       min-width: 550px;
       max-width: 600px;
@@ -39,17 +38,13 @@
         margin-left: 10%;
         margin-right: 2%;
         .card-title {
-          width: 90%;
+          width: 100%;
           background-color: var(--orange);
           text-align: center;
-          color: var(--White);
-          text-shadow: 2px 2px var(--brown);
+          color: var(--white);
+          text-shadow: 1px 1px var(--brown);
           border-radius: 20px;
           padding: 1% 1%;
-        }
-        .card-text {
-          color: var(--White);
-          text-shadow: 2px 2px var(--brown-shadow);
         }
         .content-tags {
           display: flex;
@@ -62,15 +57,45 @@
             }
           }
         }
-        .btn {
-          margin-top: 10%;
-          margin-left: 30%;
-          background-color: var(--yellow);
-          color: var(--black-base);
-          border-style: solid 3px;
-          border-color: var(--orange);
-        }
       }
     }
   }
   
+button {
+    background-color: var(--yellow);
+    border: 3px var(--orange) solid;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--orange);
+    color: var(--white);
+    transition: 0.2s ease;
+}
+
+.border-yellow {
+    border: 2px var(--yellow) solid;
+}
+
+.border-orange {
+    border: 2px var(--orange) solid;
+}
+
+.border-brown {
+    border: 2px var(--brown) solid;
+}
+
+.dotted-yellow {
+  border: 2px var(--yellow) dotted;
+  color: var(--yellow);
+}
+
+.dotted-orange {
+  border: 2px var(--orange) dotted;
+  color: var(--orange);
+}
+
+.dotted-brown {
+  border: 2px var(--brown) dotted;
+  color: var(--brown);
+}

@@ -8,6 +8,7 @@ import { PetsComponent } from './components/pets/pets.component';
 import { AboutComponent } from './components/about/about.component';
 import { DatesComponent } from './components/dates/dates.component';
 import { PetsByTagComponent } from './components/pets-by-tag/pets-by-tag.component';
+import { DateComponent } from './components/dates/date/date.component';
 import { DevComponent } from './components/team/dev/dev.component';
 
 export const routes: Routes = [
@@ -22,4 +23,5 @@ export const routes: Routes = [
   { path: 'us/:id', component: VisitComponent },
   { path: 'dev/:id', component: DevComponent },
   { path: 'tagpet/:tag', component: PetsByTagComponent },
+  { path: 'date/:id', component: DateComponent },
 ];
