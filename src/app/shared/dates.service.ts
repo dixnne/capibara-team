@@ -11,6 +11,7 @@ export class DatesService {
   dates: DateInfo[] = [];
   nextId!: number;
   pets: Pet[] = Pets;
+  curretnDate = new Date();
 
   constructor(@Inject(DOCUMENT) private document: Document) {
     const localStorage = this.document.defaultView?.localStorage;
@@ -45,6 +46,22 @@ export class DatesService {
 
   getDates(): DateInfo[] {
     return this.dates;
+  }
+
+  getLastDates() {
+    console.log(
+      ' date from service:  Day  ' +
+        this.curretnDate.getUTCDate() +
+        '   month   ' +
+        this.curretnDate.getMonth() +
+        '  year   ' +
+        this.curretnDate.getFullYear()
+    );
+    let i = 0;
+    return this.dates.filter(() => {
+      //if (this.dates.date.day == this.curretnDate.getDay()) {
+      //}
+    });
   }
 
   getNextId(): number {

@@ -1,4 +1,10 @@
-import { Component, NgModule, Output, EventEmitter, Input } from '@angular/core';
+import {
+  Component,
+  NgModule,
+  Output,
+  EventEmitter,
+  Input,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 
@@ -7,7 +13,7 @@ import { CalendarModule } from 'primeng/calendar';
   standalone: true,
   imports: [CalendarModule, FormsModule],
   templateUrl: './calendar.component.html',
-  styleUrl: './calendar.component.css'
+  styleUrl: './calendar.component.css',
 })
 export class CalendarComponent {
   date: Date = new Date();
