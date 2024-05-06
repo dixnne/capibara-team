@@ -1,0 +1,81 @@
+<section class="py-5">
+    <div class="container">
+        @if (petIndex != -1) {
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex flex-column align-items-center">
+                      <span class="acme-regular fs-2 orange">{{pet.name}}</span>
+                      <img src={{pet.img}} class="card-img-top">
+                    </div>      
+                    <div>
+                        <div class="bg-white py-2 rounded d-flex justify-content-center my-3">
+                            @for (tag of pet.tag; track tag) {
+                                <span role="button" class="badge me-2" [ngClass]="{
+                                    'bg-orange': tag === 'friendly',
+                                    'bg-yellow brown': tag === 'sleepy',
+                                    'bg-brown white': tag === 'energetic',
+                                    'border-yellow yellow': tag === 'reserved',
+                                    'border-orange orange': tag === 'relaxed',
+                                    'border-brown brown': tag === 'loving',
+                                    'dotted-orange': tag === 'playful',
+                                    'dotted-yellow': tag === 'tall',
+                                    'dotted-brown': tag === 'funny'
+                                }" [routerLink]="['/tagpet',tag]">{{tag}}</span>
+                            }
+                        </div>
+                        <div class="bg-yellow rounded p-4">
+                            <p class="lead">
+                                <span style="font-size: 1rem" class="material-symbols-outlined">
+                                update
+                                </span>
+                                Average age: {{pet.age}} years
+                            </p>
+                            <p class="lead">
+                                <span style="font-size: 1rem" class="material-symbols-outlined">
+                                invert_colors
+                                </span>
+                                Color: {{pet.color}}
+                            </p>
+                            <p class="lead">
+                                <span style="font-size: 1rem" class="material-symbols-outlined">
+                                pets
+                                </span>
+                                Breed: {{pet.breed}}
+                            </p>
+                            <p class="lead">
+                                <span style="font-size: 1rem" class="material-symbols-outlined">
+                                event_upcoming
+                                </span>
+                                Time at the shelter: {{pet.stay}}
+                            </p>
+                            <p class="lead border-top border-dark pt-2">{{pet.details}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 bg-orange rounded p-4">
+                    <h3 class="text-center white acme-regular border-light border-bottom">Booked Visits</h3>
+                    <table class="table table-light table-hover">
+                        <thead>
+                            <th>Date</th>
+                            <th>Hour</th>
+                            <th>Name</th>
+                        </thead>
+                        <tbody>
+                            @for (date of petDates; track $index) {
+                                <tr>
+                                    <td>{{date.date.month}}/{{date.date.day}}/{{date.date.year}}</td>
+                                    <td>{{date.date.hour}}</td>
+                                    <td>{{date.name}}</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        } @else {
+            <div class="alert alert-danger text-center" role="alert">
+                Pet with name "{{searchName}}" not found.
+            </div>
+        }        
+    </div>
+</section>

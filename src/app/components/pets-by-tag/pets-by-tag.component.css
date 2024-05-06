@@ -1,0 +1,101 @@
+#content-cards {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    .card {
+      min-width: 550px;
+      max-width: 600px;
+      display: flex;
+      flex-direction: row;
+      border-radius: 20px;
+      padding: 1% 1%;
+      background-color: var(--white);
+      border: 5px var(--orange) solid;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      transition: transform 0.5s ease;
+      &:hover {
+        transform: scale(1.1);
+        z-index: 10;
+      }
+      .left {
+        margin-top: 7%;
+        margin-bottom: 7%;
+        margin-left: 3%;
+        margin-right: 3%;
+        .card-img-top {
+          min-width: 200px;
+          max-width: 400px;
+          border-radius: 20px;
+          aspect-ratio: 1/1;
+          object-fit: cover;
+        }
+      }
+      .card-body {
+        margin-left: 10%;
+        margin-right: 2%;
+        .card-title {
+          width: 100%;
+          background-color: var(--orange);
+          text-align: center;
+          color: var(--white);
+          text-shadow: 1px 1px var(--brown);
+          border-radius: 20px;
+          padding: 1% 1%;
+        }
+        .content-tags {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          .tag {
+            margin: 1%;
+            .b-tag {
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+button {
+    background-color: var(--yellow);
+    border: 3px var(--orange) solid;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--orange);
+    color: var(--white);
+    transition: 0.2s ease;
+}
+
+.border-yellow {
+    border: 2px var(--yellow) solid;
+}
+
+.border-orange {
+    border: 2px var(--orange) solid;
+}
+
+.border-brown {
+    border: 2px var(--brown) solid;
+}
+
+.dotted-yellow {
+  border: 2px var(--yellow) dotted;
+  color: var(--yellow);
+}
+
+.dotted-orange {
+  border: 2px var(--orange) dotted;
+  color: var(--orange);
+}
+
+.dotted-brown {
+  border: 2px var(--brown) dotted;
+  color: var(--brown);
+}

@@ -1,9 +1,9 @@
 img {
-  border-radius: 50%;
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border: 5px var(--white) solid;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 5px var(--yellow) solid;
 }
 
 .border-yellow {

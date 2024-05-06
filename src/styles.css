@@ -10,10 +10,11 @@
   --carrot: rgb(230, 126, 34);
   --black-base: #000000;
   --white-color: #ffffff;
-  --white: #F6F1E9;
-  --yellow: #FFD93D;
-  --orange: #FF8400;
-  --brown: #4F200D;
+  --white: #f6f1e9;
+  --yellow: #ffd93d;
+  --orange: #ff8400;
+  --brown: #4f200d;
+  --brown-shadow: #65451f;
 }
 
 #bootstrap-override .bg-white {
@@ -31,6 +32,11 @@
 #bootstrap-override .bg-brown {
   background-color: var(--brown);
 }
+
+#bootstrap-override .bg-white {
+  background-color: var(--white);
+}
+
 
 #bootstrap-override .white {
   color: var(--white);

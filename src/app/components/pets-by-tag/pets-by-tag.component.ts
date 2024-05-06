@@ -1,20 +1,20 @@
-import { Component } from '@angular/core';
-import { Pet } from '../../interfaces/pet';
+import { Component, Input } from '@angular/core';
 import { PetsService } from '../../shared/pets.service';
-import { RouterLink } from '@angular/router';
-import { PaginatorModule } from 'primeng/paginator';
+import { Pet } from '../../interfaces/pet';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-pets',
+  selector: 'app-pets-by-tag',
   standalone: true,
-  imports: [RouterLink, PaginatorModule, CommonModule],
-  templateUrl: './pets.component.html',
-  styleUrl: './pets.component.css',
+  imports: [RouterLink, RouterModule, CommonModule],
+  templateUrl: './pets-by-tag.component.html',
+  styleUrl: './pets-by-tag.component.css',
 })
-export class PetsComponent {
-  myPets: Pet[] = [];
-  trn: number = 0;
+export class PetsByTagComponent {
+  @Input() tag!: string;
+  tagPets: Pet[] = [];
+  idx: number = 0;
   arrImgs2 = [
     { id: '0', img: '../../../assets/images/amy_2.jpg' },
     { id: '1', img: '../../../assets/images/tonton_2.jpg' },
@@ -61,16 +61,13 @@ export class PetsComponent {
     { id: '19', img: '../../../assets/images/merida.jpg' },
     { id: '20', img: '../../../assets/images/tobias.jpg' },
   ];
-  constructor(public petService: PetsService) {}
-
-  ngOnInit(): void {
-    this.myPets = this.petService.getPets();
-    this.trn = this.myPets.length;
+  constructor(public petsService: PetsService, public activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe((params) => {
+      this.tagPets = this.petsService.getPetsByTag(params['tag']);
+      console.log(this.tagPets);
+    });
   }
-
   changeImg(event: MouseEvent) {
-    // console.log(event.target);
-
     this.arrImgs2.forEach((item, i) => {
       if (event.target instanceof HTMLImageElement) {
         if (event.target.id == item.id) {

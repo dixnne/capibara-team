@@ -1,11 +1,16 @@
-<section class="bg-sunflower p-4">
-    <h1 class="text-center pumpkin display-3 acme-regular">Cat Facts</h1>
+<section class="bg-white p-4">
+    <h1 class="text-center yellow display-3 acme-regular"><span class="orange">Cat</span> Facts</h1>
     @if (cuteCats.lenght != 0 && catFacts.lenght != 0) {
         <div class="">
             <div class="row" data-masonry="{&quot;percentPosition&quot;: true }" style="position: relative; height: 690px;">
                 @for (cat of cuteCats; track $index) {
                     <div class="col-sm-6 col-md-4 col-lg-3 col-xl-15  mb-4">
-                        <div class="card">
+                        <div class="card zoom shadow" [ngClass]="{
+                            'border-orange bg-orange': $index % 4 == 0,
+                            'border-yellow bg-yellow': $index % 4 ==1,
+                            'border-brown bg-brown white': $index % 4 == 2,
+                            '': $index % 4 == 3,
+                        }">
                             <img class="card-img-top" height="200" src='https://cataas.com/cat/{{cuteCats[$index]._id}}' alt="">
                             <div class="card-body">
                                 <p class="card-text">{{catFacts[$index].fact}}</p>
@@ -13,10 +18,18 @@
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-4 col-lg-3 col-xl-15 mb-4">
-                        <div class="card p-3">
+                        <div class="card zoom shadow p-3" [ngClass]="{
+                            'bg-orange': $index % 7 == 0,
+                            'bg-yellow': $index % 7 ==1,
+                            'bg-brown white': $index % 7 == 2,
+                            'border-orange orange': $index % 7 == 3,
+                            'border-yellow yellow': $index % 7 ==4,
+                            'border-brown brown': $index % 7 == 5,
+                            '': $index % 7 == 6,
+                        }">
                             <figure class="p-3 mb-0">
                                 <blockquote class="blockquote">
-                                    <p>{{catFacts[$index + 10].fact}}</p>
+                                    <p>{{catFacts[$index + 15].fact}}</p>
                                 </blockquote>
                             </figure>
                         </div>
