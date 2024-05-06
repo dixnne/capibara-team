@@ -19,19 +19,28 @@ export class DatesService {
     }
   }
 
+  saveDate(of: boolean): void {
+    if (of != false) {
+      localStorage.setItem('actualId', JSON.stringify(this.nextId + 1));
+    } else {
+      localStorage.setItem('dates', JSON.stringify(this.dates));
+    }
+  }
   addDate(newDate: DateInfo): void {
     this.dates.push(newDate);
     localStorage.setItem('dates', JSON.stringify(this.dates));
-    localStorage.setItem('actualId', JSON.stringify(this.nextId + 1));
+    this.saveDate(true);
   }
 
   deleteDate(id: number): void {
+    //this.dates.removeItem();
     this.dates.splice(
       this.dates.findIndex((date) => {
         date.dateID == id;
       }),
       1
     );
+    this.saveDate(false);
   }
 
   getDates(): DateInfo[] {
