@@ -1,79 +1,84 @@
 <section class="py-5 bg-white">
     <div class="container">
-        <h1 class="text-center acme-regular border-bottom border-dark brown">Date Info</h1>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="d-flex flex-column align-items-center">
-                  <span class="acme-regular fs-2 orange">{{pets[petId].name}}</span>
-                  <img src={{pets[petId].img}} class="card-img-top">
-                </div>      
-                <div>
-                    <div class="bg-white py-2 rounded d-flex justify-content-center my-3">
-                        @for (tag of pets[petId].tag; track tag) {
-                            <span role="button" class="badge me-2" [ngClass]="{
-                                'bg-orange': tag === 'friendly',
-                                'bg-yellow brown': tag === 'sleepy',
-                                'bg-brown white': tag === 'energetic',
-                                'border-yellow yellow': tag === 'reserved',
-                                'border-orange orange': tag === 'relaxed',
-                                'border-brown brown': tag === 'loving',
-                                'dotted-orange': tag === 'playful',
-                                'dotted-yellow': tag === 'tall',
-                                'dotted-brown': tag === 'funny'
-                            }" [routerLink]="['/tagpets[petId]',tag]">{{tag}}</span>
-                        }
-                    </div>
-                    <div class="bg-yellow rounded p-4">
-                        <p class="lead">
-                            <span style="font-size: 1rem" class="material-symbols-outlined">
-                            update
-                            </span>
-                            Average age: {{pets[petId].age}} years
-                        </p>
-                        <p class="lead">
-                            <span style="font-size: 1rem" class="material-symbols-outlined">
-                            invert_colors
-                            </span>
-                            Color: {{pets[petId].color}}
-                        </p>
-                        <p class="lead">
-                            <span style="font-size: 1rem" class="material-symbols-outlined">
-                            pets
-                            </span>
-                            Breed: {{pets[petId].breed}}
-                        </p>
-                        <p class="lead">
-                            <span style="font-size: 1rem" class="material-symbols-outlined">
-                            event_upcoming
-                            </span>
-                            Time at the shelter: {{pets[petId].stay}}
-                        </p>
-                        <p class="lead border-top border-dark pt-2">{{pets[petId].details}}</p>
+        @if (dates != [] && pets != []) {
+            <h1 class="text-center acme-regular border-bottom border-dark brown">Date Info</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex flex-column align-items-center">
+                    <span class="acme-regular fs-2 orange">{{pets[petId].name}}</span>
+                    <img src={{pets[petId].img}} class="card-img-top">
+                    </div>      
+                    <div>
+                        <div class="bg-white py-2 rounded d-flex justify-content-center my-3">
+                            @for (tag of pets[petId].tag; track tag) {
+                                <span role="button" class="badge me-2" [ngClass]="{
+                                    'bg-orange': tag === 'friendly',
+                                    'bg-yellow brown': tag === 'sleepy',
+                                    'bg-brown white': tag === 'energetic',
+                                    'border-yellow yellow': tag === 'reserved',
+                                    'border-orange orange': tag === 'relaxed',
+                                    'border-brown brown': tag === 'loving',
+                                    'dotted-orange': tag === 'playful',
+                                    'dotted-yellow': tag === 'tall',
+                                    'dotted-brown': tag === 'funny'
+                                }" [routerLink]="['/tagpets[petId]',tag]">{{tag}}</span>
+                            }
+                        </div>
+                        <div class="bg-yellow rounded p-4">
+                            <p class="lead">
+                                <span style="font-size: 1rem" class="material-symbols-outlined">
+                                update
+                                </span>
+                                Average age: {{pets[petId].age}} years
+                            </p>
+                            <p class="lead">
+                                <span style="font-size: 1rem" class="material-symbols-outlined">
+                                invert_colors
+                                </span>
+                                Color: {{pets[petId].color}}
+                            </p>
+                            <p class="lead">
+                                <span style="font-size: 1rem" class="material-symbols-outlined">
+                                pets
+                                </span>
+                                Breed: {{pets[petId].breed}}
+                            </p>
+                            <p class="lead">
+                                <span style="font-size: 1rem" class="material-symbols-outlined">
+                                event_upcoming
+                                </span>
+                                Time at the shelter: {{pets[petId].stay}}
+                            </p>
+                            <p class="lead border-top border-dark pt-2">{{pets[petId].details}}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 bg-brown rounded p-4">
-                <button [routerLink]="['/dates']" class="btn btn-light w-100 text-center mb-3">
-                    <span style="font-size: 1rem;" class="material-symbols-outlined">
-                        arrow_back
-                    </span>
-                    Go back to all dates
-                </button>
-                <div class="bg-white p-4 rounded">
-                    <p class="lead">
-                        Name: {{dates[dateIndex].name}}
-                    </p>
-                    <p class="lead">
-                        Phone: {{dates[dateIndex].phone}}
-                    </p>
-                    <p class="lead">
-                        Day: {{dates[dateIndex].date.month}} / {{dates[dateIndex].date.day}} / {{dates[dateIndex].date.year}}
-                    </p>
-                    <p class="lead">
-                        Hour: {{dates[dateIndex].date.hour}}
-                    </p>
+                <div class="col-md-6 bg-brown rounded p-4">
+                    <button [routerLink]="['/dates']" class="btn btn-light w-100 text-center mb-3">
+                        <span style="font-size: 1rem;" class="material-symbols-outlined">
+                            arrow_back
+                        </span>
+                        Go back to all dates
+                    </button>
+                    <div class="bg-white p-4 rounded mb-3">
+                        <p class="lead">
+                            Name: {{dates[dateIndex].name}}
+                        </p>
+                        <p class="lead">
+                            Phone: {{dates[dateIndex].phone}}
+                        </p>
+                        <p class="lead">
+                            Day: {{dates[dateIndex].date.month}} / {{dates[dateIndex].date.day}} / {{dates[dateIndex].date.year}}
+                        </p>
+                        <p class="lead">
+                            Hour: {{dates[dateIndex].date.hour}}
+                        </p>
+                    </div>
+                    <button (click)="deleteDate()" class="btn btn-danger w-100 text-center mb-3">
+                        Cancel date
+                    </button>
                 </div>
             </div>
-        </div>
+        }
     </div>
 </section>

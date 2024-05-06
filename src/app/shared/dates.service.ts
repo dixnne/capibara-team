@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class DatesService {
 
-  dates!: DateInfo[];
+  dates: DateInfo[] = [];
   nextId!: number;
   pets: Pet[] = Pets;
   

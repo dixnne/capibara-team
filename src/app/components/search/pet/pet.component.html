@@ -1,3 +1,4 @@
+<p-toast />
 <section class="py-5">
     <div class="container">
         @if (petIndex != -1) {
@@ -64,11 +65,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for (date of petDates; track $index) {
+                            @if (petDates.length != 0) {
+                                @for (date of petDates; track $index) {
+                                    <tr>
+                                        <td>{{date.date.month}}/{{date.date.day}}/{{date.date.year}}</td>
+                                        <td>{{date.date.hour}}</td>
+                                        <td>{{date.name}}</td>
+                                    </tr>
+                                }
+                            } @else {
                                 <tr>
-                                    <td>{{date.date.month}}/{{date.date.day}}/{{date.date.year}}</td>
-                                    <td>{{date.date.hour}}</td>
-                                    <td>{{date.name}}</td>
+                                    <td colspan="3">
+                                        No visits booked
+                                    </td>
                                 </tr>
                             }
                         </tbody>
