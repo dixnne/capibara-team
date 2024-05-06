@@ -4,14 +4,13 @@ import { Pet } from '../interfaces/pet';
 import { Pets } from '../data/pets';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DatesService {
-
   dates!: DateInfo[];
   nextId!: number;
   pets: Pet[] = Pets;
-  
+
   constructor() {
     this.dates = JSON.parse(localStorage.getItem('dates') || '[]');
   }
@@ -25,9 +24,12 @@ export class DatesService {
   }
 
   deleteDate(id: number): void {
-    this.dates.splice(this.dates.findIndex(date => {
-      date.dateID == id;
-    }), 1);
+    this.dates.splice(
+      this.dates.findIndex((date) => {
+        date.dateID == id;
+      }),
+      1
+    );
   }
 
   getDates(): DateInfo[] {
@@ -39,6 +41,6 @@ export class DatesService {
   }
 
   getPetDates(id: number): DateInfo[] {
-    return this.dates.filter(date => date.petId == id);
+    return this.dates.filter((date) => date.petId == id);
   }
 }

@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './date.component.html',
-  styleUrl: './date.component.css'
+  styleUrl: './date.component.css',
 })
 export class DateComponent {
   pets!: Pet[];
@@ -29,7 +29,7 @@ export class DateComponent {
       this.dateId = params['id'];
       this.dates = this.datesService.getDates();
       this.pets = petsService.getPets();
-      this.dateIndex = this.dates.findIndex(d => d.dateID == this.dateId);
+      this.dateIndex = this.dates.findIndex((d) => d.dateID == this.dateId);
       this.petId = this.dates[this.dateIndex].petId;
     });
   }
