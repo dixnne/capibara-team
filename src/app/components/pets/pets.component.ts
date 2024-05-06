@@ -37,6 +37,7 @@ export class PetsComponent {
     { id: '18', img: '../../../assets/images/korra_2.jpg' },
     { id: '19', img: '../../../assets/images/merida_2.jpg' },
     { id: '20', img: '../../../assets/images/tobias_2.jpg' },
+    { id: '21', img: '../../../assets/images/freyja_2.jpg' },
   ];
   arrImgs1 = [
     { id: '0', img: '../../../assets/images/amy.jpg' },
@@ -60,6 +61,7 @@ export class PetsComponent {
     { id: '18', img: '../../../assets/images/korra.jpg' },
     { id: '19', img: '../../../assets/images/merida.jpg' },
     { id: '20', img: '../../../assets/images/tobias.jpg' },
+    { id: '21', img: '../../../assets/images/freyja.jpg' },
   ];
   constructor(public petService: PetsService) {}
 

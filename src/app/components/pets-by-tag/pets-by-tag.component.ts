@@ -37,6 +37,7 @@ export class PetsByTagComponent {
     { id: '18', img: '../../../assets/images/korra_2.jpg' },
     { id: '19', img: '../../../assets/images/merida_2.jpg' },
     { id: '20', img: '../../../assets/images/tobias_2.jpg' },
+    { id: '21', img: '../../../assets/images/freyja_2.jpg' },
   ];
   arrImgs1 = [
     { id: '0', img: '../../../assets/images/amy.jpg' },
@@ -60,8 +61,12 @@ export class PetsByTagComponent {
     { id: '18', img: '../../../assets/images/korra.jpg' },
     { id: '19', img: '../../../assets/images/merida.jpg' },
     { id: '20', img: '../../../assets/images/tobias.jpg' },
+    { id: '21', img: '../../../assets/images/freyja.jpg' },
   ];
-  constructor(public petsService: PetsService, public activatedRoute: ActivatedRoute) {
+  constructor(
+    public petsService: PetsService,
+    public activatedRoute: ActivatedRoute
+  ) {
     this.activatedRoute.params.subscribe((params) => {
       this.tagPets = this.petsService.getPetsByTag(params['tag']);
       console.log(this.tagPets);

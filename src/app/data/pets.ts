@@ -253,4 +253,15 @@ export const Pets: Pet[] = [
     img: '../../../assets/images/tobias.jpg',
     tag: ['reserved', 'sleepy'],
   },
+  {
+    id: 21,
+    name: 'Freyja',
+    age: 5,
+    color: 'Cafe soft',
+    breed: 'Electrica',
+    stay: '3 years',
+    details: 'She is Very hairy and hyperactive.',
+    img: '../../../assets/images/freyja.jpg',
+    tag: ['friendly', 'energetic'],
+  },
 ];
