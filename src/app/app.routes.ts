@@ -10,6 +10,7 @@ import { DatesComponent } from './components/dates/dates.component';
 import { PetsByTagComponent } from './components/pets-by-tag/pets-by-tag.component';
 import { DateComponent } from './components/dates/date/date.component';
 import { DevComponent } from './components/team/dev/dev.component';
+import { PetComponent } from './components/search/pet/pet.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,4 +25,5 @@ export const routes: Routes = [
   { path: 'dev/:id', component: DevComponent },
   { path: 'tagpet/:tag', component: PetsByTagComponent },
   { path: 'date/:id', component: DateComponent },
+  { path: 'search/:name', component: PetComponent },
 ];

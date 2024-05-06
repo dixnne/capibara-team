@@ -139,7 +139,7 @@ export class VisitComponent {
     let title = '';
     let text = '';
     console.log('validator init');
-    this.arr = this.dateService.getPetDates(this.pet.name);
+    this.arr = this.dateService.getPetDates(this.pet.id);
     for (let i in this.arr) {
       if (this.day == this.arr[i].date.day) {
         if (this.month == this.arr[i].date.month) {

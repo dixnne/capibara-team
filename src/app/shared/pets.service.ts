@@ -19,6 +19,11 @@ export class PetsService {
     return this.pets[index];
   }
 
+  getPetIndex(name: string): number {
+    let index = this.pets.findIndex(pet => pet.name === name);
+    return index;
+  }
+
   getPetsByTag(tags: string): Pet[] {
     return this.pets.filter((pet) => {
       if (

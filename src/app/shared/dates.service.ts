@@ -38,8 +38,7 @@ export class DatesService {
     this.nextId = parseInt(localStorage.getItem('actualId') || '0') + 1;
   }
 
-  getPetDates(pet: string): DateInfo[] {
-    let foundPet = this.pets.find(p => p.name == pet);
-    return this.dates.filter(date => date.petId == foundPet?.id);
+  getPetDates(id: number): DateInfo[] {
+    return this.dates.filter(date => date.petId == id);
   }
 }
