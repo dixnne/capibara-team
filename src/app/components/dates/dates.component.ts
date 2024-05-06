@@ -14,7 +14,6 @@ import Swal from 'sweetalert2';
   styleUrl: './dates.component.css',
 })
 export class DatesComponent {
-<<<<<<< HEAD
   constructor(private messageService: MessageService) {}
 
   //type: success, warn, error, info
@@ -62,5 +61,4 @@ export class DatesComponent {
       icon: 'error',
     });
   }
-
 }

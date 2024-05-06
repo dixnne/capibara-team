@@ -55,7 +55,15 @@
                     <div class="flex flex-column h-12rem">
                         <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
                           <div class="flex-auto">
-                            <app-calendar [maxDate]="maxDate" [minDate]="minDate"></app-calendar>
+                            <app-calendar [maxDate]="maxDate" [minDate]="minDate" (newDateEvent)="takeDate($event)"></app-calendar>
+                          </div><br>
+                          <div class="mb-3">
+                            <form>
+                              <label for="select" class="form-label">Horario</label>
+                              <select name="hora" (change)="changehr($event)" class="form-select">
+                                <option [value]="hora" *ngFor="let hora of horario">{{hora}}</option>
+                              </select>
+                            </form>
                           </div>
                         </div>
                     </div>
@@ -64,27 +72,25 @@
                     </div
                 ></ng-template>
             </p-stepperPanel>
-            <p-stepperPanel header="Data">
+            <p-stepperPanel header="Info">
                 <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
                     <div class="flex flex-column h-12rem">
                         <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
-                          <form action="">
-                            <fieldset>
+                          
+                           
                               <div class="mb-3">
                                 <label type="text" class="form-label">Name</label>
-                                <input type="text" id="name" class="form-control">
+                                <input type="text" [(ngModel)]="name" class="form-control">
                               </div>
                               <div class="mb-3">
                                 <label type="text" class="form-label">Phone</label>
-                                <input type="text" id="phone" class="form-control">
+                                <input type="text" [(ngModel)]="phone" id="phone" class="form-control">
                               </div>
-                            </fieldset>
-                          </form>
+                          
                         </div>
                     </div>
                     <div class="flex py-4 gap-2">
-                        <p-button label="Back" severity="secondary" (onClick)="prevCallback.emit()" />
-                        <p-button label="Next" (onClick)="nextCallback.emit()" />
+                        <p-button label="Send" (onClick)="send()" />
                     </div>
                 </ng-template>
             </p-stepperPanel>
