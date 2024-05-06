@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { DateInfo } from '../interfaces/date';
 import { Pet } from '../interfaces/pet';
 import { Pets } from '../data/pets';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,17 @@ export class DatesService {
   nextId!: number;
   pets: Pet[] = Pets;
   
-  constructor() {
-    this.dates = JSON.parse(localStorage.getItem('dates') || '[]');
+  constructor(@Inject(DOCUMENT) private document: Document) {
+    const localStorage = this.document.defaultView?.localStorage;
+    if (localStorage) {
+      this.dates = JSON.parse(localStorage.getItem('dates') || '[]');
+    }
   }
 
   addDate(newDate: DateInfo): void {
-    newDate.dateID = this.nextId;
     this.dates.push(newDate);
     localStorage.setItem('dates', JSON.stringify(this.dates));
-    this.getNextId();
-    localStorage.setItem('actualId', JSON.stringify(this.nextId));
+    localStorage.setItem('actualId', JSON.stringify(this.nextId + 1));
   }
 
   deleteDate(id: number): void {
@@ -34,8 +36,9 @@ export class DatesService {
     return this.dates;
   }
 
-  getNextId(): void {
-    this.nextId = parseInt(localStorage.getItem('actualId') || '0') + 1;
+  getNextId(): number {
+    this.nextId = parseInt(localStorage.getItem('actualId') || '0');
+    return this.nextId;
   }
 
   getPetDates(id: number): DateInfo[] {

@@ -67,7 +67,7 @@
                           <div class="mb-3">
                             <form>
                               <label for="select" class="form-label">Horario</label>
-                              <select name="hora" (change)="changehr($event)" class="form-select">
+                              <select name="hora" [(ngModel)]="hour" class="form-select">
                                 <option [value]="hora" *ngFor="let hora of horario">{{hora}}</option>
                               </select>
                             </form>

@@ -57,9 +57,11 @@
                     <h3 class="text-center white acme-regular border-light border-bottom">Booked Visits</h3>
                     <table class="table table-light table-hover">
                         <thead>
-                            <th>Date</th>
-                            <th>Hour</th>
-                            <th>Name</th>
+                            <tr>
+                                <th>Date</th>
+                                <th>Hour</th>
+                                <th>Name</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @for (date of petDates; track $index) {

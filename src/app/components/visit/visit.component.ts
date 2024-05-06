@@ -57,10 +57,11 @@ export class VisitComponent {
   day: number = 0;
   month: number = 0;
   year: number = 0;
-  hour: string = '';
+  hour!: string;
   name: string = '';
   phone: string = '';
   arr: DateInfo[] = [];
+  newDate!: DateInfo;
   vali: boolean = false;
   constructor(
     public petsService: PetsService,
@@ -71,17 +72,14 @@ export class VisitComponent {
     this.activatedRoute.params.subscribe((params) => {
       this.pet = petsService.getAPet(params['id']);
       this.idx = params['id'];
+      this.petId = params['id'];
     });
   }
 
   takeDate(e: Date) {
     this.day = e.getUTCDate();
-    this.month = e.getMonth();
+    this.month = e.getMonth() + 1;
     this.year = e.getUTCFullYear();
-  }
-
-  changehr(e: any) {
-    this.hour = e.target.value;
   }
 
   send() {
@@ -98,13 +96,27 @@ export class VisitComponent {
     console.log('name is:' + this.name);
     console.log('phone is:' + this.phone);
 
-    if ((a = this.validdata() == true)) {
-      if ((a = this.validator() == true)) {
+    if ((this.validdata() == true)) {
+      if ((this.validator() == true)) {
+        this.newDate = {
+          petId: this.petId,
+          dateID: this.dateService.getNextId(),
+          date: {
+            day: this.day,
+            month: this.month,
+            year: this.year,
+            hour: this.hour,
+          },
+          name: this.name,
+          phone: this.phone
+        }
         title = 'successful';
         text = 'date';
         confirmedTitle = '';
         confirmedText = '';
-        this.confirmAlert(title, text, confirmedTitle, confirmedText);
+        this.dateService.addDate(this.newDate);
+        this.successAlert(title, text);
+        this.toast('success', title, text);
       } else {
         title = 'Sorry';
         text = 'reserved date';
@@ -129,10 +141,12 @@ export class VisitComponent {
         auxi = true;
       }
     }
-    if (auxd == auxh && auxd == auxi) {
+    if (auxd && auxi && auxh) {
       aux = true;
       console.log('validate succes');
     }
+    console.log("Validdata is " + aux);
+    
     return aux;
   }
   validator(): boolean {
@@ -140,12 +154,17 @@ export class VisitComponent {
     let text = '';
     console.log('validator init');
     this.arr = this.dateService.getPetDates(this.pet.id);
-    for (let i in this.arr) {
-      if (this.day == this.arr[i].date.day) {
-        if (this.month == this.arr[i].date.month) {
-          if (this.year == this.arr[i].date.year) {
-            if (this.hour == this.arr[i].date.hour) {
-              return false;
+    if (this.arr.length != 0) {
+      console.log(this.arr);
+      for (let i in this.arr) {
+        if (this.day == this.arr[i].date.day) {
+          if (this.month == this.arr[i].date.month) {
+            if (this.year == this.arr[i].date.year) {
+              if (this.hour == this.arr[i].date.hour) {
+                return false;
+              } else {
+                return true;
+              }
             } else {
               return true;
             }
@@ -155,9 +174,9 @@ export class VisitComponent {
         } else {
           return true;
         }
-      } else {
-        return true;
       }
+    } else {
+      return true;
     }
     return false;
   }

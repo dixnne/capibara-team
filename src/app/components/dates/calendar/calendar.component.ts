@@ -22,11 +22,6 @@ export class CalendarComponent {
   }
 
   ngOnInit() {
-    if (this.date.getMinutes() >= 0 && this.date.getMinutes() < 30) {
-      this.date.setMinutes(30);
-    } else {
-      this.date.setMinutes(0);
-      this.date.setHours(this.date.getHours() + 1);
-    }
+    this.newDateEvent.emit(this.date);
   }
 }
