@@ -12,8 +12,15 @@
             <div class="bg-white py-2 rounded d-flex justify-content-center my-3">
               @for (tag of pet.tag; track tag) {
                   <span role="button" class="badge me-2" [ngClass]="{
-                      'bg-orange': tag === 'frendly',
-                      'bg-yellow brown': tag === 'sleppy'
+                      'bg-orange': tag === 'friendly',
+                      'bg-yellow brown': tag === 'sleepy',
+                      'bg-brown white': tag === 'energetic',
+                      'border-yellow yellow': tag === 'reserved',
+                      'border-orange orange': tag === 'relaxed',
+                      'border-brown brown': tag === 'loving',
+                      'dotted-orange': tag === 'playful',
+                      'dotted-yellow': tag === 'tall',
+                      'dotted-brown': tag === 'funny'
                   }" [routerLink]="['/tagpet',tag]">{{tag}}</span>
               }
             </div>
