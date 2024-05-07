@@ -1,7 +1,7 @@
 <div class="container">
-    <p-carousel [value]="images" [numVisible]="3" [numScroll]="3" [circular]="true">
+    <p-carousel [value]="pets" [numVisible]="3" [numScroll]="3" [circular]="true">
         <ng-template let-image pTemplate="item">
-            <img [src]="image" alt="" class="img-fluid shadow my-3">
+            <img [routerLink]="['/us', image.id]" [src]="image.img" alt="" class="img-fluid shadow my-3">
         </ng-template>
     </p-carousel>
 </div>

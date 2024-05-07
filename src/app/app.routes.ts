@@ -19,7 +19,6 @@ export const routes: Routes = [
   { path: 'breeds', component: BreedsComponent },
   { path: 'pets', component: PetsComponent },
   { path: 'team', component: TeamComponent },
-  { path: 'about', component: AboutComponent },
   { path: 'dates', component: DatesComponent },
   { path: 'us/:id', component: VisitComponent },
   { path: 'dev/:id', component: DevComponent },

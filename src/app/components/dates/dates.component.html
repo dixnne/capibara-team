@@ -1,60 +1,82 @@
 <section class="py-5">
-    <h2>Nexts</h2>
-    <div class="container p-4 rounded bg-brown">
-        <table class="table table-light table-hover">
-            <thead>
-                <tr>
-                    <th colspan="2">Pet</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Date</th>
-                    <th>Hour</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (date of dates; track $index) {
-                    <tr [routerLink]="['/date', date.dateID]">
-                        <td>
-                            <img [src]="pets[date.petId].img" class="rounded img-fluid shadow" alt="">
-                        </td>
-                        <td>{{pets[date.petId].name}}</td>
-                        <td>{{date.name}}</td>
-                        <td>{{date.phone}}</td>
-                        <td>{{date.date.month | number: '2.'}}/{{date.date.day | number: '2.'}}/{{date.date.year}}</td>
-                        <td>{{date.date.hour}}</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</section>
-<section class="py-5">
-    <h2>Latest</h2>
-    <div class="container p-4 rounded bg-brown">
-        <table class="table table-light table-hover">
-            <thead>
-                <tr>
-                    <th colspan="2">Pet</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Date</th>
-                    <th>Hour</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (date of datesL; track $index) {
-                    <tr [routerLink]="['/date', date.dateID]">
-                        <td>
-                            <img [src]="pets[date.petId].img" class="rounded img-fluid shadow" alt="">
-                        </td>
-                        <td>{{pets[date.petId].name}}</td>
-                        <td>{{date.name}}</td>
-                        <td>{{date.phone}}</td>
-                        <td>{{date.date.month | number: '2.'}}/{{date.date.day | number: '2.'}}/{{date.date.year}}</td>
-                        <td>{{date.date.hour}}</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="acme-regular orange">Next dates</h2>
+                <div class="p-4 rounded bg-yellow">
+                    <table class="table table-light table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Pet</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Date</th>
+                                <th>Hour</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (datesN != []) {
+                                @for (date of datesN; track $index) {
+                                    <tr [routerLink]="['/date', date.dateID]">
+                                        <td>
+                                            <img [src]="pets[date.petId].img" class="rounded img-fluid shadow" alt="">
+                                        </td>
+                                        <td>{{pets[date.petId].name}}</td>
+                                        <td>{{date.name}}</td>
+                                        <td>{{date.phone}}</td>
+                                        <td>{{date.date.month | number: '2.'}}/{{date.date.day | number: '2.'}}/{{date.date.year}}</td>
+                                        <td>{{date.date.hour}}</td>
+                                    </tr>
+                                }
+                            } @else {
+                                <tr>
+                                    <td colspan="6">
+                                        No dates booked here.
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="orange acme-regular">Past dates</h2>
+                <div class="p-4 rounded bg-brown w-100">
+                    <table class="table table-light table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Pet</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Date</th>
+                                <th>Hour</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (datesP != []) {
+                                @for (date of datesP; track $index) {
+                                    <tr [routerLink]="['/date', date.dateID]">
+                                        <td>
+                                            <img [src]="pets[date.petId].img" class="rounded img-fluid shadow" alt="">
+                                        </td>
+                                        <td>{{pets[date.petId].name}}</td>
+                                        <td>{{date.name}}</td>
+                                        <td>{{date.phone}}</td>
+                                        <td>{{date.date.month | number: '2.'}}/{{date.date.day | number: '2.'}}/{{date.date.year}}</td>
+                                        <td>{{date.date.hour}}</td>
+                                    </tr>
+                                }
+                            } @else {
+                                <tr>
+                                    <td colspan="6">
+                                        No dates booked here.
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

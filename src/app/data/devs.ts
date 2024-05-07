@@ -58,7 +58,7 @@ export const Devs: Dev[] = [
         id: 1,
         name: "Flavio Salgado",
         details: "I'm just a serious person who wants to be a soldier, but I like my career. c:",
-        image: "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
+        image: "https://scontent-qro1-1.xx.fbcdn.net/v/t1.6435-9/179431547_506069783856155_4063707015436614509_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH1JAABhumGd19YGt9q0cX4yukBmmW9ICbK6QGaZb0gJircWzwV9E9VASZ99T9doG2CGUYpIhIbOLCUhO9WQOLF&_nc_ohc=QseJcX5Fv4oQ7kNvgG9o1Hq&_nc_ht=scontent-qro1-1.xx&oh=00_AfAIj7Cq-YVO2OUh5JyeFfLvqxjkNQpe6Y_IZhfsqBADXA&oe=6660F924",
         tags: [
             "Monster lover",
             "Gamer",
@@ -99,7 +99,7 @@ export const Devs: Dev[] = [
         id: 2,
         name: "Jesús Tapia",
         details: "I'm a very emotional person when working, who tries to help as much as possible, even if sometimes anyone can't even understand what I do.",
-        image: "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
+        image: "https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/315573344_1748694385513735_295621128424222118_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGj6DOMkR8nCgoViAZIOetVCrvo8J_2OzEKu-jwn_Y7MWMXpE3qSQbG7s0sD3qshBLdCx7MlWl4yq8fNZ_mbA4V&_nc_ohc=8c2uSQLCZKgQ7kNvgF-KtXh&_nc_ht=scontent-qro1-2.xx&oh=00_AfDtGkJhpP83jA1u0E2c3HJ1KoyXjSfSGaEKlet1w1219w&oe=663F6481",
         tags: [
             "Sportsman",
             "Reader and writer",
@@ -138,7 +138,7 @@ export const Devs: Dev[] = [
         id: 3,
         name: "Eric Berumen",
         details: "A software programmer and web developer with a wide array of skills regarding computers and languages. Knowledgeable and Resourceful.",
-        image: "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
+        image: "https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/420185624_303930489312042_4928732466213974139_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHwuGs_2u1tmY2y1XL1vvyBkunmx14ezlGS6ebHXh7OUU-AZqCo3qJHa3cIN_XcQ-_qezipdj00RaH8SG7-3hUN&_nc_ohc=-q2dU9Ark2oQ7kNvgGHdqd5&_nc_ht=scontent-qro1-2.xx&oh=00_AfCQFb2tIuxX1-Uzt0gQibndRVo6002pn1diop1t__J8IQ&oe=663F6C83",
         tags: [
             "Multilingual",
             "Digitally Proficient",
@@ -217,31 +217,5 @@ export const Devs: Dev[] = [
             ],
         },
         pets: [0, 2, 4, 6, 8]
-    },{
-        id: 5,
-        name: "",
-        details: "",
-        image: "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
-        tags: [
-            "",
-        ],
-        jobs: [
-            "",
-        ],
-        skills: {
-            languages: [
-                "",
-            ],
-            frameworks: [
-                "",
-            ],
-            technologies: [
-                "",
-            ],
-            tools: [
-                "",
-            ],
-        },
-        pets: [0]
-    },
+    }
 ]

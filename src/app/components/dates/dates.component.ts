@@ -16,7 +16,10 @@ import { CommonModule } from '@angular/common';
 export class DatesComponent {
   pets: Pet[] = [];
   dates: DateInfo[] = [];
-  datesL: DateInfo[] = [];
+  datesP: DateInfo[] = [];
+  datesN: DateInfo[] = [];
+  today: Date = new Date();
+
   constructor(
     public petsService: PetsService,
     public activatedRoute: ActivatedRoute,
@@ -25,7 +28,53 @@ export class DatesComponent {
     this.activatedRoute.params.subscribe((params) => {
       this.dates = this.datesService.getDates();
       this.pets = petsService.getPets();
-      this.datesService.getLastDates();
+
+      this.datesP = this.dates.filter(date => {
+        if (date.date.year < this.today.getFullYear()) {
+          return true;
+        } else {
+          if (date.date.year == this.today.getFullYear()) {
+            if (date.date.month < this.today.getMonth() + 1) {
+              return true;
+            } else {
+              if (date.date.month == this.today.getMonth() + 1) {
+                if (date.date.day < this.today.getUTCDate()) {
+                  return true;
+                } else {
+                  return false;
+                }
+              } else {
+                return false;
+              }
+            }
+          } else {
+            return false;
+          }
+        }
+      });
+      this.datesN = this.dates.filter(date => {
+        if (date.date.year > this.today.getFullYear()) {
+          return true;
+        } else {
+          if (date.date.year == this.today.getFullYear()) {
+            if (date.date.month > this.today.getMonth() + 1) {
+              return true;
+            } else {
+              if (date.date.month == this.today.getMonth() + 1) {
+                if (date.date.day >= this.today.getUTCDate()) {
+                  return true;
+                } else {
+                  return false;
+                }
+              } else {
+                return false;
+              }
+            }
+          } else {
+            return false;
+          }
+        }
+      });
     });
   }
 }
