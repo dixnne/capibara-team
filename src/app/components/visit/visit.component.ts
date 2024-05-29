@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { PetsService } from '../../shared/pets.service';
 import { Pet } from '../../interfaces/pet';
 import { StepperModule } from 'primeng/stepper';
@@ -67,7 +67,8 @@ export class VisitComponent {
     public petsService: PetsService,
     public activatedRoute: ActivatedRoute,
     private messageService: MessageService,
-    private dateService: DatesService
+    private dateService: DatesService,
+    private router: Router
   ) {
     this.activatedRoute.params.subscribe((params) => {
       this.pet = petsService.getAPet(params['id']);
@@ -110,16 +111,16 @@ export class VisitComponent {
           name: this.name,
           phone: this.phone
         }
-        title = 'successful';
-        text = 'date';
+        title = 'Meowwww';
+        text = 'Date booked, you are one step closer to expand your family';
         confirmedTitle = '';
         confirmedText = '';
         this.dateService.addDate(this.newDate);
         this.successAlert(title, text);
         this.toast('success', title, text);
       } else {
-        title = 'Sorry';
-        text = 'reserved date';
+        title = 'Rawwwr';
+        text = 'Sorry, reserved date...';
         this.errorAlert(title, text);
       }
     }
@@ -162,23 +163,15 @@ export class VisitComponent {
             if (this.year == this.arr[i].date.year) {
               if (this.hour == this.arr[i].date.hour) {
                 return false;
-              } else {
-                return true;
-              }
-            } else {
-              return true;
-            }
-          } else {
-            return true;
-          }
-        } else {
-          return true;
-        }
+              } 
+            } 
+          } 
+        } 
       }
+      return true;
     } else {
       return true;
     }
-    return false;
   }
   //type: success, warn, error, info
   toast(type: string, heading: string, text: string): void {
@@ -215,6 +208,8 @@ export class VisitComponent {
       title: title,
       text: text,
       icon: 'success',
+    }).then(() => {
+      this.router.navigate(['/dates']);
     });
   }
 
