@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dates.component.css',
 })
 export class DatesComponent {
-  pets: Pet[] = [];
   dates: DateInfo[] = [];
   datesP: DateInfo[] = [];
   datesN: DateInfo[] = [];
@@ -26,19 +25,18 @@ export class DatesComponent {
     private datesService: DatesService
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.dates = this.datesService.getDates();
-      this.pets = petsService.getPets();
+      this.dates = this.datesService.getUserDates("");
 
       this.datesP = this.dates.filter(date => {
-        if (date.date.year < this.today.getFullYear()) {
+        if (date.data.date.year < this.today.getFullYear()) {
           return true;
         } else {
-          if (date.date.year == this.today.getFullYear()) {
-            if (date.date.month < this.today.getMonth() + 1) {
+          if (date.data.date.year == this.today.getFullYear()) {
+            if (date.data.date.month < this.today.getMonth() + 1) {
               return true;
             } else {
-              if (date.date.month == this.today.getMonth() + 1) {
-                if (date.date.day < this.today.getUTCDate()) {
+              if (date.data.date.month == this.today.getMonth() + 1) {
+                if (date.data.date.day < this.today.getUTCDate()) {
                   return true;
                 } else {
                   return false;
@@ -53,15 +51,15 @@ export class DatesComponent {
         }
       });
       this.datesN = this.dates.filter(date => {
-        if (date.date.year > this.today.getFullYear()) {
+        if (date.data.date.year > this.today.getFullYear()) {
           return true;
         } else {
-          if (date.date.year == this.today.getFullYear()) {
-            if (date.date.month > this.today.getMonth() + 1) {
+          if (date.data.date.year == this.today.getFullYear()) {
+            if (date.data.date.month > this.today.getMonth() + 1) {
               return true;
             } else {
-              if (date.date.month == this.today.getMonth() + 1) {
-                if (date.date.day >= this.today.getUTCDate()) {
+              if (date.data.date.month == this.today.getMonth() + 1) {
+                if (date.data.date.day >= this.today.getUTCDate()) {
                   return true;
                 } else {
                   return false;
@@ -76,5 +74,15 @@ export class DatesComponent {
         }
       });
     });
+  }
+
+  getPetImage(id: string): string {
+    let pet = this.petsService.getPet(id);
+    return pet.data.img;
+  }
+
+  getPetName(id: string): string {
+    let pet = this.petsService.getPet(id);
+    return pet.data.name;
   }
 }

@@ -23,7 +23,7 @@ export class DevComponent {
     public activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.dev = this.devsService.getADev(params['id']);
+      this.dev = this.devsService.getDev(params['id']);
       this.pets = this.petsService.getPets();
     });
   }

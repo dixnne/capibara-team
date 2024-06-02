@@ -40,7 +40,7 @@ export class VisitComponent {
   maxDate: Date = new Date(2025, 4);
   @Input() pet!: Pet;
   @Input() date!: any;
-  idx: number = 0;
+  idx: string = "";
   horario: string[] = [
     '14:00',
     '14:30',
@@ -52,8 +52,8 @@ export class VisitComponent {
     '17:30',
     '18:00',
   ];
-  petId: number = 0;
-  dateID: number = 0;
+  petId: string = "";
+  dateId: string = "";
   day: number = 0;
   month: number = 0;
   year: number = 0;
@@ -71,7 +71,7 @@ export class VisitComponent {
     private router: Router
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.pet = petsService.getAPet(params['id']);
+      this.pet = petsService.getPet(params['id']);
       this.idx = params['id'];
       this.petId = params['id'];
     });
@@ -100,16 +100,17 @@ export class VisitComponent {
     if ((this.validdata() == true)) {
       if ((this.validator() == true)) {
         this.newDate = {
-          petId: this.petId,
-          dateID: this.dateService.getNextId(),
-          date: {
-            day: this.day,
-            month: this.month,
-            year: this.year,
-            hour: this.hour,
-          },
-          name: this.name,
-          phone: this.phone
+          id: "",
+          data: {
+            petId: this.petId,
+            userId: "",
+            date: {
+              day: this.day,
+              month: this.month,
+              year: this.year,
+              hour: this.hour,
+            }
+          }
         }
         title = 'Meowwww';
         text = 'Date booked, you are one step closer to expand your family';
@@ -158,10 +159,10 @@ export class VisitComponent {
     if (this.arr.length != 0) {
       console.log(this.arr);
       for (let i in this.arr) {
-        if (this.day == this.arr[i].date.day) {
-          if (this.month == this.arr[i].date.month) {
-            if (this.year == this.arr[i].date.year) {
-              if (this.hour == this.arr[i].date.hour) {
+        if (this.day == this.arr[i].data.date.day) {
+          if (this.month == this.arr[i].data.date.month) {
+            if (this.year == this.arr[i].data.date.year) {
+              if (this.hour == this.arr[i].data.date.hour) {
                 return false;
               } 
             } 

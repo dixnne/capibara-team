@@ -8,26 +8,22 @@
                         <thead>
                             <tr>
                                 <th colspan="2">Pet</th>
-                                <th>Name</th>
-                                <th>Phone</th>
                                 <th>Date</th>
                                 <th>Hour</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (datesN != []) {
-                                @for (date of datesN; track $index) {
-                                    <tr [routerLink]="['/date', date.dateID]">
+                                @for (date of datesN; track $index;) {
+                                    <tr [routerLink]="['/date', date.id]">
                                         <td>
-                                            <img [src]="pets[date.petId].img" class="rounded img-fluid shadow" alt="">
+                                            <img [src]="getPetImage(date.data.petId)" class="rounded img-fluid shadow" alt="">
                                         </td>
-                                        <td>{{pets[date.petId].name}}</td>
-                                        <td>{{date.name}}</td>
-                                        <td>{{date.phone}}</td>
-                                        <td>{{date.date.month | number: '2.'}}/{{date.date.day | number: '2.'}}/{{date.date.year}}</td>
-                                        <td>{{date.date.hour}}</td>
+                                        <td>{{getPetName(date.data.petId)}}</td>
+                                        <td>{{date.data.date.month | number: '2.'}}/{{date.data.date.day | number: '2.'}}/{{date.data.date.year}}</td>
+                                        <td>{{date.data.date.hour}}</td>
                                     </tr>
-                                }
+                                }-
                             } @else {
                                 <tr>
                                     <td colspan="6">
@@ -55,15 +51,13 @@
                         <tbody>
                             @if (datesP != []) {
                                 @for (date of datesP; track $index) {
-                                    <tr [routerLink]="['/date', date.dateID]">
+                                    <tr [routerLink]="['/date', date.id]">
                                         <td>
-                                            <img [src]="pets[date.petId].img" class="rounded img-fluid shadow" alt="">
+                                            <img [src]="getPetImage(date.id)" class="rounded img-fluid shadow" alt="">
                                         </td>
-                                        <td>{{pets[date.petId].name}}</td>
-                                        <td>{{date.name}}</td>
-                                        <td>{{date.phone}}</td>
-                                        <td>{{date.date.month | number: '2.'}}/{{date.date.day | number: '2.'}}/{{date.date.year}}</td>
-                                        <td>{{date.date.hour}}</td>
+                                        <td>{{getPetName(date.id)}}</td>
+                                        <td>{{date.data.date.month | number: '2.'}}/{{date.data.date.day | number: '2.'}}/{{date.data.date.year}}</td>
+                                        <td>{{date.data.date.hour}}</td>
                                     </tr>
                                 }
                             } @else {

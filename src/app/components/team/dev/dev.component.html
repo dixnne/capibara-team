@@ -2,19 +2,19 @@
     <div class="container">
         <div class="d-md-flex">
             <div class="col-md-3 d-md-flex align-items-md-center">
-                <img [src]="dev.image" class="dev-image mt-3 m-md-0 shadow" alt="">
+                <img [src]="dev.data.image" class="dev-image mt-3 m-md-0 shadow" alt="">
             </div>
             <div class="col-md-7 p-4 rounded-5 bg-white dev-container shadow">
                 <div class="dev-content">
-                    <span class="fs-2 acme-regular brown">{{dev.name}}</span>
+                    <span class="fs-2 acme-regular brown">{{dev.data.name}}</span>
                     <div class="d-flex mt-3">
-                        @for (tag of dev.tags; track $index) {
+                        @for (tag of dev.data.tags; track $index) {
                             <span class="badge brown bg-yellow me-3">{{tag}}</span>
                         }
                     </div>
                     <p class="fs-5 mt-3">
-                        @for (job of dev.jobs; track $index) {
-                            @if ($index == dev.jobs.length -1) {
+                        @for (job of dev.data.jobs; track $index) {
+                            @if ($index == dev.data.jobs.length -1) {
                                 {{job}}.
                             } @else {
                                 {{job}},  
@@ -22,7 +22,7 @@
                         }
                     </p>
                     <p class="fs-6 mt-3">
-                        {{dev.details}}
+                        {{dev.data.details}}
                     </p>
                 </div>
             </div>
@@ -40,8 +40,8 @@
                 <div class="col-10 d-flex flex-column align-items-start justify-content-center">
                     <span class="fs-6 acme-regular">Languages</span>
                     <span>
-                        @for (skill of dev.skills.languages; track $index) {
-                            @if ($index == dev.skills.languages.length - 1) {
+                        @for (skill of dev.data.skills.languages; track $index) {
+                            @if ($index == dev.data.skills.languages.length - 1) {
                                 {{skill}}
                             } @else {
                                 {{skill}} -   
@@ -54,8 +54,8 @@
                 <div class="col-10 d-flex flex-column align-items-end justify-content-center">
                     <span class="fs-6 acme-regular">Frameworks / Libraries</span>
                     <span>
-                        @for (skill of dev.skills.frameworks; track $index) {
-                            @if ($index == dev.skills.frameworks.length - 1) {
+                        @for (skill of dev.data.skills.frameworks; track $index) {
+                            @if ($index == dev.data.skills.frameworks.length - 1) {
                                 {{skill}}
                             } @else {
                                 {{skill}} -   
@@ -74,8 +74,8 @@
                 <div class="col-10 d-flex flex-column align-items-start justify-content-center">
                     <span class="fs-6 acme-regular">Technologies</span>
                     <span>
-                        @for (skill of dev.skills.technologies; track $index) {
-                            @if ($index == dev.skills.technologies.length - 1) {
+                        @for (skill of dev.data.skills.technologies; track $index) {
+                            @if ($index == dev.data.skills.technologies.length - 1) {
                                 {{skill}}
                             } @else {
                                 {{skill}} -   
@@ -88,8 +88,8 @@
                 <div class="col-10 d-flex flex-column align-items-end justify-content-center">
                     <span class="fs-6 acme-regular">Tools</span>
                     <span>
-                        @for (skill of dev.skills.tools; track $index) {
-                            @if ($index == dev.skills.tools.length - 1) {
+                        @for (skill of dev.data.skills.tools; track $index) {
+                            @if ($index == dev.data.skills.tools.length - 1) {
                                 {{skill}}
                             } @else {
                                 {{skill}} -   
@@ -109,9 +109,9 @@
             </h2>
             <div class="row">
                 @for (pet of pets; track $index;) {
-                    @if (inArray($index, dev.pets)) {
+                    @if (inArray($index, dev.data.pets)) {
                         <div class="col-4 p-2">
-                            <img [src]="pet.img" alt="" class="pet-icon rounded">
+                            <img [src]="pet.data.img" alt="" class="pet-icon rounded">
                         </div>
                     }
                 }

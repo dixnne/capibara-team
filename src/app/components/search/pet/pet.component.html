@@ -5,13 +5,13 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="d-flex flex-column align-items-center">
-                      <span class="acme-regular fs-2 orange">{{pet.name}}</span>
-                      <img src={{pet.img}} class="card-img-top">                            
+                      <span class="acme-regular fs-2 orange">{{pet.data.name}}</span>
+                      <img src={{pet.data.img}} class="card-img-top">                            
                       <button [routerLink]="['/us',pet.id]" class="acme-regular btn btn-warning w-50 mt-3">Get to know me!</button>
                     </div>      
                     <div>
                         <div class="bg-white py-2 rounded d-flex justify-content-center my-3">
-                            @for (tag of pet.tag; track tag) {
+                            @for (tag of pet.data.tag; track tag) {
                                 <span role="button" class="badge me-2" [ngClass]="{
                                     'bg-orange': tag === 'friendly',
                                     'bg-yellow brown': tag === 'sleepy',
@@ -25,63 +25,36 @@
                                 }" [routerLink]="['/tagpet',tag]">{{tag}}</span>
                             }
                         </div>
-                        <div class="bg-yellow rounded p-4">
-                            <p class="lead">
-                                <span style="font-size: 1rem" class="material-symbols-outlined">
-                                update
-                                </span>
-                                Average age: {{pet.age}} years
-                            </p>
-                            <p class="lead">
-                                <span style="font-size: 1rem" class="material-symbols-outlined">
-                                invert_colors
-                                </span>
-                                Color: {{pet.color}}
-                            </p>
-                            <p class="lead">
-                                <span style="font-size: 1rem" class="material-symbols-outlined">
-                                pets
-                                </span>
-                                Breed: {{pet.breed}}
-                            </p>
-                            <p class="lead">
-                                <span style="font-size: 1rem" class="material-symbols-outlined">
-                                event_upcoming
-                                </span>
-                                Time at the shelter: {{pet.stay}}
-                            </p>
-                            <p class="border-top border-dark pt-2">{{pet.details}}</p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-6 bg-orange rounded p-4">
-                    <h3 class="text-center white acme-regular border-light border-bottom">Booked Visits</h3>
-                    <table class="table table-light table-hover">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Hour</th>
-                                <th>Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (petDates.length != 0) {
-                                @for (date of petDates; track $index) {
-                                    <tr>
-                                        <td>{{date.date.month}}/{{date.date.day}}/{{date.date.year}}</td>
-                                        <td>{{date.date.hour}}</td>
-                                        <td>{{date.name}}</td>
-                                    </tr>
-                                }
-                            } @else {
-                                <tr>
-                                    <td colspan="3">
-                                        No visits booked
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                    <div class="bg-yellow rounded p-4">
+                        <p class="lead">
+                            <span style="font-size: 1rem" class="material-symbols-outlined">
+                            update
+                            </span>
+                            Average age: {{pet.data.age}} years
+                        </p>
+                        <p class="lead">
+                            <span style="font-size: 1rem" class="material-symbols-outlined">
+                            invert_colors
+                            </span>
+                            Color: {{pet.data.color}}
+                        </p>
+                        <p class="lead">
+                            <span style="font-size: 1rem" class="material-symbols-outlined">
+                            pets
+                            </span>
+                            Breed: {{pet.data.breed}}
+                        </p>
+                        <p class="lead">
+                            <span style="font-size: 1rem" class="material-symbols-outlined">
+                            event_upcoming
+                            </span>
+                            Time at the shelter: {{pet.data.stay}}
+                        </p>
+                        <p class="border-top border-dark pt-2">{{pet.data.details}}</p>
+                    </div>
                 </div>
             </div>
         } @else {

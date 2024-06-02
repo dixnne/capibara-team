@@ -16,6 +16,8 @@ import { AdminPetsComponent } from './components/admin/admin-pets/admin-pets.com
 import { AdminDevsComponent } from './components/admin/admin-devs/admin-devs.component';
 import { AdminDatesComponent } from './components/admin/admin-dates/admin-dates.component';
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { SignupComponent } from './components/session/signup/signup.component';
+import { LoginComponent } from './components/session/login/login.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,4 +37,6 @@ export const routes: Routes = [
   { path: 'admin/dates', component: AdminDatesComponent },
   { path: 'admin/devs', component: AdminDevsComponent },
   { path: 'admin/users', component: AdminUsersComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
 ];

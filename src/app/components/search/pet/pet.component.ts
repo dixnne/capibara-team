@@ -30,13 +30,13 @@ export class PetComponent {
     private messageService: MessageService,
   ) {
     this.activatedRoute.params.subscribe(params => {
-      this.petIndex = this.petsService.getPetIndex(params["name"]);
-      this.searchName = params['name'];
-      if (this.petIndex != -1){
-        this.pet = this.petsService.getAPet(this.petIndex); 
-        this.petDates = this.datesService.getPetDates(this.petIndex);
-        this.toast('success', 'Wooooof!', 'Results found for ' + params['name']);
-      }
+      this.searchName = params['name']; 
+        this.pet = this.petsService.getPetByName(this.searchName);
+        if (this.pet.data.name === "") {
+          this.toast('error', 'Rawwwr!', 'Results not found for ' + this.searchName);
+        } else {
+          this.toast('success', 'Wooooof!', 'Results found for ' + this.searchName);
+        }
     });
   }
 

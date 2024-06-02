@@ -1,0 +1,3 @@
+.border-brown {
+    border: var(--brown) 5px solid;
+}
