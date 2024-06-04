@@ -16,6 +16,7 @@ export class SignupComponent {
     data: {
       dates: [],
       email: "",
+      image: "",
       password: "",
       name: {
         username: "",
