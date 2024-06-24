@@ -1,0 +1,3 @@
+.border-orange {
+    border: var(--orange) 5px solid;
+}

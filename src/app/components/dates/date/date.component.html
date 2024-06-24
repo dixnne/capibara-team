@@ -1,16 +1,16 @@
 <section class="py-5 bg-white">
     <div class="container">
-        @if (dates != [] && pets != []) {
+        @if (date && pet) {
             <h1 class="text-center acme-regular border-bottom border-dark brown">Date Info</h1>
             <div class="row">
                 <div class="col-md-6">
                     <div class="d-flex flex-column align-items-center">
-                    <span class="acme-regular fs-2 orange">{{pets[petId].name}}</span>
-                    <img src={{pets[petId].img}} class="card-img-top">
+                    <span class="acme-regular fs-2 orange">{{pet.data.name}}</span>
+                    <img [src]="imgURL + pet.data.img" class="card-img-top">
                     </div>      
                     <div>
                         <div class="bg-white py-2 rounded d-flex justify-content-center my-3">
-                            @for (tag of pets[petId].tag; track tag) {
+                            @for (tag of pet.data.tag; track tag) {
                                 <span role="button" class="badge me-2" [ngClass]="{
                                     'bg-orange': tag === 'friendly',
                                     'bg-yellow brown': tag === 'sleepy',
@@ -29,27 +29,27 @@
                                 <span style="font-size: 1rem" class="material-symbols-outlined">
                                 update
                                 </span>
-                                Average age: {{pets[petId].age}} years
+                                Average age: {{pet.data.age}} years
                             </p>
                             <p class="lead">
                                 <span style="font-size: 1rem" class="material-symbols-outlined">
                                 invert_colors
                                 </span>
-                                Color: {{pets[petId].color}}
+                                Color: {{pet.data.color}}
                             </p>
                             <p class="lead">
                                 <span style="font-size: 1rem" class="material-symbols-outlined">
                                 pets
                                 </span>
-                                Breed: {{pets[petId].breed}}
+                                Breed: {{pet.data.breed}}
                             </p>
                             <p class="lead">
                                 <span style="font-size: 1rem" class="material-symbols-outlined">
                                 event_upcoming
                                 </span>
-                                Time at the shelter: {{pets[petId].stay}}
+                                Time at the shelter: {{pet.data.stay}}
                             </p>
-                            <p class="lead border-top border-dark pt-2">{{pets[petId].details}}</p>
+                            <p class="lead border-top border-dark pt-2">{{pet.data.details}}</p>
                         </div>
                     </div>
                 </div>
@@ -62,16 +62,16 @@
                     </button>
                     <div class="bg-white p-4 rounded mb-3">
                         <p class="lead">
-                            Name: {{dates[dateIndex].name}}
+                            Name:
                         </p>
                         <p class="lead">
-                            Phone: {{dates[dateIndex].phone}}
+                            Phone:
                         </p>
                         <p class="lead">
-                            Day: {{dates[dateIndex].date.month}} / {{dates[dateIndex].date.day}} / {{dates[dateIndex].date.year}}
+                            Day: {{date.data.date.month}} / {{date.data.date.day}} / {{date.data.date.year}}
                         </p>
                         <p class="lead">
-                            Hour: {{dates[dateIndex].date.hour}}
+                            Hour: {{date.data.date.hour}}
                         </p>
                     </div>
                     <button (click)="deleteDate()" class="btn btn-danger w-100 text-center mb-3">

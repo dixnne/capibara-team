@@ -1,40 +1,44 @@
 import { Injectable } from '@angular/core';
 import { Pet } from '../interfaces/pet';
-import { Pets } from '../data/pets';
-import { retry } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PetsService {
-  private pets: Pet[] = Pets;
+  url: string = "https://capibara.losnarvaez.com/";
 
-  constructor() {}
+  constructor(public http: HttpClient) { }
 
-  getPets(): Pet[] {
-    return this.pets;
-  }
-
-  getAPet(index: number): Pet {
-    return this.pets[index];
-  }
-
-  getPetIndex(name: string): number {
-    let index = this.pets.findIndex(pet => pet.name === name);
-    return index;
-  }
-
-  getPetsByTag(tags: string): Pet[] {
-    return this.pets.filter((pet) => {
-      if (
-        pet.tag.find((t) => {
-          return t === tags;
-        })
-      ) {
-        return true;
-      } else {
-        return false;
-      }
+  addPet(newPet: Pet, file: File) {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    formData.append('pet', JSON.stringify(newPet.data));
+    let headers = new HttpHeaders();
+    headers = headers.append('enctype', 'multipart/form-data');
+    console.log(formData);
+    return this.http.post<any>(this.url + "pets", formData, { 
+      "headers": headers 
     });
+  }
+
+  deletePet(id: string) {
+    return this.http.delete<any>(this.url + "pets/" + id);
+  }
+
+  getPets() {
+    return this.http.get<Pet[]>(this.url + "pets");
+  }
+
+  getPet(id: string) {
+    return this.http.get<Pet>(this.url + "pets/" + id);
+  }
+
+  getPetByName(name: string) {
+    return this.http.get<Pet>(this.url + "pets?name=" + name);
+  }
+
+  getPetsByTag(tag: string) {
+    return this.http.get<Pet[]>(this.url + "pets?tag=" + tag);
   }
 }

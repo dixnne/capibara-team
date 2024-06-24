@@ -1,0 +1,150 @@
+<section class="d-flex">
+    <app-sidebar></app-sidebar>
+    <div class="py-4 w-100">
+        <h3 class="text-center acme-regular brown mb-3">Add Dev</h3>
+        <div class="container col-10 bg-orange rounded-3">
+            <div class="row g-3 pb-3">
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="form-floating w-100">
+                        <input [(ngModel)]="dev.data.name" type="text" class="form-control" id="name" placeholder="Name">
+                        <label for="name">Name</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label for="formFileLg" class="form-label">Photo</label>
+                        <input (change)="selectFile($event)" accept="image/png, image/gif, image/jpeg" class="form-control" id="formFileLg" type="file">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <textarea [(ngModel)]="dev.data.details" type="text" class="form-control" id="details" placeholder="Details"></textarea>
+                        <label for="details">Details</label>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-6">
+                    @if (dev.data.tags.length > 0) {
+                        <div class="d-flex p-3">
+                            @for (tag of dev.data.tags; track $index) {
+                                <span class="badge text-bg-warning me-3">{{tag}}</span>
+                            }
+                        </div>
+                    }
+                    <div class="form-floating">
+                        <input [(ngModel)]="tag" type="text" class="form-control" id="tag" placeholder="Tag">
+                        <label for="tag">Write a new tag</label>
+                    </div>
+                    <div class="d-flex mt-3 justify-content-center">
+                        <button (click)="addTag()" class="btn btn-light">Add tag</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @if (dev.data.jobs.length > 0) {
+                        <ul>
+                            @for (job of dev.data.jobs; track $index) {
+                                <li>{{job}}</li>
+                            }
+                        </ul>
+                    }
+                    <div class="form-floating">
+                        <input [(ngModel)]="job" type="text" class="form-control" id="job" placeholder="Job">
+                        <label for="job">Add a job for the dev</label>
+                    </div>
+                    <div class="d-flex mt-3 justify-content-center">
+                        <button (click)="addJob()" class="btn btn-light">Add job</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-3">
+                    @if (dev.data.skills.languages) {
+                        <ul>
+                            @for (lang of dev.data.skills.languages; track $index) {
+                                <li>{{lang}}</li>
+                            }
+                        </ul>
+                    }
+                    <div class="form-floating">
+                        <input [(ngModel)]="language" type="text" class="form-control" id="language" placeholder="Language">
+                        <label for="language">Languages</label>
+                    </div>
+                    <div class="d-flex mt-3 justify-content-center">
+                        <button (click)="addLanguage()" class="btn btn-light">Add skill</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @if (dev.data.skills.frameworks) {
+                        <ul>
+                            @for (frame of dev.data.skills.frameworks; track $index) {
+                                <li>{{frame}}</li>
+                            }
+                        </ul>
+                    }
+                    <div class="form-floating">
+                        <input [(ngModel)]="framework" type="text" class="form-control" id="framework" placeholder="Framework">
+                        <label for="framework">Frameworks</label>
+                    </div>
+                    <div class="d-flex mt-3 justify-content-center">
+                        <button (click)="addFramework()" class="btn btn-light">Add skill</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @if (dev.data.skills.technologies) {
+                        <ul>
+                            @for (tech of dev.data.skills.technologies; track $index) {
+                                <li>{{tech}}</li>
+                            }
+                        </ul>
+                    }
+                    <div class="form-floating">
+                        <input [(ngModel)]="technology" type="text" class="form-control" id="technology" placeholder="Technology">
+                        <label for="technology">Technologies</label>
+                    </div>
+                    <div class="d-flex mt-3 justify-content-center">
+                        <button (click)="addTechnology()" class="btn btn-light">Add skill</button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    @if (dev.data.skills.tools) {
+                        <ul>
+                            @for (tool of dev.data.skills.tools; track $index) {
+                                <li>{{tool}}</li>
+                            }
+                        </ul>
+                    }
+                    <div class="form-floating">
+                        <input [(ngModel)]="tool" type="text" class="form-control" id="tool" placeholder="Tool">
+                        <label for="tool">Tools</label>
+                    </div>
+                    <div class="d-flex mt-3 justify-content-center">
+                        <button (click)="addTool()" class="btn btn-light">Add skill</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-12 d-flex align-items-center">
+                    <ul>
+                        @for (p of addedPets; track $index) {
+                            <li>{{p}}</li>
+                        }
+                    </ul>
+                    <div class="form-floating w-100 me-3">
+                        <select [(ngModel)]="pet" type="text" class="form-select" id="pets" placeholder="Tool">
+                            <option value="" selected>Choose an option</option>
+                            @if (pets.length > 0) {
+                                @for (p of pets; track $index) {
+                                    <option [value]="p.id">{{p.data.name}}</option>
+                                }
+                            }
+                        </select>
+                        <label for="pets">Pets</label>
+                    </div>
+                    <button (click)="addPet()" class="btn btn-light w-25">Add pet</button>
+                </div>
+                <hr>
+                <div class="col-md-12 py-3 d-flex justify-content-center">
+                    <button (click)="addDev()" class="btn w-50 btn-outline-light">Add Developer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,49 @@
+<div class="sidebar d-flex flex-column flex-shrink-0 p-3 bg-yellow" style="width: 200px;">
+    <a [routerLink]="['/admin']" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto acme-regular brown text-decoration-none">
+        <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-3">Admin</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a [routerLink]="['/admin/dashboard']" class="nav-link text-dark d-flex align-items-center">
+                <span class="material-symbols-outlined me-2">
+                    bar_chart_4_bars
+                </span>
+                Dashboard
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="['/admin/pets']" class="nav-link text-dark d-flex align-items-center">
+                <span class="material-symbols-outlined me-2">
+                    sound_detection_dog_barking
+                </span>
+                Pets
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="['/admin/dates']" class="nav-link text-dark d-flex align-items-center">
+                <span class="material-symbols-outlined me-2">
+                    calendar_month
+                </span>
+                Dates
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="['/admin/users']"  class="nav-link text-dark d-flex align-items-center">
+                <span class="material-symbols-outlined me-2">
+                    group
+                </span>
+                Users
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="['/admin/devs']"  class="nav-link text-dark d-flex align-items-center">
+                <span class="material-symbols-outlined me-2">
+                    code
+                </span>
+                Devs
+            </a>
+        </li>
+    </ul>
+</div>

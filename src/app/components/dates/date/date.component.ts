@@ -15,11 +15,9 @@ import Swal from 'sweetalert2';
   styleUrl: './date.component.css',
 })
 export class DateComponent {
-  pets: Pet[] = [];
-  petId: number = 0;
-  dates: DateInfo[] = [];
-  dateId: number = 0;
-  dateIndex: number = 0;
+  date ?: DateInfo;
+  pet ?: Pet;
+  imgURL: string = "https://capibara.losnarvaez.com/";
 
   constructor(
     public petsService: PetsService,
@@ -28,11 +26,12 @@ export class DateComponent {
     public router: Router
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.dateId = params['id'];
-      this.dates = this.datesService.getDates();
-      this.pets = petsService.getPets();
-      this.dateIndex = this.dates.findIndex((d) => d.dateID == this.dateId);
-      this.petId = this.dates[this.dateIndex].petId;
+      this.datesService.getDate(params["id"] || "").subscribe(res => {
+        this.date = res;
+      });
+      this.petsService.getPet(this.date?.data.petId || "").subscribe(res => {
+        this.pet = res;
+      });
     });
   }
 
@@ -47,7 +46,7 @@ export class DateComponent {
       confirmButtonText: 'Yes, cancel it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.datesService.deleteDate(this.dateId);
+        this.datesService.deleteDate(this.date?.id || "");
         Swal.fire({
           title: 'Date canceled',
           text: 'Please reconsider this, you could be a hero...',

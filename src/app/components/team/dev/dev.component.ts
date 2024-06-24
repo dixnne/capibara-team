@@ -13,9 +13,10 @@ import { Pet } from '../../../interfaces/pet';
   styleUrl: './dev.component.css'
 })
 export class DevComponent {
-  @Input() dev!: Dev;
+  dev!: Dev;
   pets!: Pet[];
   devPetIndex: number = 0;
+  imgURL: string = "https://capibara.losnarvaez.com/";
 
   constructor(
     public devsService: DevsService,
@@ -23,12 +24,16 @@ export class DevComponent {
     public activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.dev = this.devsService.getADev(params['id']);
-      this.pets = this.petsService.getPets();
+      this.devsService.getDev(params['id']).subscribe(res => {
+        this.dev = res;
+      });
+      this.petsService.getPets().subscribe(res => {
+        this.pets = res;
+      });
     });
   }
 
-  inArray(needle: number, haystack: number[]): boolean{
+  inArray(needle: string, haystack: string[]): boolean{
     var count = haystack.length;
     for(var i=0;i<count;i++)
     {

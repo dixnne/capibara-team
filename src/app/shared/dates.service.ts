@@ -1,75 +1,41 @@
 import { Inject, Injectable } from '@angular/core';
 import { DateInfo } from '../interfaces/date';
-import { Pet } from '../interfaces/pet';
-import { Pets } from '../data/pets';
-import { DOCUMENT } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DatesService {
-  dates: DateInfo[] = [];
-  nextId!: number;
-  pets: Pet[] = Pets;
-  curretnDate = new Date();
+  url: string = "https://capibara.losnarvaez.com/";
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
-    const localStorage = this.document.defaultView?.localStorage;
-    if (localStorage) {
-      this.dates = JSON.parse(localStorage.getItem('dates') || '[]');
-    }
-  }
+  constructor(public http: HttpClient) { }
 
-  saveDate(of: boolean): void {
-    if (of != false) {
-      localStorage.setItem('actualId', JSON.stringify(this.nextId + 1));
-    } else {
-      localStorage.setItem('dates', JSON.stringify(this.dates));
-    }
-  }
-  addDate(newDate: DateInfo): void {
-    this.dates.push(newDate);
-    localStorage.setItem('dates', JSON.stringify(this.dates));
-    this.saveDate(true);
-  }
-
-  deleteDate(id: number): void {
-    //this.dates.removeItem();
-    this.dates.splice(
-      this.dates.findIndex((date) => {
-        date.dateID == id;
-      }),
-      1
-    );
-    this.saveDate(false);
-  }
-
-  getDates(): DateInfo[] {
-    return this.dates;
-  }
-
-  getLastDates() {
-    console.log(
-      ' date from service:  Day  ' +
-        this.curretnDate.getUTCDate() +
-        '   month   ' +
-        this.curretnDate.getMonth() +
-        '  year   ' +
-        this.curretnDate.getFullYear()
-    );
-    let i = 0;
-    return this.dates.filter(() => {
-      //if (this.dates.date.day == this.curretnDate.getDay()) {
-      //}
+  addDate(newDate: DateInfo) {
+    const headers = { 'content-type': 'application/json' }  
+    return this.http.post<any>(this.url + "dates", {
+      date: newDate
+    }, { 
+      "headers": headers 
     });
   }
 
-  getNextId(): number {
-    this.nextId = parseInt(localStorage.getItem('actualId') || '0');
-    return this.nextId;
+  deleteDate(id: string) {
+    return this.http.delete<any>(this.url + "dates/" + id);
   }
 
-  getPetDates(id: number): DateInfo[] {
-    return this.dates.filter((date) => date.petId == id);
+  getDates() {
+    return this.http.get<DateInfo[]>(this.url + "dates");
+  }
+
+  getDate(id: string) {
+    return this.http.get<DateInfo>(this.url + "dates/" + id);
+  }
+
+  getPetDates(pet: string) {
+    return this.http.get<DateInfo[]>(this.url + "dates?pet=" + pet);
+  }
+
+  getUserDates(user: string) {
+    return this.http.get<DateInfo[]>(this.url + "dates?user=" + user);
   }
 }
