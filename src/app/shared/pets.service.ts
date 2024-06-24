@@ -22,15 +22,6 @@ export class PetsService {
     });
   }
 
-  updatePet(id: string, newPet: Pet) {
-    const headers = { 'content-type': 'application/json' }  
-    return this.http.put<any>(this.url + "pets/" + id, {
-      pet: newPet
-    }, { 
-      "headers": headers 
-    });
-  }
-
   deletePet(id: string) {
     return this.http.delete<any>(this.url + "pets/" + id);
   }

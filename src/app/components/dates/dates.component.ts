@@ -25,30 +25,31 @@ export class DatesComponent {
     private datesService: DatesService
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.dates = this.datesService.getUserDates("");
-
-      this.datesP = this.dates.filter(date => {
-        if (date.data.date.year < this.today.getFullYear()) {
-          return true;
-        } else {
-          if (date.data.date.year == this.today.getFullYear()) {
-            if (date.data.date.month < this.today.getMonth() + 1) {
-              return true;
-            } else {
-              if (date.data.date.month == this.today.getMonth() + 1) {
-                if (date.data.date.day < this.today.getUTCDate()) {
-                  return true;
+      this.datesService.getUserDates("").subscribe(res => {
+        this.dates = res;
+        this.datesP = this.dates.filter(date => {
+          if (date.data.date.year < this.today.getFullYear()) {
+            return true;
+          } else {
+            if (date.data.date.year == this.today.getFullYear()) {
+              if (date.data.date.month < this.today.getMonth() + 1) {
+                return true;
+              } else {
+                if (date.data.date.month == this.today.getMonth() + 1) {
+                  if (date.data.date.day < this.today.getUTCDate()) {
+                    return true;
+                  } else {
+                    return false;
+                  }
                 } else {
                   return false;
                 }
-              } else {
-                return false;
               }
+            } else {
+              return false;
             }
-          } else {
-            return false;
           }
-        }
+        });
       });
       this.datesN = this.dates.filter(date => {
         if (date.data.date.year > this.today.getFullYear()) {

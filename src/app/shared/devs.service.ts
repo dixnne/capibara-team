@@ -22,15 +22,6 @@ export class DevsService {
     });
   }
 
-  updateDev(id: string, newDev: Dev) {
-    const headers = { 'content-type': 'application/json' }  
-    return this.http.put<any>(this.url + "devs/" + id, {
-      dev: newDev
-    }, { 
-      "headers": headers 
-    });
-  }
-
   deleteDev(id: string) {
     return this.http.delete<any>(this.url + "devs/" + id);
   }

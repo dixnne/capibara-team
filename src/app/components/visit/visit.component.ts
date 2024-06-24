@@ -158,7 +158,9 @@ export class VisitComponent {
     let title = '';
     let text = '';
     console.log('validator init');
-    this.arr = this.dateService.getPetDates(this.pet.id);
+    this.dateService.getPetDates(this.pet.id).subscribe(res => {
+      this.arr = res;
+    });
     if (this.arr.length != 0) {
       console.log(this.arr);
       for (let i in this.arr) {

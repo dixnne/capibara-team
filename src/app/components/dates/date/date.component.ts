@@ -26,7 +26,9 @@ export class DateComponent {
     public router: Router
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.date = this.datesService.getDate(params["id"] || "");
+      this.datesService.getDate(params["id"] || "").subscribe(res => {
+        this.date = res;
+      });
       this.petsService.getPet(this.date?.data.petId || "").subscribe(res => {
         this.pet = res;
       });
