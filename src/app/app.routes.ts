@@ -25,6 +25,9 @@ import { AddUserComponent } from './components/admin/add-user/add-user.component
 import { EditPetComponent } from './components/admin/edit-pet/edit-pet.component';
 import { EditDevComponent } from './components/admin/edit-dev/edit-dev.component';
 import { EditUserComponent } from './components/admin/edit-user/edit-user.component';
+import { AdminGraphComponent } from './components/admin/admin-graph/admin-graph.component';
+import { Graph1Component } from './components/admin/graph1/graph1.component';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -50,4 +53,6 @@ export const routes: Routes = [
   { path: 'addPet', component: AddPetComponent },
   { path: 'addDev', component: AddDevComponent },
   { path: 'addUser', component: AddUserComponent },
+  { path: 'admin/graph', component: AdminGraphComponent},
+  { path: 'admin/graph1', component: Graph1Component },
 ];
