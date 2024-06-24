@@ -63,6 +63,7 @@ export class VisitComponent {
   arr: DateInfo[] = [];
   newDate!: DateInfo;
   vali: boolean = false;
+  imgURL: string = "https://capibara.losnarvaez.com/";
   constructor(
     public petsService: PetsService,
     public activatedRoute: ActivatedRoute,
@@ -71,7 +72,9 @@ export class VisitComponent {
     private router: Router
   ) {
     this.activatedRoute.params.subscribe((params) => {
-      this.pet = petsService.getPet(params['id']);
+      petsService.getPet(params['id']).subscribe(res => {
+        this.pet = res;
+      });
       this.idx = params['id'];
       this.petId = params['id'];
     });

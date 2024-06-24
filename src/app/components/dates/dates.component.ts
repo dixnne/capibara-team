@@ -77,12 +77,18 @@ export class DatesComponent {
   }
 
   getPetImage(id: string): string {
-    let pet = this.petsService.getPet(id);
-    return pet.data.img;
+    let pet = "";
+    this.petsService.getPet(id).subscribe(res => {
+      pet = res.data.img;
+    });
+    return pet;
   }
 
   getPetName(id: string): string {
-    let pet = this.petsService.getPet(id);
-    return pet.data.name;
+    let pet = "";
+    this.petsService.getPet(id).subscribe(res => {
+      pet = res.data.name;
+    });
+    return pet;
   }
 }

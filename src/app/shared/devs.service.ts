@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dev } from '../interfaces/dev';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,14 @@ export class DevsService {
 
   constructor(public http: HttpClient) { }
 
-  addDev(newDev: Dev) {
-    const headers = { 'content-type': 'application/json' }  
-    return this.http.post<any>(this.url + "devs", {
-      dev: newDev
-    }, { 
+  addDev(newDev: Dev, file: File) {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    formData.append('dev', JSON.stringify(newDev.data));
+    let headers = new HttpHeaders();
+    headers = headers.append('enctype', 'multipart/form-data');
+    console.log(formData);
+    return this.http.post<any>(this.url + "devs", formData, { 
       "headers": headers 
     });
   }
@@ -33,52 +36,10 @@ export class DevsService {
   }
 
   getDevs() {
-    let devs = [{
-      id: "",
-      data: {
-        name: "",
-        details: "",
-        image: "",
-        tags: [""],
-        jobs: [""],
-        skills: {
-            languages: [""],
-            frameworks: [""],
-            technologies: [""],
-            tools: [""]
-        },
-        pets: [0]
-      }
-    }];
-
-    this.http.get<Dev[]>(this.url + "devs").subscribe(resDevs => {
-      devs = resDevs;
-    });
-    return devs;
+    return this.http.get<Dev[]>(this.url + "devs");
   }
 
   getDev(id: string) {
-    let dev = {
-      id: "",
-      data: {
-        name: "",
-        details: "",
-        image: "",
-        tags: [""],
-        jobs: [""],
-        skills: {
-            languages: [""],
-            frameworks: [""],
-            technologies: [""],
-            tools: [""]
-        },
-        pets: [0]
-      }
-    };
-
-    this.http.get<Dev>(this.url + "devs/" + id).subscribe(resDev => {
-      dev = resDev;
-    });
-    return dev;
+    return this.http.get<Dev>(this.url + "devs/" + id);
   }
 }

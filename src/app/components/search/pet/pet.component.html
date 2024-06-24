@@ -1,12 +1,12 @@
+<p-toast />
 <section class="py-5">
     <div class="container">
-        @if (petIndex != -1) {
-            <p-toast />
+        @if (petIndex != -1 && pet) {
             <div class="row">
                 <div class="col-md-6">
                     <div class="d-flex flex-column align-items-center">
                       <span class="acme-regular fs-2 orange">{{pet.data.name}}</span>
-                      <img src={{pet.data.img}} class="card-img-top">                            
+                      <img [src]="imgURL + pet.data.img" class="card-img-top">                            
                       <button [routerLink]="['/us',pet.id]" class="acme-regular btn btn-warning w-50 mt-3">Get to know me!</button>
                     </div>      
                     <div>

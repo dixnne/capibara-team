@@ -17,6 +17,7 @@ import Swal from 'sweetalert2';
 export class DateComponent {
   date ?: DateInfo;
   pet ?: Pet;
+  imgURL: string = "https://capibara.losnarvaez.com/";
 
   constructor(
     public petsService: PetsService,
@@ -26,7 +27,9 @@ export class DateComponent {
   ) {
     this.activatedRoute.params.subscribe((params) => {
       this.date = this.datesService.getDate(params["id"] || "");
-      this.pet = this.petsService.getPet(this.date?.data.petId || "");
+      this.petsService.getPet(this.date?.data.petId || "").subscribe(res => {
+        this.pet = res;
+      });
     });
   }
 

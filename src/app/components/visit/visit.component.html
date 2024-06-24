@@ -1,109 +1,111 @@
-<p-toast />
-<section class="py-5">
-  <div class="container">
-  <h1 class="acme-regular text-center">Registra tu visita</h1>
-    <div class="row bg-orange p-3 rounded-5 shadow">
-      <div class="col-md-6 p-3">
-        <div class="d-flex flex-column align-items-center">
-          <span class="acme-regular fs-2 white">{{pet.data.name}}</span>
-          <img src={{pet.data.img}} class="card-img-top" [id]="idx">
-        </div>      
-        <div>
-            <div class="bg-white py-2 rounded d-flex justify-content-center my-3">
-              @for (tag of pet.data.tag; track tag) {
-                  <span role="button" class="badge me-2" [ngClass]="{
-                      'bg-orange': tag === 'friendly',
-                      'bg-yellow brown': tag === 'sleepy',
-                      'bg-brown white': tag === 'energetic',
-                      'border-yellow yellow': tag === 'reserved',
-                      'border-orange orange': tag === 'relaxed',
-                      'border-brown brown': tag === 'loving',
-                      'dotted-orange': tag === 'playful',
-                      'dotted-yellow': tag === 'tall',
-                      'dotted-brown': tag === 'funny'
-                  }" [routerLink]="['/tagpet',tag]">{{tag}}</span>
-              }
-            </div>
-            <div class="bg-yellow rounded p-4">
-              <p class="lead">
-                <span style="font-size: 1rem" class="material-symbols-outlined">
-                  update
-                </span>
-                Average age: {{pet.data.age}} years
-              </p>
-              <p class="lead">
-                <span style="font-size: 1rem" class="material-symbols-outlined">
-                  invert_colors
-                </span>
-                Color: {{pet.data.color}}
-              </p>
-              <p class="lead">
-                <span style="font-size: 1rem" class="material-symbols-outlined">
-                  pets
-                </span>
-                Breed: {{pet.data.breed}}
-              </p>
-              <p class="lead">
-                <span style="font-size: 1rem" class="material-symbols-outlined">
-                  event_upcoming
-                </span>
-                Time at the shelter: {{pet.data.stay}}
-              </p>
-              <p class="border-top border-dark pt-2">{{pet.data.details}}</p>
-            </div>
+@if (pet) {
+  <p-toast />
+  <section class="py-5">
+    <div class="container">
+    <h1 class="acme-regular text-center">Registra tu visita</h1>
+      <div class="row bg-orange p-3 rounded-5 shadow">
+        <div class="col-md-6 p-3">
+          <div class="d-flex flex-column align-items-center">
+            <span class="acme-regular fs-2 white">{{pet.data.name}}</span>
+            <img [src]="imgURL + pet.data.img" class="card-img-top" [id]="idx">
+          </div>      
+          <div>
+              <div class="bg-white py-2 rounded d-flex justify-content-center my-3">
+                @for (tag of pet.data.tag; track tag) {
+                    <span role="button" class="badge me-2" [ngClass]="{
+                        'bg-orange': tag === 'friendly',
+                        'bg-yellow brown': tag === 'sleepy',
+                        'bg-brown white': tag === 'energetic',
+                        'border-yellow yellow': tag === 'reserved',
+                        'border-orange orange': tag === 'relaxed',
+                        'border-brown brown': tag === 'loving',
+                        'dotted-orange': tag === 'playful',
+                        'dotted-yellow': tag === 'tall',
+                        'dotted-brown': tag === 'funny'
+                    }" [routerLink]="['/tagpet',tag]">{{tag}}</span>
+                }
+              </div>
+              <div class="bg-yellow rounded p-4">
+                <p class="lead">
+                  <span style="font-size: 1rem" class="material-symbols-outlined">
+                    update
+                  </span>
+                  Average age: {{pet.data.age}} years
+                </p>
+                <p class="lead">
+                  <span style="font-size: 1rem" class="material-symbols-outlined">
+                    invert_colors
+                  </span>
+                  Color: {{pet.data.color}}
+                </p>
+                <p class="lead">
+                  <span style="font-size: 1rem" class="material-symbols-outlined">
+                    pets
+                  </span>
+                  Breed: {{pet.data.breed}}
+                </p>
+                <p class="lead">
+                  <span style="font-size: 1rem" class="material-symbols-outlined">
+                    event_upcoming
+                  </span>
+                  Time at the shelter: {{pet.data.stay}}
+                </p>
+                <p class="border-top border-dark pt-2">{{pet.data.details}}</p>
+              </div>
+          </div>
         </div>
-      </div>
-      <div class="col-md-6 p-3">
-        <span class="fs-2 acme-regular brown">Pick the date and insert your information</span>
-        <div class="bg-white p-3 rounded">
-          <p-stepper orientation="horizontal">
-            <p-stepperPanel header="Date">
-                <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
-                    <div class="flex flex-column h-12rem">
-                        <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
-                          <div class="flex-auto">
-                            <app-calendar [maxDate]="maxDate" [minDate]="minDate" (newDateEvent)="takeDate($event)"></app-calendar>
-                          </div><br>
-                          <div class="mb-3">
-                            <form>
-                              <label for="select" class="form-label">Horario</label>
-                              <select name="hora" [(ngModel)]="hour" class="form-select">
-                                <option [value]="hora" *ngFor="let hora of horario">{{hora}}</option>
-                              </select>
-                            </form>
+        <div class="col-md-6 p-3">
+          <span class="fs-2 acme-regular brown">Pick the date and insert your information</span>
+          <div class="bg-white p-3 rounded">
+            <p-stepper orientation="horizontal">
+              <p-stepperPanel header="Date">
+                  <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+                      <div class="flex flex-column h-12rem">
+                          <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
+                            <div class="flex-auto">
+                              <app-calendar [maxDate]="maxDate" [minDate]="minDate" (newDateEvent)="takeDate($event)"></app-calendar>
+                            </div><br>
+                            <div class="mb-3">
+                              <form>
+                                <label for="select" class="form-label">Horario</label>
+                                <select name="hora" [(ngModel)]="hour" class="form-select">
+                                  <option [value]="hora" *ngFor="let hora of horario">{{hora}}</option>
+                                </select>
+                              </form>
+                            </div>
                           </div>
-                        </div>
-                    </div>
-                    <div class="flex py-4">
-                        <p-button label="Next" (onClick)="nextCallback.emit()" />
-                    </div
-                ></ng-template>
-            </p-stepperPanel>
-            <p-stepperPanel header="Info">
-                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
-                    <div class="flex flex-column h-12rem">
-                        <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
-                          
-                           
-                              <div class="mb-3">
-                                <label type="text" class="form-label">Name</label>
-                                <input type="text" [(ngModel)]="name" class="form-control">
-                              </div>
-                              <div class="mb-3">
-                                <label type="text" class="form-label">Phone</label>
-                                <input type="text" [(ngModel)]="phone" id="phone" class="form-control">
-                              </div>
-                          
-                        </div>
-                    </div>
-                    <div class="flex py-4 gap-2">
-                        <p-button label="Send" (onClick)="send()" />
-                    </div>
-                </ng-template>
-            </p-stepperPanel>
-          </p-stepper>
+                      </div>
+                      <div class="flex py-4">
+                          <p-button label="Next" (onClick)="nextCallback.emit()" />
+                      </div
+                  ></ng-template>
+              </p-stepperPanel>
+              <p-stepperPanel header="Info">
+                  <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
+                      <div class="flex flex-column h-12rem">
+                          <div class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium">
+                            
+                            
+                                <div class="mb-3">
+                                  <label type="text" class="form-label">Name</label>
+                                  <input type="text" [(ngModel)]="name" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                  <label type="text" class="form-label">Phone</label>
+                                  <input type="text" [(ngModel)]="phone" id="phone" class="form-control">
+                                </div>
+                            
+                          </div>
+                      </div>
+                      <div class="flex py-4 gap-2">
+                          <p-button label="Send" (onClick)="send()" />
+                      </div>
+                  </ng-template>
+              </p-stepperPanel>
+            </p-stepper>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+}

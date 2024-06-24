@@ -1,46 +1,58 @@
-<section class="py-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 mb-2 d-flex justify-content-center">
-                <div class="logo d-flex justify-content-center align-items-center animate__animated animate__rubberBand">
-                    <span class="material-symbols-outlined">pets</span>
+@if (myDevs.length > 0) {
+    <section class="py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 mb-2 d-flex justify-content-center">
+                    <div class="logo d-flex justify-content-center align-items-center animate__animated animate__rubberBand">
+                        <span class="material-symbols-outlined">pets</span>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-2 d-flex justify-content-center grow">
+                    @if (myDevs[1] != undefined) {
+                        <img [routerLink]="['/dev', myDevs[1].id]" class="dev2 my-auto animate__animated animate__rubberBand" [src]="myDevs[1].data.image" alt="">
+                    }
+                    <div class="circle-lg bg-orange mx-3 mt-auto"></div>
+                    @if (myDevs[5] != undefined) {
+                        <img [routerLink]="['/dev', 2]" class="dev1 animate__animated animate__rubberBand" [src]="myDevs[2].data.image" alt="">
+                    }
+                    <div class="circle-md bg-brown mb-3 mx-3 mt-auto"></div>
+                    <div class="circle-sm bg-orange mb-auto"></div>
+                </div>
+                <div class="col-lg-3 mb-2 d-flex justify-content-center">
+                    <div class="circle-sm bg-yellow mt-auto"></div>
+                    <div class="circle-md bg-brown mb-auto"></div>
+                    @if (myDevs[3] != undefined) {
+                        <img [routerLink]="['/dev', 3]" class="dev2 my-auto animate__animated animate__rubberBand" [src]="myDevs[3].data.image" alt="">
+                    }
+                </div>
+                <div class="col-lg-3 mb-2 d-flex flex-column align-items-center">
+                    <div class="circle-md bg-brown ms-auto"></div>
+                    <div class="circle-sm bg-orange mx-auto"></div>
+                </div>
+                <div class="col-lg-6 mb-2 d-flex flex-column align-items-center justify-content-center">
+                    <span class="title orange acme-regular">Our team</span>
+                    <span class="fs-4 acme-regular">We are pet friendly devs</span>
+                </div>
+                <div class="col-lg-3 mb-2 d-flex justify-content-center grow">
+                    @if (myDevs[0] != undefined) {
+                        <img [routerLink]="['/dev', myDevs[0].id]" class="dev3 my-auto animate__animated animate__rubberBand" [src]="imgURL + myDevs[0].data.image" alt="">
+                    }
+                </div>
+                <div class="col-lg-4 mb-2 d-flex justify-content-end grow">
+                    @if (myDevs[4] != undefined) {
+                        <img [routerLink]="['/dev', 4]" class="dev3 my-auto animate__animated animate__rubberBand" [src]="myDevs[4].data.image" alt="">
+                    }
+                </div>
+                <div class="col-lg-5 mb-2 d-flex justify-content-center grow">
+                    <div class="circle-md bg-brown mt-auto mx-3 mb-3"></div>
+                    <div class="circle-sm bg-orange mb-auto"></div>
+                    <div class="circle-lg bg-yellow mt-auto"></div>
+                </div>
+                <div class="col-lg-3 mb-2 d-flex justify-content-center">
+                    <div class="circle-sm bg-orange mb-auto"></div>
+                    <div class="circle-md bg-yellow mx-5 mb-auto"></div>
                 </div>
             </div>
-            <div class="col-lg-6 mb-2 d-flex justify-content-center grow">
-                <img [routerLink]="['/dev', 1]" class="dev2 my-auto animate__animated animate__rubberBand" [src]="myDevs[1].data.image" alt="">
-                <div class="circle-lg bg-orange mx-3 mt-auto"></div>
-                <img [routerLink]="['/dev', 2]" class="dev1 animate__animated animate__rubberBand" [src]="myDevs[2].data.image" alt="">
-                <div class="circle-md bg-brown mb-3 mx-3 mt-auto"></div>
-                <div class="circle-sm bg-orange mb-auto"></div>
-            </div>
-            <div class="col-lg-3 mb-2 d-flex justify-content-center">
-                <div class="circle-sm bg-yellow mt-auto"></div>
-                <div class="circle-md bg-brown mb-auto"></div>
-                <img [routerLink]="['/dev', 3]" class="dev2 my-auto animate__animated animate__rubberBand" [src]="myDevs[3].data.image" alt="">
-            </div>
-            <div class="col-lg-3 mb-2 d-flex flex-column align-items-center">
-                <div class="circle-md bg-brown ms-auto"></div>
-                <div class="circle-sm bg-orange mx-auto"></div>
-            </div>
-            <div class="col-lg-6 mb-2 d-flex flex-column align-items-center justify-content-center">
-                <span class="title orange acme-regular">Our team</span>
-                <span class="fs-4 acme-regular">We are pet friendly devs</span>
-            </div>
-            <div class="col-lg-3 mb-2 d-flex justify-content-center grow">
-                <img [routerLink]="['/dev', 0]" class="dev3 my-auto animate__animated animate__rubberBand" [src]="myDevs[0].data.image" alt="">
-            </div>
-            <div class="col-lg-4 mb-2 d-flex justify-content-end grow">
-                <img [routerLink]="['/dev', 4]" class="dev3 my-auto animate__animated animate__rubberBand" [src]="myDevs[4].data.image" alt="">
-            </div>
-            <div class="col-lg-5 mb-2 d-flex justify-content-center grow">
-                <div class="circle-md bg-brown mt-auto mx-3 mb-3"></div>
-                <div class="circle-sm bg-orange mb-auto"></div>
-                <div class="circle-lg bg-yellow mt-auto"></div>
-            </div>
-            <div class="col-lg-3 mb-2 d-flex justify-content-center">
-                <div class="circle-sm bg-orange mb-auto"></div>
-                <div class="circle-md bg-yellow mx-5 mb-auto"></div>
-            </div>
         </div>
-    </div>
-</section>
+    </section>
+}

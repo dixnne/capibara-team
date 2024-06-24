@@ -1,1 +1,53 @@
-<p>admin-devs works!</p>
+<section class="d-flex">
+    <app-sidebar></app-sidebar>
+    <div class="py-4 w-100">
+        <div class="container">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <td class="d-flex align-items-center justify-content-center">
+                            <span [routerLink]="['/addDev']" role="button" class="material-symbols-outlined">
+                                add_circle
+                            </span>
+                        </td>
+                        <td colspan="2">Developer</td>
+                        <td>Details</td>
+                        <td>Tags</td>
+                        <td>Jobs</td>
+                    </tr>
+                </thead>
+                @if (devs.length > 0) {
+                    <tbody>
+                        @for (dev of devs; track $index) {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <span (click)="deleteDev(dev.id)" role="button" class="material-symbols-outlined">
+                                            delete_forever
+                                        </span>
+                                    </div>
+                                </td>
+                                <td><img class="rounded-3" [src]="imgURL + dev.data.image" alt=""></td>
+                                <td>{{dev.data.name}}</td>
+                                <td>{{dev.data.details}}</td>
+                                <td>
+                                    @for (tag of dev.data.tags; track $index) {
+                                        {{tag}}
+                                        @if (dev.data.tags.length - 1 > $index) {
+                                            , 
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @for (job of dev.data.jobs; track $index) {
+                                        {{job}}<br />
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</section>

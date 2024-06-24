@@ -6,7 +6,7 @@
                 <div class="col-md-6">
                     <div class="d-flex flex-column align-items-center">
                     <span class="acme-regular fs-2 orange">{{pet.data.name}}</span>
-                    <img src={{pet.data.img}} class="card-img-top">
+                    <img [src]="imgURL + pet.data.img" class="card-img-top">
                     </div>      
                     <div>
                         <div class="bg-white py-2 rounded d-flex justify-content-center my-3">

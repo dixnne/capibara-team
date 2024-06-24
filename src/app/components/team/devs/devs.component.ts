@@ -12,10 +12,13 @@ import { DevsService } from '../../../shared/devs.service';
 })
 export class DevsComponent {
   myDevs: Dev[] = [];
+  imgURL: string = "https://capibara.losnarvaez.com/";
 
   constructor(public devsService: DevsService) {}
 
   ngOnInit(): void {
-    this.myDevs = this.devsService.getDevs();
+    this.devsService.getDevs().subscribe(res => {
+      this.myDevs = res;
+    });
   }
 }

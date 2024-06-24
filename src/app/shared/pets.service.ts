@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Pet } from '../interfaces/pet';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +10,14 @@ export class PetsService {
 
   constructor(public http: HttpClient) { }
 
-  addPet(newPet: Pet) {
-    const headers = { 'content-type': 'application/json' }  
-    return this.http.post<any>(this.url + "pets", {
-      pet: newPet
-    }, { 
+  addPet(newPet: Pet, file: File) {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    formData.append('pet', JSON.stringify(newPet.data));
+    let headers = new HttpHeaders();
+    headers = headers.append('enctype', 'multipart/form-data');
+    console.log(formData);
+    return this.http.post<any>(this.url + "pets", formData, { 
       "headers": headers 
     });
   }
@@ -33,90 +36,18 @@ export class PetsService {
   }
 
   getPets() {
-    let pets = [{
-      id: "",
-      data: {
-        name: "",
-        age: 0,
-        color: "",
-        breed: "",
-        stay: "",
-        details: "",
-        img: "",
-        tag: [""]
-      }
-    }];
-
-    this.http.get<Pet[]>(this.url + "pets").subscribe(resPets => {
-      pets = resPets;
-    });
-
-    return pets;
+    return this.http.get<Pet[]>(this.url + "pets");
   }
 
   getPet(id: string) {
-    let pet = {
-      id: "",
-      data: {
-        name: "",
-        age: 0,
-        color: "",
-        breed: "",
-        stay: "",
-        details: "",
-        img: "",
-        tag: [""]
-      }
-    };
-
-    this.http.get<Pet>(this.url + "pets/" + id).subscribe(resPet => {
-      pet = resPet;
-    });
-
-    return pet;
+    return this.http.get<Pet>(this.url + "pets/" + id);
   }
 
   getPetByName(name: string) {
-    let pet = {
-      id: "",
-      data: {
-        name: "",
-        age: 0,
-        color: "",
-        breed: "",
-        stay: "",
-        details: "",
-        img: "",
-        tag: [""]
-      }
-    };
-
-    this.http.get<Pet>(this.url + "pets?name=" + name).subscribe(resPet => {
-      pet = resPet;
-    });
-
-    return pet;
+    return this.http.get<Pet>(this.url + "pets?name=" + name);
   }
 
   getPetsByTag(tag: string) {
-    let pets = [{
-      id: "",
-      data: {
-        name: "",
-        age: 0,
-        color: "",
-        breed: "",
-        stay: "",
-        details: "",
-        img: "",
-        tag: [""]
-      }
-    }];
-
-    this.http.get<Pet[]>(this.url + "pets?tag=" + tag).subscribe(resPets => {
-      pets = resPets;
-    });
-
-    return pets;
+    return this.http.get<Pet[]>(this.url + "pets?tag=" + tag);
   }
 }

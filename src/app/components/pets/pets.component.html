@@ -1,8 +1,8 @@
 <div id="content-cards" class="bg-white">
-    @for(pet of myPets; track pet; let idx = $index){
+    @for(pet of myPets; track $index;){
         <div class="card bg-greensea col-sm-6" style="width: 18rem;">
             <div class="left col-sm-3">
-                <img src={{pet.data.img}} class="card-img-top" id="{{pet.id}}" alt="" (mouseover)="changeImg($event)" (mouseleave)="returnImg($event)">
+                <img [src]="imgURL + pet.data.img" class="card-img-top" id="{{pet.id}}" alt="">
             </div>
             <div class="card-body col-sm-8 d-flex flex-column justify-content-center">
                 <h5 class="card-title acme-regular">{{pet.data.name}}</h5><br>

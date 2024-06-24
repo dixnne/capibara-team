@@ -18,6 +18,13 @@ import { AdminDatesComponent } from './components/admin/admin-dates/admin-dates.
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { SignupComponent } from './components/session/signup/signup.component';
 import { LoginComponent } from './components/session/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AddPetComponent } from './components/admin/add-pet/add-pet.component';
+import { AddDevComponent } from './components/admin/add-dev/add-dev.component';
+import { AddUserComponent } from './components/admin/add-user/add-user.component';
+import { EditPetComponent } from './components/admin/edit-pet/edit-pet.component';
+import { EditDevComponent } from './components/admin/edit-dev/edit-dev.component';
+import { EditUserComponent } from './components/admin/edit-user/edit-user.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,6 +39,7 @@ export const routes: Routes = [
   { path: 'tagpet/:tag', component: PetsByTagComponent },
   { path: 'date/:id', component: DateComponent },
   { path: 'search/:name', component: PetComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'admin/dashboard', component: DashboardComponent },
   { path: 'admin/pets', component: AdminPetsComponent },
   { path: 'admin/dates', component: AdminDatesComponent },
@@ -39,4 +47,7 @@ export const routes: Routes = [
   { path: 'admin/users', component: AdminUsersComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'addPet', component: AddPetComponent },
+  { path: 'addDev', component: AddDevComponent },
+  { path: 'addUser', component: AddUserComponent },
 ];

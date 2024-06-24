@@ -12,6 +12,6 @@ export interface Dev {
             technologies: string[],
             tools: string[]
         },
-        pets: number[]
+        pets: string[]
     }
 }

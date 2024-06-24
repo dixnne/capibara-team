@@ -3,8 +3,6 @@ import { PetsService } from '../../../shared/pets.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Pet } from '../../../interfaces/pet';
 import { CommonModule } from '@angular/common';
-import { DateInfo } from '../../../interfaces/date';
-import { DatesService } from '../../../shared/dates.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
@@ -18,25 +16,28 @@ import { MessageService } from 'primeng/api';
 })
 export class PetComponent {
 
-  petIndex: number = 0;
+  petIndex: number = -1;
   pet!: Pet;
-  petDates: DateInfo[] = [];
   searchName!: string;
+  imgURL: string = "https://capibara.losnarvaez.com/";
 
   constructor(
     private petsService: PetsService, 
-    private datesService: DatesService, 
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService,
   ) {
     this.activatedRoute.params.subscribe(params => {
       this.searchName = params['name']; 
-        this.pet = this.petsService.getPetByName(this.searchName);
-        if (this.pet.data.name === "") {
-          this.toast('error', 'Rawwwr!', 'Results not found for ' + this.searchName);
-        } else {
-          this.toast('success', 'Wooooof!', 'Results found for ' + this.searchName);
-        }
+        this.petsService.getPets().subscribe(res => {
+          const pets = res;
+          this.petIndex = pets.findIndex(p => p.data.name === this.searchName);
+          if (this.petIndex == -1) {
+            this.toast('error', 'Rawwwr!', 'Results not found for ' + this.searchName);
+          } else {
+            this.toast('success', 'Wooooof!', 'Results found for ' + this.searchName);
+            this.pet = res[this.petIndex];
+          }
+        });
     });
   }
 

@@ -14,8 +14,11 @@ import { RouterLink } from '@angular/router';
 export class CarouselComponent {
 
   pets: Pet[] = [];
+  imgURL: string = "https://capibara.losnarvaez.com/";
 
   constructor(private petsService: PetsService) {
-    this.pets = this.petsService.getPets();
+    this.petsService.getPets().subscribe(res => {
+      this.pets = res;
+    });
   }
 }
