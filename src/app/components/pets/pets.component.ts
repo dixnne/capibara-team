@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { Pet } from '../../interfaces/pet';
 import { PetsService } from '../../shared/pets.service';
 import { RouterLink } from '@angular/router';
@@ -12,12 +12,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './pets.component.html',
   styleUrl: './pets.component.css',
 })
-export class PetsComponent {
-  myPets: Pet[] = [];
+export class PetsComponent{
+  myPets?: Pet[];
   imgURL: string = "https://capibara.losnarvaez.com/";
-  constructor(public petService: PetsService) {}
-
-  ngOnInit(): void {
+  constructor(public petService: PetsService) {
     this.petService.getPets().subscribe(res => {
       this.myPets = res;
     });
