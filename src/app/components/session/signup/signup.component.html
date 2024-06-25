@@ -6,6 +6,12 @@
                 <input [(ngModel)]="user.data.email" type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
                 <label for="floatingEmail">Email address</label>
             </div>
+            <div class="col-12 mb-3">
+                <div class="input-group">
+                    <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                    <input (change)="selectFile($event)" accept="image/png, image/gif, image/jpeg" type="file" class="form-control" id="inputGroupFile01">
+                </div>
+            </div>
             <div class="col-12 col-md-6 form-floating mb-3">
                 <input [(ngModel)]="user.data.name.username" type="text" class="form-control" id="floatingUsername" placeholder="Username">
                 <label for="floatingUsername">Username</label>
@@ -15,11 +21,11 @@
                 <label for="floatingPhone">Phone Number</label>
             </div>
             <div class="input-group flex-nowrap mb-3">
-                <div class="col-12 col-md-6 form-floating mb-3">
+                <div class="col-12 col-md-6 form-floating">
                     <input [(ngModel)]="user.data.name.firstname" type="text" class="form-control" id="floatingFName" placeholder="First Name">
                     <label for="floatingUsername">First Name</label>
                 </div>
-                <div class="col-12 col-md-6 form-floating mb-3">
+                <div class="col-12 col-md-6 form-floating">
                     <input [(ngModel)]="user.data.name.lastname" type="text" class="form-control" id="floatingLName" placeholder="Last Name">
                     <label for="floatingLName">Last Name</label>
                 </div>

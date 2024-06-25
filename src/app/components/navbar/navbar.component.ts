@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { SearchComponent } from '../search/search.component';
+import { UserRepositoryService } from '../../shared/user/user-repository.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +13,9 @@ import { SearchComponent } from '../search/search.component';
 export class NavbarComponent {
   data: boolean = false;
   fontSize: number = 1;
+  constructor(private userRepoService: UserRepositoryService) {
+    this.data = userRepoService.isLoggedIn();
+  }
 
   @Output() InvertEvent = new EventEmitter<boolean>();
   @Output() FontSizeEvent = new EventEmitter<string>();
