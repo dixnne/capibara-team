@@ -18,13 +18,18 @@
           
             <div class="container div3 bg-brown border">
               <h2>Cats avail to adopt</h2>
-              <div class="tab">
-                <h3>amount</h3>
+                <div class="tab">
+                  <h3>amount</h3>
+                </div>
               </div>
-            </div>
           </div>
-          
+          <div style="display: flex;justify-content: center;align-items: center; flex-direction: column;">
+            <label for="">Mes</label>
+            <p-calendar [(ngModel)]="selectedDate" view="month" dateFormat="mm/yy" [yearNavigator]="true" [monthNavigator]="true"
+            [yearRange]="yearRange!" (onSelect)="cambiarFecha($event)" [readonlyInput]="true"></p-calendar>
+          </div>
           <div class="div">
+            
             <div class="div4 bg-orange border">
               <h2>Registers on the site per day</h2>
               
