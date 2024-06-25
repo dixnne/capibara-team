@@ -22,7 +22,8 @@ export class DashboardComponent implements OnInit {
   yearRange?: string;
   constructor(private grphService:GraphService){
     const currentYear = new Date().getFullYear();
-    this.yearRange = `${currentYear - 10}:${currentYear + 10}`; // Ajusta el rango de años según sea necesario
+    this.yearRange = `${currentYear - 10}:${currentYear + 10}`;
+    this.selectedDate = new Date();
   }
   cambiarFecha(date:Date){
     let pipe=new DatePipe('en-US');

@@ -8,6 +8,6 @@ export class GraphService {
   constructor(private http:HttpClient) { }
 
   getChartsData(date:string){
-    return this.http.get('http://localhost:3000/prueba/'+date);
+    return this.http.get('http://localhost:3000/graph/'+date);
   }
 }
