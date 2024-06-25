@@ -3,7 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 // Import the functions you need from the SDKs you need
 import { FirebaseError, initializeApp } from "firebase/app";
 import { getAnalytics, logEvent, isSupported } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, UserCredential, signInWithEmailAndPassword, RecaptchaVerifier, signInWithPhoneNumber, PhoneAuthProvider, signInWithCredential, AuthCredential } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, UserCredential, signInWithEmailAndPassword, RecaptchaVerifier, signInWithPhoneNumber, PhoneAuthProvider, signInWithCredential, AuthCredential, User } from "firebase/auth";
 import { HttpClient } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 
@@ -43,8 +43,9 @@ export class UserRepositoryService {
     this.localStorage = document.defaultView?.localStorage;
   }
 
-  getUser() {
-    return auth.currentUser;
+  getUser():User|undefined{
+    this.userCrenedtial = JSON.parse(this.getLocalStorage()!);
+    return this.userCrenedtial?.user;
   }
 
   register(email: string, password: string, callback: (result: boolean) => void) {
@@ -66,7 +67,9 @@ export class UserRepositoryService {
 
   loginWithEandP(email: string, password: string, callback: (result: boolean) => void) {
     if((email.toLowerCase() === "admin@gmail.com" && password === "admin") || (email.toLowerCase() === "admin" && password === "admin")) {
-      this.saveLocalStorage(JSON.stringify({name:"admin"}));
+      this.saveLocalStorage(JSON.stringify({email:"admin"}));
+      callback(true);
+      return;
     }
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
       this.userCrenedtial = userCredential;
@@ -90,9 +93,8 @@ export class UserRepositoryService {
       return true;
     }else{
       if (this.localStorage) {
-        if(this.localStorage.getItem('userCredential') != null) {
-          this.userCrenedtial = JSON.parse(this.localStorage.getItem('userCredential')!);
-          this.loginWithCrenetial(this.userCrenedtial as any, (result) => {})
+        if(this.getLocalStorage() != null) {
+          this.userCrenedtial = JSON.parse(this.getLocalStorage());
           return true;
         }else{
           return false;
@@ -194,6 +196,6 @@ export class UserRepositoryService {
     if (this.localStorage) {
       return this.localStorage.getItem('userCredential'); 
     }
-    return {}
+    return null;
   }
 }
