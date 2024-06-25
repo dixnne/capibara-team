@@ -86,6 +86,9 @@ export class VisitComponent {
     this.activatedRoute.params.subscribe((params) => {
       petsService.getPet(params['id']).subscribe(res => {
         this.pet = res;
+        this.dateService.getDates().subscribe(r => {
+          this.arr = r.filter(d => d.data.petId == this.pet.id);
+        });
       });
       this.idx = params['id'];
       this.petId = params['id'];
@@ -192,9 +195,6 @@ export class VisitComponent {
     let title = '';
     let text = '';
     console.log('validator init');
-    this.dateService.getDates().subscribe(res => {
-      this.arr = res.filter(d => d.data.petId == this.pet.id);
-    });
     if (this.arr.length != 0) {
       console.log(this.arr);
       for (let i in this.arr) {

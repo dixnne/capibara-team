@@ -45,15 +45,15 @@ export class DatesComponent {
         this.router.navigate(['/login']);
       });
     } 
-    this.datesService.getDates().subscribe(res => {
-      this.dates = res;
-      if (res.length > 0) {
-        this.myAngularxQrCode = "Date: " + this.dates[0].data.date.day + "/" + this.dates[0].data.date.month + "/" + this.dates[0].data.date.year + " " + this.dates[0].data.date.hour;
-      }
-    });
     const u = this.userRepoService.getUser();
     this.userService.getUserByEmail(u?.email || u?.uid || "").subscribe(res => {
       this.user = res[0].id;
+      this.datesService.getDates().subscribe(r => {
+        this.dates = r.filter(dt => dt.data.userId == this.user);
+        if (r.length > 0) {
+          this.myAngularxQrCode = "Date: " + this.dates[0].data.date.day + "/" + this.dates[0].data.date.month + "/" + this.dates[0].data.date.year + " " + this.dates[0].data.date.hour;
+        }
+      });
     });
     this.petsService.getPets().subscribe(res => {
       this.pets = res;
