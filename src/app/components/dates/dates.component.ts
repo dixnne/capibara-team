@@ -38,27 +38,26 @@ export class DatesComponent {
     this.authenticated = this.userRepoService.isLoggedIn();
     if (!this.authenticated) {
       Swal.fire({
-        title: "Stop right there!",
-        text: "You have to log in in order to see your dates.",
+        title: "Get out!",
+        text: "You need to be logged in to see your booked dates.",
         icon: "error"
       }).then(() => {
         this.router.navigate(['/login']);
       });
-    } else {
-      this.datesService.getDates().subscribe(res => {
-        this.dates = res;
-        if (res.length > 0) {
-          this.myAngularxQrCode = "Date: " + this.dates[0].data.date.day + "/" + this.dates[0].data.date.month + "/" + this.dates[0].data.date.year + " " + this.dates[0].data.date.hour;
-        }
-      });
-      const u = this.userRepoService.getUser();
-      this.userService.getUserByEmail(u?.email || u?.uid || "").subscribe(res => {
-        this.user = res[0].id;
-      });
-      this.petsService.getPets().subscribe(res => {
-        this.pets = res;
-      });
-    }
+    } 
+    this.datesService.getDates().subscribe(res => {
+      this.dates = res;
+      if (res.length > 0) {
+        this.myAngularxQrCode = "Date: " + this.dates[0].data.date.day + "/" + this.dates[0].data.date.month + "/" + this.dates[0].data.date.year + " " + this.dates[0].data.date.hour;
+      }
+    });
+    const u = this.userRepoService.getUser();
+    this.userService.getUserByEmail(u?.email || u?.uid || "").subscribe(res => {
+      this.user = res[0].id;
+    });
+    this.petsService.getPets().subscribe(res => {
+      this.pets = res;
+    });
   }
 
   onChangeURL(url: SafeUrl) {

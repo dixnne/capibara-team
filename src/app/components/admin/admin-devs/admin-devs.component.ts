@@ -38,12 +38,12 @@ export class AdminDevsComponent {
   deleteDev(id: string): void {
     Swal.fire({
       title: 'Are you sure?',
-      text: 'You could lose the opportunity of your life!',
+      text: 'You will not be able to retrieve this data!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, cancel it!',
+      confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         this.devsService.deleteDev(id).subscribe(res => {
