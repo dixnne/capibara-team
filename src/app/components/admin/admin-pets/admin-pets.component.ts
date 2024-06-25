@@ -4,6 +4,7 @@ import { Pet } from '../../../interfaces/pet';
 import { PetsService } from '../../../shared/pets.service';
 import { Router, RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
+import { UserRepositoryService } from '../../../shared/user/user-repository.service';
 
 @Component({
   selector: 'app-admin-pets',
@@ -16,11 +17,22 @@ export class AdminPetsComponent {
 
   pets: Pet[] = [];
   imgURL: string = "https://capibara.losnarvaez.com/";
+  isAdmin: boolean = false;
 
-  constructor(private petsService: PetsService, private router: Router) {
+  constructor(private petsService: PetsService, private router: Router, private userRepoService: UserRepositoryService) {
     this.petsService.getPets().subscribe(res => {
       this.pets = res;
     });
+    this.isAdmin = this.userRepoService.isAdmin();
+    if (!this.isAdmin) {
+      Swal.fire({
+        title: "Stop right there!",
+        text: "You're not an admin, get out of here.",
+        icon: "error"
+      }).then(() => {
+        this.router.navigate(['/home']);
+      });
+    }
   }
 
   deletePet(id: string): void {

@@ -7,21 +7,33 @@
         <img src="../../../assets/images/logo.png" alt="CTlogo" style="width: 50px;">
       </a>
       @if (authenticated) {
-        <div class="d-flex align-items-center">
-          <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-              <strong>Pedro Pedro</strong>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-              @if (isAdmin) {
-                <li><a class="dropdown-item" href="#">Administrate</a></li>
-                <li><hr class="dropdown-divider"></li>
-              }
-              <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
+        @if (user) {
+          <div class="d-flex align-items-center">
+            <div class="dropdown">
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img [src]="url + user.data.image" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>{{user.data.name.firstname}} {{user.data.name.lastname}}</strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+              </ul>
+            </div>
           </div>
-        </div>
+        }
+        @if (isAdmin) {
+          <div class="d-flex align-items-center">
+            <div class="dropdown">
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <strong>Administrator</strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" [routerLink]="['/admin']">Administrate</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        }
       } @else {
         <div class="d-flex align-items-center mb-3 mb-lg-0">
           <a href="/login" class="link-light text-decoration-none me-3">Log In</a>

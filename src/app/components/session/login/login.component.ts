@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DividerModule } from 'primeng/divider';
 import { UserRepositoryService } from '../../../shared/user/user-repository.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +18,25 @@ export class LoginComponent {
   phone!: string;
   code!: string;
 
-  constructor(private service:UserRepositoryService) { }
+  constructor(private service:UserRepositoryService, private router: Router) { }
   emailLogin(): void {
     this.service.loginWithEandP(this.email, this.password, (result: boolean) => {
       if (result) {
-        console.log('Login successful');
+        Swal.fire({
+          title: "Helloooow!",
+          text: "Successfully logged in.",
+          icon: "success"
+        }).then(() => {
+          this.router.navigate(['/home']).then(() => {
+            window.location.reload();
+          });
+        });
       } else {
-        console.log('Login failed');
+        Swal.fire({
+          title: "Sorry!",
+          text: "Couldn't log in.",
+          icon: "error"
+        });
       }
     });
   }

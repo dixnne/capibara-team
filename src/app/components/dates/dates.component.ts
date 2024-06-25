@@ -1,95 +1,77 @@
 import { Component } from '@angular/core';
 import { Pet } from '../../interfaces/pet';
 import { PetsService } from '../../shared/pets.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DateInfo } from '../../interfaces/date';
 import { DatesService } from '../../shared/dates.service';
 import { CommonModule } from '@angular/common';
+import { UserRepositoryService } from '../../shared/user/user-repository.service';
+import Swal from 'sweetalert2';
+import { UserService } from '../../shared/user.service';
+import { QRCodeModule } from 'angularx-qrcode';
+import { SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dates',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, QRCodeModule],
   templateUrl: './dates.component.html',
   styleUrl: './dates.component.css',
 })
 export class DatesComponent {
   dates: DateInfo[] = [];
-  datesP: DateInfo[] = [];
-  datesN: DateInfo[] = [];
+  user: string = "";
   today: Date = new Date();
+  authenticated: boolean = false;
+  pets: Pet[] = [];
+  url: string = "https://capibara.losnarvaez.com/";
+  myAngularxQrCode: string = "";
+  qrCodeDownloadLink: SafeUrl = "";
 
   constructor(
     public petsService: PetsService,
-    public activatedRoute: ActivatedRoute,
-    private datesService: DatesService
+    private datesService: DatesService,
+    private router: Router,
+    private userRepoService: UserRepositoryService,
+    private userService: UserService
   ) {
-    this.activatedRoute.params.subscribe((params) => {
-      this.datesService.getUserDates("").subscribe(res => {
-        this.dates = res;
-        this.datesP = this.dates.filter(date => {
-          if (date.data.date.year < this.today.getFullYear()) {
-            return true;
-          } else {
-            if (date.data.date.year == this.today.getFullYear()) {
-              if (date.data.date.month < this.today.getMonth() + 1) {
-                return true;
-              } else {
-                if (date.data.date.month == this.today.getMonth() + 1) {
-                  if (date.data.date.day < this.today.getUTCDate()) {
-                    return true;
-                  } else {
-                    return false;
-                  }
-                } else {
-                  return false;
-                }
-              }
-            } else {
-              return false;
-            }
-          }
-        });
+    this.authenticated = this.userRepoService.isLoggedIn();
+    if (!this.authenticated) {
+      Swal.fire({
+        title: "Stop right there!",
+        text: "You have to log in in order to see your dates.",
+        icon: "error"
+      }).then(() => {
+        this.router.navigate(['/login']);
       });
-      this.datesN = this.dates.filter(date => {
-        if (date.data.date.year > this.today.getFullYear()) {
-          return true;
-        } else {
-          if (date.data.date.year == this.today.getFullYear()) {
-            if (date.data.date.month > this.today.getMonth() + 1) {
-              return true;
-            } else {
-              if (date.data.date.month == this.today.getMonth() + 1) {
-                if (date.data.date.day >= this.today.getUTCDate()) {
-                  return true;
-                } else {
-                  return false;
-                }
-              } else {
-                return false;
-              }
-            }
-          } else {
-            return false;
-          }
+    } else {
+      this.datesService.getDates().subscribe(res => {
+        this.dates = res;
+        if (res.length > 0) {
+          this.myAngularxQrCode = "Date: " + this.dates[0].data.date.day + "/" + this.dates[0].data.date.month + "/" + this.dates[0].data.date.year + " " + this.dates[0].data.date.hour;
         }
       });
-    });
+      const u = this.userRepoService.getUser();
+      this.userService.getUserByEmail(u?.email || u?.uid || "").subscribe(res => {
+        this.user = res[0].id;
+      });
+      this.petsService.getPets().subscribe(res => {
+        this.pets = res;
+      });
+    }
+  }
+
+  onChangeURL(url: SafeUrl) {
+    this.qrCodeDownloadLink = url;
   }
 
   getPetImage(id: string): string {
-    let pet = "";
-    this.petsService.getPet(id).subscribe(res => {
-      pet = res.data.img;
-    });
-    return pet;
+    let pet = this.pets.find(p => p.id == id);
+    return pet?.data.img || "";
   }
 
   getPetName(id: string): string {
-    let pet = "";
-    this.petsService.getPet(id).subscribe(res => {
-      pet = res.data.name;
-    });
-    return pet;
+    let pet = this.pets.find(p => p.id == id);
+    return pet?.data.name || "";
   }
 }

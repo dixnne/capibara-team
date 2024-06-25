@@ -27,10 +27,12 @@ export class DateComponent {
   ) {
     this.activatedRoute.params.subscribe((params) => {
       this.datesService.getDate(params["id"] || "").subscribe(res => {
+        console.log(res);
         this.date = res;
-      });
-      this.petsService.getPet(this.date?.data.petId || "").subscribe(res => {
-        this.pet = res;
+        this.petsService.getPet(this.date?.data.petId || "").subscribe(r => {
+          console.log(r);
+          this.pet = r;
+        });
       });
     });
   }
@@ -46,14 +48,15 @@ export class DateComponent {
       confirmButtonText: 'Yes, cancel it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.datesService.deleteDate(this.date?.id || "");
-        Swal.fire({
-          title: 'Date canceled',
-          text: 'Please reconsider this, you could be a hero...',
-          icon: 'success',
-        }).then(() => {
-          this.router.navigate(['/dates']);
-        });
+        this.datesService.deleteDate(this.date?.id || "").subscribe(res => {
+          Swal.fire({
+            title: 'Date canceled',
+            text: 'Please reconsider this, you could be a hero...',
+            icon: 'success',
+          }).then(() => {
+            this.router.navigate(['/dates']);
+          });
+        })
       }
     });
   }

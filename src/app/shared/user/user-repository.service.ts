@@ -9,13 +9,13 @@ import { DOCUMENT } from '@angular/common';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAJlErFrQpUVTZkpSFpRPvqxyQYlbhAnVY",
-  authDomain: "capibara-team.firebaseapp.com",
-  projectId: "capibara-team",
-  storageBucket: "capibara-team.appspot.com",
-  messagingSenderId: "1098350956677",
-  appId: "1:1098350956677:web:515671b7336875975059ec",
-  measurementId: "G-06MY0HPHJG"
+  apiKey: "AIzaSyAgtguiZ2fz9Fmq2VmQ1_ir3JefUNmU02U",
+  authDomain: "capibara-2.firebaseapp.com",
+  projectId: "capibara-2",
+  storageBucket: "capibara-2.appspot.com",
+  messagingSenderId: "836501625921",
+  appId: "1:836501625921:web:7d202c669b9885d4fffac0",
+  measurementId: "G-VB367D8BQE"
 };
 
 // Initialize Firebase
@@ -108,7 +108,8 @@ export class UserRepositoryService {
   isAdmin(): boolean {
     if(this.getLocalStorage()!=null || this.getLocalStorage()!=undefined){
       let credential=JSON.parse(this.getLocalStorage()!);
-      if((credential.name != null && credential.name != undefined) && (credential.name=="admin")) {
+      console.log(credential);
+      if((credential.email != null && credential.email != undefined) && (credential.email=="admin")) {
         return true;
       }else{
         return false;
