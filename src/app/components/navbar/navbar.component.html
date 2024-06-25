@@ -5,16 +5,16 @@
       </div>
         <div class="container d-flex flex-wrap pt-2 align-items-center">
           <ul class="nav me-auto">
-            <li class="nav-item"><a href="/home" class="nav-link link-light text-success-emphasis px-2 active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="/team" class="nav-link link-light text-success-emphasis px-2">Team</a></li>
-            <li class="nav-item"><a href="/pets" class="nav-link link-light text-success-emphasis px-2">Pets</a></li>
-            <li class="nav-item"><a href="/breeds" class="nav-link link-light text-success-emphasis px-2">Breeds</a></li>
-            <li class="nav-item"><a href="/facts" class="nav-link link-light text-success-emphasis px-2">Facts</a></li>
+            <li class="nav-item"><a [routerLink]="['/home']" class="nav-link link-light text-success-emphasis px-2 active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a [routerLink]="['/team']" class="nav-link link-light text-success-emphasis px-2">Team</a></li>
+            <li class="nav-item"><a [routerLink]="['/pets']" class="nav-link link-light text-success-emphasis px-2">Pets</a></li>
+            <li class="nav-item"><a [routerLink]="['/breeds']" class="nav-link link-light text-success-emphasis px-2">Breeds</a></li>
+            <li class="nav-item"><a [routerLink]="['/facts']" class="nav-link link-light text-success-emphasis px-2">Facts</a></li>
             @if (data) {
-                <li class="nav-item"><a href="/dates" class="nav-link link-light text-success-emphasis px-2">Dates</a></li>
+                <li class="nav-item"><a [routerLink]="['/dates']" class="nav-link link-light text-success-emphasis px-2">Dates</a></li>
             }
-            <li class="nav-item"><a href="/contact" class="nav-link link-light text-success-emphasis px-2">Contact</a></li>
-            <li class="nav-item"><a href="/faqs" class="nav-link link-light text-success-emphasis px-2">FAQs</a></li>
+            <li class="nav-item"><a [routerLink]="['/contact']" class="nav-link link-light text-success-emphasis px-2">Contact</a></li>
+            <li class="nav-item"><a [routerLink]="['/faqs']" class="nav-link link-light text-success-emphasis px-2">FAQs</a></li>
           </ul>
           <button class="btn btn-light rounded-circle p-2 me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-universal-access" viewBox="0 0 16 16">

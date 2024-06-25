@@ -2,11 +2,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { SearchComponent } from '../search/search.component';
 import { UserRepositoryService } from '../../shared/user/user-repository.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [HeaderComponent, SearchComponent],
+  imports: [HeaderComponent, SearchComponent, RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
