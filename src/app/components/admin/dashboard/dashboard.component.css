@@ -5,7 +5,6 @@
     color: white;
 }
 .div1{
-    background-color: aquamarine;
     margin: 1.5rem;
     width: 40rem;
     height: 10rem;
@@ -13,10 +12,8 @@
     padding: 2rem;
     box-shadow: 5px 5px 15px gray;
     border-radius: 1rem;
-    /* box-shadow: 5px 15px gold; */
 }
 .div2{
-    background-color: aqua;
     margin: 1.5rem;
     width: 40.5rem;
     height: 10rem;
@@ -26,7 +23,6 @@
     border-radius: 1rem;
 }
 .div3{
-    background-color: turquoise;
     margin: 1.5rem;
     width: 40rem;
     height: 10rem;
@@ -36,21 +32,19 @@
     border-radius: 1rem;
 }
 .div4{
-    background-color: aqua;
     margin: 1.5rem;
     width: 61.5rem;
     height: 45rem;
-    text-align: justify;
+    text-align: center;
     padding: 2rem;
     box-shadow: 5px 5px 15px gray;
     border-radius: 1rem;
 }
 .div5{
-    background-color: aquamarine;
     margin: 2rem;
     width: 61.5rem;
     height: 45rem;
-    text-align: justify;
+    text-align: center;
     padding: 2rem;
     box-shadow: 5px 5px 15px gray;
     border-radius: 1rem;
@@ -64,4 +58,7 @@
 }
 .graph2{
     padding: 3rem;  
+}
+.label{
+    box-shadow: 5px 5px 15px gray;
 }

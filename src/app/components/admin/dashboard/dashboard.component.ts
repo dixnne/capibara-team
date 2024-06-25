@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
         label: 'Registers',
         data: [65, 59, 80, 81, 56, 55, 40, 150],
         // fill: false,
-        borderColor: 'rgb(255, 199, 0)'
+        borderColor: 'orange'
         // tension: 0.1
       }]
     },

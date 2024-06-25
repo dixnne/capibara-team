@@ -23,14 +23,15 @@
                 </div>
               </div>
           </div>
-          <div style="display: flex;justify-content: center;align-items: center; flex-direction: column;">
-            <label for="">Mes</label>
+
+          <div class="bg-orange label border" style="display: flex;justify-content: center; align-items: center; flex-direction: column; border-radius: 1rem; margin: 2rem; padding: 1.5rem;">
+            <label for=""><h1 style="color: white;" >Mes</h1></label>
             <p-calendar [(ngModel)]="selectedDate" view="month" dateFormat="mm/yy" [yearNavigator]="true" [monthNavigator]="true"
             [yearRange]="yearRange!" (onSelect)="cambiarFecha($event)" [readonlyInput]="true"></p-calendar>
           </div>
+
           <div class="div">
-            
-            <div class="div4 bg-orange border">
+            <div class="div4 bg-yellow border">
               <h2>Registers on the site per day</h2>
               
               <div class="graph1">
