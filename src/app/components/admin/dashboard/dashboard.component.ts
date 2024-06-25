@@ -6,11 +6,13 @@ import { CalendarModule } from 'primeng/calendar';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { GraphService } from '../../../shared/graph/graph.service';
+import { AdminGraphComponent } from '../admin-graph/admin-graph.component';
+import { Graph1Component } from '../graph1/graph1.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [SidebarComponent, CalendarComponent,CalendarModule,FormsModule],
+  imports: [SidebarComponent, CalendarComponent,CalendarModule,FormsModule, AdminGraphComponent, Graph1Component],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
