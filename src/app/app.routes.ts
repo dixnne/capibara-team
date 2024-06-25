@@ -21,7 +21,6 @@ import { LoginComponent } from './components/session/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AddPetComponent } from './components/admin/add-pet/add-pet.component';
 import { AddDevComponent } from './components/admin/add-dev/add-dev.component';
-import { AddUserComponent } from './components/admin/add-user/add-user.component';
 import { EditPetComponent } from './components/admin/edit-pet/edit-pet.component';
 import { EditDevComponent } from './components/admin/edit-dev/edit-dev.component';
 import { EditUserComponent } from './components/admin/edit-user/edit-user.component';
@@ -51,7 +50,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'addPet', component: AddPetComponent },
   { path: 'addDev', component: AddDevComponent },
-  { path: 'addUser', component: AddUserComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faqs', component: FaqsComponent },
 ];

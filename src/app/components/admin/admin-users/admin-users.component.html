@@ -6,11 +6,6 @@
             <table class="table table-dark table-hover">
                 <thead>
                     <tr>
-                        <td class="d-flex align-items-center justify-content-center">
-                            <span [routerLink]="['/addUser']" role="button" class="material-symbols-outlined">
-                                add_circle
-                            </span>
-                        </td>
                         <td colspan="2">User</td>
                         <td>UserName</td>
                         <td>Name</td>
@@ -22,17 +17,10 @@
                     <tbody>
                         @for (user of users; track $index) {
                             <tr>
-                                <td colspan="2">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <span (click)="deleteUser(user.id)" role="button" class="material-symbols-outlined">
-                                            delete_forever
-                                        </span>
-                                    </div>
-                                </td>
-                                <td><img class="rounded-3" [src]="imgURL + user.data.image" alt=""></td>
+                                <td colspan="2"><img class="rounded-3" [src]="imgURL + user.data.image" alt=""></td>
                                 <td>{{user.data.name.username}}</td>
                                 <td><pre>{{user.data.name.firstname}} {{user.data.name.lastname}}</pre></td>
-                                <td>{{user.data.email}} years</td>
+                                <td>{{user.data.email}} </td>
                                 <td>{{user.data.phone}}</td>
                             </tr>
                         }
