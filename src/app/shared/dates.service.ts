@@ -13,7 +13,7 @@ export class DatesService {
   addDate(newDate: DateInfo) {
     const headers = { 'content-type': 'application/json' }  
     return this.http.post<any>(this.url + "dates", {
-      date: newDate
+      date: newDate.data
     }, { 
       "headers": headers 
     });

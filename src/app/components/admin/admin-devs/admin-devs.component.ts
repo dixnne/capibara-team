@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { DevsService } from '../../../shared/devs.service';
 import { Dev } from '../../../interfaces/dev';
 import Swal from 'sweetalert2';
+import { UserRepositoryService } from '../../../shared/user/user-repository.service';
 
 @Component({
   selector: 'app-admin-devs',
@@ -16,11 +17,22 @@ export class AdminDevsComponent {
 
   devs: Dev[] = [];
   imgURL: string = "https://capibara.losnarvaez.com/";
+  isAdmin: boolean = false;
 
-  constructor(private devsService: DevsService, private router: Router) {
+  constructor(private devsService: DevsService, private router: Router, private userRepoService: UserRepositoryService) {
     this.devsService.getDevs().subscribe(res => {
       this.devs = res;
     });
+    this.isAdmin = this.userRepoService.isAdmin();
+    if (!this.isAdmin) {
+      Swal.fire({
+        title: "Stop right there!",
+        text: "You're not an admin, get out of here.",
+        icon: "error"
+      }).then(() => {
+        this.router.navigate(['/home']);
+      });
+    }
   }
 
   deleteDev(id: string): void {

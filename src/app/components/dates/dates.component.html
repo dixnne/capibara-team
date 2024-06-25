@@ -1,76 +1,51 @@
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="acme-regular orange">Next dates</h2>
-                <div class="p-4 rounded bg-yellow">
-                    <table class="table table-light table-hover">
-                        <thead>
-                            <tr>
-                                <th colspan="2">Pet</th>
-                                <th>Date</th>
-                                <th>Hour</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (datesN != []) {
-                                @for (date of datesN; track $index;) {
-                                    <tr [routerLink]="['/date', date.id]">
-                                        <td>
-                                            <img [src]="getPetImage(date.data.petId)" class="rounded img-fluid shadow" alt="">
-                                        </td>
-                                        <td>{{getPetName(date.data.petId)}}</td>
-                                        <td>{{date.data.date.month | number: '2.'}}/{{date.data.date.day | number: '2.'}}/{{date.data.date.year}}</td>
-                                        <td>{{date.data.date.hour}}</td>
-                                    </tr>
-                                }-
-                            } @else {
+@if (dates) {
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="acme-regular orange">Next dates</h2>
+                    <div class="p-4 rounded bg-yellow">
+                        <table class="table table-light table-hover">
+                            <thead>
                                 <tr>
-                                    <td colspan="6">
-                                        No dates booked here.
-                                    </td>
+                                    <th colspan="2">Pet</th>
+                                    <th>Date</th>
+                                    <th>Hour</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h2 class="orange acme-regular">Past dates</h2>
-                <div class="p-4 rounded bg-brown w-100">
-                    <table class="table table-light table-hover">
-                        <thead>
-                            <tr>
-                                <th colspan="2">Pet</th>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Date</th>
-                                <th>Hour</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (datesP != []) {
-                                @for (date of datesP; track $index) {
-                                    <tr [routerLink]="['/date', date.id]">
-                                        <td>
-                                            <img [src]="getPetImage(date.id)" class="rounded img-fluid shadow" alt="">
+                            </thead>
+                            <tbody>
+                                @if (dates != []) {
+                                    @for (date of dates; track $index;) {
+                                        <tr [routerLink]="['/date', date.id]">
+                                            <td>
+                                                <img [src]="url + getPetImage(date.data.petId)" class="rounded img-fluid shadow" alt="">
+                                            </td>
+                                            <td>{{getPetName(date.data.petId)}}</td>
+                                            <td>{{date.data.date.month | number: '2.'}}/{{date.data.date.day | number: '2.'}}/{{date.data.date.year}}</td>
+                                            <td>{{date.data.date.hour}}</td>
+                                        </tr>
+                                    }
+                                } @else {
+                                    <tr>
+                                        <td colspan="6">
+                                            No dates booked here.
                                         </td>
-                                        <td>{{getPetName(date.id)}}</td>
-                                        <td>{{date.data.date.month | number: '2.'}}/{{date.data.date.day | number: '2.'}}/{{date.data.date.year}}</td>
-                                        <td>{{date.data.date.hour}}</td>
                                     </tr>
                                 }
-                            } @else {
-                                <tr>
-                                    <td colspan="6">
-                                        No dates booked here.
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                <h2 class="orange acme-regular">Next Date QR</h2>
+                    <div class="p-4 rounded bg-brown w-100 text-center">
+                        @if (dates.length > 0) {
+                            <qrcode (qrCodeURL)="onChangeURL($event)" [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                            <a class="link-light" [href]="qrCodeDownloadLink" download="qrcode">Download QR</a>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}

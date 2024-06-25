@@ -31,6 +31,11 @@ export class UserService {
   getUser(id: string) {
     return this.http.get<User>(this.url + 'users/' + id);
   }
+
+  getUserByEmail(email: string) {
+    return this.http.get<User[]>(this.url + 'users/email/' + email);
+  }
+
   getUserByName(name: string) {
     return this.http.get<User>(this.url + 'users?name=' + name);
   }

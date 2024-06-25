@@ -17,6 +17,8 @@ import { MessageService } from 'primeng/api';
 import Swal from 'sweetalert2';
 import { DateInfo } from '../../interfaces/date';
 import { DatesService } from '../../shared/dates.service';
+import { UserRepositoryService } from '../../shared/user/user-repository.service';
+import { UserService } from '../../shared/user.service';
 
 @Component({
   selector: 'app-visit',
@@ -58,18 +60,20 @@ export class VisitComponent {
   month: number = 0;
   year: number = 0;
   hour!: string;
-  name: string = '';
-  phone: string = '';
   arr: DateInfo[] = [];
   newDate!: DateInfo;
   vali: boolean = false;
   imgURL: string = "https://capibara.losnarvaez.com/";
+  authenticated: boolean = false;
+  uid: string = "";
   constructor(
     public petsService: PetsService,
     public activatedRoute: ActivatedRoute,
     private messageService: MessageService,
     private dateService: DatesService,
-    private router: Router
+    private router: Router,
+    private userRepoService: UserRepositoryService,
+    private userService: UserService
   ) {
     this.activatedRoute.params.subscribe((params) => {
       petsService.getPet(params['id']).subscribe(res => {
@@ -78,6 +82,21 @@ export class VisitComponent {
       this.idx = params['id'];
       this.petId = params['id'];
     });
+    this.authenticated = this.userRepoService.isLoggedIn();
+    if (!this.authenticated) {
+      Swal.fire({
+        title: "Stop right there!",
+        text: "You have to log in in order to book a date.",
+        icon: "error"
+      }).then(() => {
+        this.router.navigate(['/login']);
+      });
+    } else {
+      const u = this.userRepoService.getUser();
+      this.userService.getUserByEmail(u?.email || u?.uid || "").subscribe(res => {
+        this.uid = res[0].id;
+      });
+    }
   }
 
   takeDate(e: Date) {
@@ -97,8 +116,6 @@ export class VisitComponent {
     console.log('Month' + this.month);
     console.log('Year' + this.year);
     console.log('Hour' + this.hour);
-    console.log('name is:' + this.name);
-    console.log('phone is:' + this.phone);
 
     if ((this.validdata() == true)) {
       if ((this.validator() == true)) {
@@ -119,9 +136,11 @@ export class VisitComponent {
         text = 'Date booked, you are one step closer to expand your family';
         confirmedTitle = '';
         confirmedText = '';
-        this.dateService.addDate(this.newDate);
-        this.successAlert(title, text);
-        this.toast('success', title, text);
+        this.newDate.data.userId = this.uid;
+        this.dateService.addDate(this.newDate).subscribe(res => {
+          this.successAlert(title, text);
+          this.toast('success', title, text);
+        });
       } else {
         title = 'Rawwwr';
         text = 'Sorry, reserved date...';
@@ -133,7 +152,6 @@ export class VisitComponent {
     let aux: boolean = false;
     let auxd: boolean = false;
     let auxh: boolean = false;
-    let auxi: boolean = false;
     console.log('validate init');
     if (this.day != 0) {
       auxd = true;
@@ -141,12 +159,7 @@ export class VisitComponent {
     if (this.hour != '') {
       auxh = true;
     }
-    if (this.name != '') {
-      if (this.phone != '') {
-        auxi = true;
-      }
-    }
-    if (auxd && auxi && auxh) {
+    if (auxd && auxh) {
       aux = true;
       console.log('validate succes');
     }
@@ -158,8 +171,8 @@ export class VisitComponent {
     let title = '';
     let text = '';
     console.log('validator init');
-    this.dateService.getPetDates(this.pet.id).subscribe(res => {
-      this.arr = res;
+    this.dateService.getDates().subscribe(res => {
+      this.arr = res.filter(d => d.data.petId == this.pet.id);
     });
     if (this.arr.length != 0) {
       console.log(this.arr);
