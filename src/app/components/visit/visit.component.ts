@@ -19,6 +19,8 @@ import { DateInfo } from '../../interfaces/date';
 import { DatesService } from '../../shared/dates.service';
 import { UserRepositoryService } from '../../shared/user/user-repository.service';
 import { UserService } from '../../shared/user.service';
+import { MailFormat } from '../../interfaces/mail';
+import { MailService } from '../../shared/mail.service';
 
 @Component({
   selector: 'app-visit',
@@ -66,6 +68,11 @@ export class VisitComponent {
   imgURL: string = "https://capibara.losnarvaez.com/";
   authenticated: boolean = false;
   uid: string = "";
+  mailData: MailFormat = {
+    to: "",
+    subject: "Date booked on Capibara Team",
+    body: "Hello, your date with "
+  }
   constructor(
     public petsService: PetsService,
     public activatedRoute: ActivatedRoute,
@@ -73,7 +80,8 @@ export class VisitComponent {
     private dateService: DatesService,
     private router: Router,
     private userRepoService: UserRepositoryService,
-    private userService: UserService
+    private userService: UserService,
+    private mailService: MailService
   ) {
     this.activatedRoute.params.subscribe((params) => {
       petsService.getPet(params['id']).subscribe(res => {
@@ -93,6 +101,7 @@ export class VisitComponent {
       });
     } else {
       const u = this.userRepoService.getUser();
+      this.mailData.to = u?.email || u?.uid || "";
       this.userService.getUserByEmail(u?.email || u?.uid || "").subscribe(res => {
         this.uid = res[0].id;
       });
@@ -132,15 +141,27 @@ export class VisitComponent {
             }
           }
         }
-        title = 'Meowwww';
-        text = 'Date booked, you are one step closer to expand your family';
-        confirmedTitle = '';
-        confirmedText = '';
-        this.newDate.data.userId = this.uid;
-        this.dateService.addDate(this.newDate).subscribe(res => {
-          this.successAlert(title, text);
-          this.toast('success', title, text);
-        });
+        this.petsService.getPet(this.newDate.data.petId).subscribe(res => {
+          this.mailData.body += res.data.name;
+          title = 'Meowwww';
+          text = 'Date booked, you are one step closer to expand your family, and we have sent you a mail with the information.';
+          confirmedTitle = '';
+          confirmedText = '';
+          this.newDate.data.userId = this.uid;
+          this.dateService.addDate(this.newDate).subscribe(re => {
+            this.mailData.body += " is booked on " + this.newDate.data.date.day + "/" + this.newDate.data.date.month + "/" + this.newDate.data.date.year + " at " + this.newDate.data.date.hour;
+            this.mailService.sendDateMail(this.mailData).subscribe(r => {
+              if (r.success) {
+                this.successAlert(title, text);
+                this.toast('success', title, text);
+              } else {
+                title = 'Sorry...';
+                text = 'Could not send yo the email with your date information.';
+                this.errorAlert(title, text);
+              }
+            });
+          });
+        })
       } else {
         title = 'Rawwwr';
         text = 'Sorry, reserved date...';

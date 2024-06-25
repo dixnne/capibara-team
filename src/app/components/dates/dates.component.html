@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                <h2 class="orange acme-regular">Next Date QR</h2>
+                <h2 class="orange acme-regular">Date QR</h2>
                     <div class="p-4 rounded bg-brown w-100 text-center">
                         @if (dates.length > 0) {
                             <qrcode (qrCodeURL)="onChangeURL($event)" [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
