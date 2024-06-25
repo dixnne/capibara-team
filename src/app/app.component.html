@@ -1,3 +1,24 @@
-<app-navbar></app-navbar>
+<div [ngClass]="{
+    'invert': invert,
+    'protanopia': colorBlindness === 'protanopia',
+    'protanomaly': colorBlindness === 'protanomaly',
+    'deuteranopia': colorBlindness === 'deuteranopia',
+    'deuteranomaly': colorBlindness === 'deuteranomaly',
+    'tritanopia': colorBlindness === 'tritanopia',
+    'tritanomaly': colorBlindness === 'tritanomaly',
+    'achromatopsia': colorBlindness === 'achromatopsia',
+    'achromatomaly': colorBlindness === 'achromatomaly'
+  }"
+  [ngStyle]="{
+    'font-size':fontSize
+  }">
+<app-navbar 
+(InvertEvent)="handleInvert($event)"
+(FontSizeEvent)="handleFontSize($event)"
+(ColorBlindnessEvent)="handleColorBlindness($event)"
+(SpeakEvent)="handleSpeak($event)"
+></app-navbar>
 <router-outlet></router-outlet>
+<app-spinner></app-spinner>
 <app-footer></app-footer>
+</div>

@@ -25,6 +25,8 @@ import { AddUserComponent } from './components/admin/add-user/add-user.component
 import { EditPetComponent } from './components/admin/edit-pet/edit-pet.component';
 import { EditDevComponent } from './components/admin/edit-dev/edit-dev.component';
 import { EditUserComponent } from './components/admin/edit-user/edit-user.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FaqsComponent } from './components/faqs/faqs.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -50,4 +52,6 @@ export const routes: Routes = [
   { path: 'addPet', component: AddPetComponent },
   { path: 'addDev', component: AddDevComponent },
   { path: 'addUser', component: AddUserComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'faqs', component: FaqsComponent },
 ];

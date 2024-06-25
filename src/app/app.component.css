@@ -1,0 +1,44 @@
+.invert {
+    filter: invert(100%);
+    font-size: 1rem !important;
+}
+
+.protanopia {
+    -webkit-filter: url('../assets/filters.svg#protanopia');
+    filter: url('../assets/filters.svg#protanopia');
+  }
+
+  .protanomaly {
+    -webkit-filter: url('../assets/filters.svg#protanomaly');
+    filter: url('../assets/filters.svg#protanomaly');
+  }
+
+  .deuteranopia {
+    -webkit-filter: url('../assets/filters.svg#deuteranopia');
+    filter: url('../assets/filters.svg#deuteranopia');
+  }
+
+  .deuteranomaly {
+    -webkit-filter: url('../assets/filters.svg#deuteranomaly');
+    filter: url('../assets/filters.svg#deuteranomaly');
+  }
+
+  .tritanopia {
+    -webkit-filter: url('../assets/filters.svg#tritanopia');
+    filter: url('../assets/filters.svg#tritanopia');
+  }
+
+  .tritanomaly {
+    -webkit-filter: url('../assets/filters.svg#tritanomaly');
+    filter: url('../assets/filters.svg#tritanomaly');
+  }
+
+  .achromatopsia {
+    -webkit-filter: url('../assets/filters.svg#achromatopsia');
+    filter: url('../assets/filters.svg#achromatopsia');
+  }
+
+  .achromatomaly {
+    -webkit-filter: url('../assets/filters.svg#achromatomaly');
+    filter: url('../assets/filters.svg#achromatomaly');
+  }

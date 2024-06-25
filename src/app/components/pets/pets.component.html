@@ -1,32 +1,34 @@
-<div id="content-cards" class="bg-white">
-    @for(pet of myPets; track $index;){
-        <div class="card bg-greensea col-sm-6" style="width: 18rem;">
-            <div class="left col-sm-3">
-                <img [src]="imgURL + pet.data.img" class="card-img-top" id="{{pet.id}}" alt="">
-            </div>
-            <div class="card-body col-sm-8 d-flex flex-column justify-content-center">
-                <h5 class="card-title acme-regular">{{pet.data.name}}</h5><br>
-                <p class="card-text">Age: {{pet.data.age}} years aprox</p>
-                <div class="d-flex">
-                    @for (tag of pet.data.tag; track tag) {
-                        <span role="button" class="badge me-2" [ngClass]="{
-                            'bg-orange': tag === 'friendly',
-                            'bg-yellow': tag === 'sleepy',
-                            'bg-brown white': tag === 'energetic',
-                            'border-yellow yellow': tag === 'reserved',
-                            'border-orange orange': tag === 'relaxed',
-                            'border-brown brown': tag === 'loving',
-                            'dotted-orange': tag === 'playful',
-                            'dotted-yellow': tag === 'tall',
-                            'dotted-brown': tag === 'funny'
-                        }" [routerLink]="['/tagpet',tag]">{{tag}}</span>
-                    }
+@if (myPets) {
+    <div id="content-cards" class="bg-white">
+        @for(pet of myPets; track $index;){
+            <div class="card bg-greensea col-sm-6" style="width: 18rem;">
+                <div class="left col-sm-3">
+                    <img [src]="imgURL + pet.data.img" class="card-img-top" id="{{pet.id}}" alt="">
                 </div>
-                <button [routerLink]="['/us',pet.id]" class="acme-regular mt-5 rounded-5">Get to know me!</button>
+                <div class="card-body col-sm-8 d-flex flex-column justify-content-center">
+                    <h5 class="card-title acme-regular">{{pet.data.name}}</h5><br>
+                    <p class="card-text">Age: {{pet.data.age}} years aprox</p>
+                    <div class="d-flex">
+                        @for (tag of pet.data.tag; track tag) {
+                            <span role="button" class="badge me-2" [ngClass]="{
+                                'bg-orange': tag === 'friendly',
+                                'bg-yellow': tag === 'sleepy',
+                                'bg-brown white': tag === 'energetic',
+                                'border-yellow yellow': tag === 'reserved',
+                                'border-orange orange': tag === 'relaxed',
+                                'border-brown brown': tag === 'loving',
+                                'dotted-orange': tag === 'playful',
+                                'dotted-yellow': tag === 'tall',
+                                'dotted-brown': tag === 'funny'
+                            }" [routerLink]="['/tagpet',tag]">{{tag}}</span>
+                        }
+                    </div>
+                    <button [routerLink]="['/us',pet.id]" class="acme-regular mt-5 rounded-5">Get to know me!</button>
+                </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+}
 <!--
 <div class="flex-auto">
      <p-paginator class="p-paginator-first"  [first]="10" [rows]="3" [totalRecords]="trn" [showPageLinks]="3" [rowsPerPageOptions]="[5,10,15,20]"></p-paginator>
