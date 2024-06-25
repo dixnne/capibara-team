@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { User } from '../../../interfaces/user';
 import { UserService } from '../../../shared/user.service';
 import Swal from 'sweetalert2';
+import { UserRepositoryService } from '../../../shared/user/user-repository.service';
 
 @Component({
   selector: 'app-admin-users',
@@ -15,11 +16,22 @@ import Swal from 'sweetalert2';
 export class AdminUsersComponent {
   users: User[] = [];
   imgURL: string = 'https://capibara.losnarvaez.com/';
+  isAdmin: boolean = false;
 
-  constructor(private userservice: UserService, private router: Router) {
+  constructor(private userservice: UserService, private router: Router, private userRepoService: UserRepositoryService) {
     this.userservice.getUsers().subscribe((res) => {
       this.users = res;
     });
+    this.isAdmin = this.userRepoService.isAdmin();
+    if (!this.isAdmin) {
+      Swal.fire({
+        title: "Stop right there!",
+        text: "You're not an admin, get out of here.",
+        icon: "error"
+      }).then(() => {
+        this.router.navigate(['/home']);
+      });
+    }
   }
 
   deleteUser(id: string): void {

@@ -6,6 +6,9 @@ import { PetsService } from '../../../shared/pets.service';
 import { UserService } from '../../../shared/user.service';
 import { Pet } from '../../../interfaces/pet';
 import { User } from '../../../interfaces/user';
+import { UserRepositoryService } from '../../../shared/user/user-repository.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-dates',
@@ -19,12 +22,25 @@ export class AdminDatesComponent {
   pets: Pet[] = [];
   users: User[] = [];
   imgURL: string = 'https://capibara.losnarvaez.com/';
+  isAdmin: boolean = false;
 
   constructor(
     private dateservice: DatesService,
     private petservice: PetsService,
-    private userservice: UserService
+    private userservice: UserService,
+    private userRepoService: UserRepositoryService,
+    private router: Router
   ) {
+    this.isAdmin = this.userRepoService.isAdmin();
+    if (!this.isAdmin) {
+      Swal.fire({
+        title: "Stop right there!",
+        text: "You're not an admin, get out of here.",
+        icon: "error"
+      }).then(() => {
+        this.router.navigate(['/home']);
+      });
+    }
     this.dateservice.getDates().subscribe((res) => {
       this.dates = res;
     });
@@ -45,9 +61,7 @@ export class AdminDatesComponent {
     return (
       usr?.data.name.firstname +
       ' ' +
-      usr?.data.name.lastname +
-      ' ' +
-      usr?.data.name.username
+      usr?.data.name.lastname 
     );
   }
 }

@@ -6,7 +6,7 @@
                 <thead>
                     <tr>
                         <td>Date</td>
-                        <td colspan="2">Visited Pet</td>
+                        <td>Visited Pet</td>
                         <td>User</td> 
                     </tr>
                 </thead>
@@ -19,8 +19,7 @@
                                     <p> at {{date.data.date.hour}}</p>
                                 </td>
                                 <td><img class="rounded-3" [src]="imgURL + getPetImage(date.data.petId)" alt=""></td>
-                                <td></td>
-                                <p></p>
+                                <td>{{getUserById(date.data.userId)}}</td>
                             </tr>
                         }
                     </tbody>
