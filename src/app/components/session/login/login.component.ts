@@ -27,8 +27,27 @@ export class LoginComponent {
     });
   }
   
-  sendSMS(): void {
+  sendSMS(captchaButton:HTMLButtonElement): void {
+    if (this.phone!=""){
+      this.phone = "+52" + this.phone;
+      this.service.sendCode(this.phone, captchaButton, (result: boolean) => {
+        if (result) {
+          console.log('Código enviado con éxito');
+        } else {
+          console.log('Error al enviar el código');
+        }
+      });
+    }
+  }
 
+  smsConfirmation(): void {
+    this.service.phoneConfirmationCode(this.code, (result: boolean) => {
+      if (result) {
+        console.log('Usuario verificado con éxito');
+      } else {
+        console.log('Error al verificar el código');
+      }
+    });
   }
 
   logIn(type: string): void {
@@ -37,7 +56,7 @@ export class LoginComponent {
         this.emailLogin();
         break;
       case 'sms':
-        
+        this.smsConfirmation();
         break;
       default:
         break;
