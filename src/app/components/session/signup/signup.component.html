@@ -1,44 +1,70 @@
 <section class="py-5">
     <h1 class="brown acme-regular text-center">Create your account</h1>
     <div class="container rounded-5 bg-yellow border-brown shadow p-5 col-8">
+    <form [formGroup]="userForm" (ngSubmit)="signUp()">
         <div class="row g-2">
-            <div class="col-12 form-floating mb-3">
-                <input [(ngModel)]="user.data.email" type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
-                <label for="floatingEmail">Email address</label>
+            <div class="input-group col-12 form-floating mb-3">
+                <span class="input-group-text" id="email">Email</span>
+                <input formControlName="email"  type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
             </div>
+            @if(this.userForm.get('email')?.errors?.['required']){
+                <p class="msg error-msg">Please, enter an Email</p>
+            }
             <div class="col-12 mb-3">
                 <div class="input-group">
-                    <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                    <span class="input-group-text" id="image">Upload</span>
                     <input (change)="selectFile($event)" accept="image/png, image/gif, image/jpeg" type="file" class="form-control" id="inputGroupFile01">
                 </div>
             </div>
-            <div class="col-12 col-md-6 form-floating mb-3">
-                <input [(ngModel)]="user.data.name.username" type="text" class="form-control" id="floatingUsername" placeholder="Username">
-                <label for="floatingUsername">Username</label>
+            <div class="input-group col-12 col-md-6 form-floating mb-3">
+                <span class="input-group-text" id="username">Name</span>
+                <input formControlName="username" type="text" class="form-control" id="floatingUsername" placeholder="Username">
             </div>
-            <div class="col-12 col-md-6 form-floating mb-3">
-                <input [(ngModel)]="user.data.phone" type="tel" class="form-control" id="floatingPhone" placeholder="Phone">
-                <label for="floatingPhone">Phone Number</label>
+            @if(this.userForm.get('username')?.errors?.['required']){
+                <p class="msg error-msg">Please, enter an User Name</p>
+            }
+            <div class="input-group col-12 col-md-6 form-floating mb-3">
+                <span class="input-group-text" id="phone">Phone Number</span>
+                <input formControlName="phone" type="tel" class="form-control" id="floatingPhone" placeholder="Phone">
             </div>
-            <div class="input-group flex-nowrap mb-3">
-                <div class="col-12 col-md-6 form-floating">
-                    <input [(ngModel)]="user.data.name.firstname" type="text" class="form-control" id="floatingFName" placeholder="First Name">
-                    <label for="floatingUsername">First Name</label>
+            @if(this.userForm.get('phone')?.errors?.['required']){
+                <p class="msg error-msg">Please, enter Phone Number</p>
+            }
+            
+            <div class="flex-nowrap mb-3">
+                <div class="input-group col-12 col-md-6 form-floating">
+                    <span class="input-group-text" id="firstname">First Name</span>
+                    <input formControlName="firstname" type="text" class="form-control" id="floatingFName" placeholder="First Name">
                 </div>
-                <div class="col-12 col-md-6 form-floating">
-                    <input [(ngModel)]="user.data.name.lastname" type="text" class="form-control" id="floatingLName" placeholder="Last Name">
-                    <label for="floatingLName">Last Name</label>
+                @if(this.userForm.get('firstname')?.errors?.['required']){
+                    <p class="msg error-msg">Please, enter your First Name</p>
+                }
+                <br>
+                <div class="input-group col-12 col-md-6 form-floating">
+                    <span class="input-group-text" id="lastname">Last Name</span>
+                    <input formControlName="lastname" type="text" class="form-control" id="floatingLName" placeholder="Last Name">
                 </div>
+                @if(this.userForm.get('lastname')?.errors?.['required']){
+                    <p class="msg error-msg">Please, enter your Last Name</p>
+                }
                 
             </div>
-            <div class="col-12 col-md-6 form-floating mb-3">
-                <input [(ngModel)]="user.data.password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
+            <div class="input-group col-12 col-md-6 form-floating mb-3">
+                <span class="input-group-text" id="password">Password</span>
+                <input formControlName="contra"  type="password" class="form-control" id="floatingPassword" placeholder="Password">
             </div>
-            <div class="col-12 col-md-6 form-floating mb-3">
-                <input [(ngModel)]="confirmPassword" type="password" class="form-control" id="floatingConfirmPassword" placeholder="Confirm Password">
-                <label for="floatingConfirmPassword">Confirm Password</label>
+            @if(this.userForm.get('contra')?.errors?.['required']){
+                <p class="msg error-msg">Please, enter your Password</p>
+            }
+            <div class="input-group col-12 col-md-6 form-floating mb-3">
+                <span class="input-group-text" id="password">Confirm Password</span>
+                <input formControlName="contra2" type="password" class="form-control" id="floatingConfirmPassword" placeholder="Confirm Password">
             </div>
+            @if(this.userForm.get('contra2')?.errors?.['required']){
+                <p class="msg error-msg">Por favor, ingrese la contraseña</p>
+            }@else if (this.userForm.get('contra2')?.errors?.['validacion']){
+                <p class="msg error-msg">Passwords do not match</p>
+            }
             <div class="col-12 mb-3 bg-warning-subtle pt-3 rounded mb-3">
                 <p class="lead text-center">{{passwordAlert}}</p>
             </div>
@@ -46,5 +72,6 @@
                 <button (click)="signUp()" class="btn btn-dark">Sign Up</button>
             </div>
         </div>
+    </form>
     </div>
 </section>

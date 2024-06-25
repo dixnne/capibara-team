@@ -10,10 +10,8 @@
                     <div class="input-group form-floating w-100">
                         <span class="input-group-text" id="username">Name</span>
                         <input formControlName="username" required type="text" class="form-control" id="username" placeholder="UserName" aria-label="Username" aria-describedby="name">
-                        @if(enviado && userForm.controls.username.errors){
-                            @if(userForm.controls.username.errors['required']){
+                        @if(this.userForm.get('username')?.errors?.['required']){
                             <p class="msg error-msg">Please, enter an User Name</p>
-                            }
                         }
                     </div>
                     <br>
@@ -85,13 +83,14 @@
                     <div class="input-group form-floating">
                         <span class="input-group-text" id="password">Confirm Password</span>
                         <input formControlName="contra2" type="password" class="form-control" id="stay" placeholder="Confirm Password">
+                        
                         @if(enviado && userForm.controls.contra2.errors){
                             @if(userForm.controls.contra2.errors['required']){
                             <p class="msg error-msg">Por favor, ingrese la contraseña</p>
                             } @else if (userForm.controls.contra2.errors['validacion']) {
                             <p class="msg error-msg">Passwords do not match</p>
                             }
-                            }
+                        }
                     </div>
                 </div>
                 <div class="col-md-12 py-3 d-flex justify-content-center">

@@ -38,9 +38,7 @@ export class AddUserComponent {
   currentFile?: File;
   //validator
   enviado = false;
-  validado = false;
-  reseteado = false;
-  repetido = false;
+
   userForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     firstname: new FormControl('', [Validators.required]),
@@ -49,6 +47,7 @@ export class AddUserComponent {
     phone: new FormControl('', [Validators.required]),
     contra: new FormControl('', [Validators.required]),
     contra2: new FormControl('', [Validators.required]),
+    mensaje: new FormControl('', [Validators.required]),
   });
   result!: string;
 
