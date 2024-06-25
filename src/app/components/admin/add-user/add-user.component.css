@@ -1,0 +1,13 @@
+/* Estilos para los mensajes*/
+.msg {
+  padding: 5px;
+  font-size: 0.9rem;
+  background: #0829;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.error-msg {
+  background: #8029;
+}

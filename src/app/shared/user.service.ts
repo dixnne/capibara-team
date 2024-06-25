@@ -13,7 +13,7 @@ export class UserService {
   addUser(newUser: User, file: File) {
     const formData: FormData = new FormData();
     formData.append('file', file);
-    formData.append('pet', JSON.stringify(newUser.data));
+    formData.append('user', JSON.stringify(newUser.data));
     let headers = new HttpHeaders();
     headers = headers.append('enctype', 'multipart/form-data');
     console.log(formData);
