@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 // Import the functions you need from the SDKs you need
 import { FirebaseError, initializeApp } from "firebase/app";
 import { getAnalytics, logEvent, isSupported } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword, UserCredential, signInWithEmailAndPassword, RecaptchaVerifier, signInWithPhoneNumber, PhoneAuthProvider, signInWithCredential, AuthCredential } from "firebase/auth";
 import { HttpClient } from '@angular/common/http';
+import { DOCUMENT } from '@angular/common';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -36,8 +37,11 @@ auth.languageCode = 'es';
 export class UserRepositoryService {
   private userCrenedtial?: UserCredential;
   private recaptchaVerifier?: RecaptchaVerifier;
+  private localStorage?: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document) {
+    this.localStorage = document.defaultView?.localStorage;
+  }
 
   getUser() {
     return auth.currentUser;
@@ -55,7 +59,7 @@ export class UserRepositoryService {
       callback(true);
     }).catch((error) => {
       const errorMessage = error.message;
-      alert("Error al registrar usuario: " + errorMessage);
+      console.log("Error al registrar usuario: " + errorMessage);
       callback(false);
     });
   }
@@ -71,12 +75,12 @@ export class UserRepositoryService {
           content_id: 'G-QVMH51QMER'
         });
       }
-      alert("Inicio de sesión exitoso");
+      console.log("Inicio de sesión exitoso");
       this.saveLocalStorage(JSON.stringify(this.userCrenedtial));
       callback(true);
     }).catch((error) => {
       const errorMessage = error.message;
-      alert("Error al iniciar sesión! Usuario o contraseña incorrectos");
+      console.log("Error al iniciar sesión! Usuario o contraseña incorrectos");
       callback(false);
     });
   }
@@ -85,11 +89,15 @@ export class UserRepositoryService {
     if(auth.currentUser != null) {
       return true;
     }else{
-      if(localStorage.getItem('userCredential') != null) {
-        this.userCrenedtial = JSON.parse(localStorage.getItem('userCredential')!);
-        this.loginWithCrenetial(this.userCrenedtial as any, (result) => {})
-        return true;
-      }else{
+      if (this.localStorage) {
+        if(this.localStorage.getItem('userCredential') != null) {
+          this.userCrenedtial = JSON.parse(this.localStorage.getItem('userCredential')!);
+          this.loginWithCrenetial(this.userCrenedtial as any, (result) => {})
+          return true;
+        }else{
+          return false;
+        }   
+      } else {
         return false;
       }
     }
@@ -112,7 +120,7 @@ export class UserRepositoryService {
       callback(true);
       this.removeLocalStorage();
     }).catch((error) => {
-      alert("Error al cerrar sesión!");
+      console.log("Error al cerrar sesión!");
       callback(false);
     });
   }
@@ -124,20 +132,20 @@ export class UserRepositoryService {
       
       signInWithPhoneNumber(auth, phone, this.recaptchaVerifier!).then((result) => {
         sessionStorage.setItem('verificationId', result.verificationId);
-        alert("Mensaje enviado");
+        console.log("Mensaje enviado");
         callback(true);
       }).catch((error) => {
-        alert("Error al enviar el mensaje: " + error.message);
+        console.log("Error al enviar el mensaje: " + error.message);
         callback(false);
       });
     }).catch(() => {
-      alert("Error al verificar el captcha!");
+      console.log("Error al verificar el captcha!");
       callback(false);
     });
 
     setTimeout(() => {
       sessionStorage.removeItem('verificationId');
-      alert("Tiempo excedido!");
+      console.log("Tiempo excedido!");
       callback(false);
     }, 240000);
   }
@@ -145,7 +153,7 @@ export class UserRepositoryService {
   phoneConfirmationCode(code: string, callback: (result: boolean) => void) {
     const verificationId = sessionStorage.getItem('verificationId');
     if (!verificationId) {
-      alert("Error al verificar el código!");
+      console.log("Error al verificar el código!");
       callback(false);
       return;
     }
@@ -164,21 +172,28 @@ export class UserRepositoryService {
         });
       }
       this.saveLocalStorage(JSON.stringify(this.userCrenedtial));
-      alert("Usuario registrado con éxito!");
+      console.log("Usuario registrado con éxito!");
       callback(true);
     }).catch((error) => {
-      alert("Error al verificar el código: " + error.message);
+      console.log("Error al verificar el código: " + error.message);
       callback(false);
     });
   }
 
   saveLocalStorage(userCerential:string) {
-    localStorage.setItem('userCredential', userCerential);
+    if (this.localStorage) {
+      this.localStorage.setItem('userCredential', userCerential);
+    }
   }
   removeLocalStorage() {
-    localStorage.removeItem('userCredential');
+    if (this.localStorage) {
+      this.localStorage.removeItem('userCredential');
+    }
   }
   getLocalStorage() {
-    return localStorage.getItem('userCredential');
+    if (this.localStorage) {
+      return this.localStorage.getItem('userCredential'); 
+    }
+    return {}
   }
 }

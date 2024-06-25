@@ -14,7 +14,7 @@ export class NavbarComponent {
   data: boolean = false;
   fontSize: number = 1;
   constructor(private userRepoService: UserRepositoryService) {
-    this.data = userRepoService.isLoggedIn();
+    this.data = this.userRepoService.isLoggedIn();
   }
 
   @Output() InvertEvent = new EventEmitter<boolean>();
