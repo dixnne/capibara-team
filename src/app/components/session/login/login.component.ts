@@ -4,6 +4,7 @@ import { DividerModule } from 'primeng/divider';
 import { UserRepositoryService } from '../../../shared/user/user-repository.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { UserService } from '../../../shared/user.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
   code!: string;
   sendCodeConfirmation=false;
 
-  constructor(private service:UserRepositoryService, private router: Router) { }
+  constructor(private service:UserRepositoryService, private router: Router, private userService: UserService) { }
   emailLogin(): void {
     this.service.loginWithEandP(this.email, this.password, (result: boolean) => {
       if (result) {
@@ -81,14 +82,35 @@ export class LoginComponent {
   loginPhone(){
     this.service.phoneConfirmationCode(this.code,(result)=>{
       if (result) {
-        Swal.fire({
-          title: "Helloooow!",
-          text: "Successfully logged in.",
-          icon: "success"
-        }).then(() => {
-          this.router.navigate(['/home']).then(() => {
-            window.location.reload();
-          });
+        this.userService.getUsers().subscribe(res => {
+          const user = res.find(u => u.data.phone == this.phone);
+          if (user) {
+            this.service.loginWithEandP(user.data.email, user.data.password, (result: boolean) => {
+              if (result) {
+                Swal.fire({
+                  title: "Helloooow!",
+                  text: "Successfully logged in.",
+                  icon: "success"
+                }).then(() => {
+                  this.router.navigate(['/home']).then(() => {
+                    window.location.reload();
+                  });
+                });
+              } else {
+                Swal.fire({
+                  title: "Sorry!",
+                  text: "Couldn't log in.",
+                  icon: "error"
+                });
+              }
+            });
+          } else {
+            Swal.fire({
+              title: "Stop there!",
+              text: "There's no account related to that phone.",
+              icon: "success"
+            });
+          }
         });
       } else {
         Swal.fire({
