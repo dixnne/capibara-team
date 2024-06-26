@@ -1,7 +1,8 @@
+/*
 .div{
     display: flex;
     align-items: center;
-    text-align: center; /* mover si se agrega cualquier contenido */
+    text-align: center; 
     color: white;
 }
 .div1{
@@ -48,7 +49,7 @@
     padding: 2rem;
     box-shadow: 5px 5px 15px gray;
     border-radius: 1rem;
-}
+} 
 .tab{
     text-align: left;
     padding: 1rem;
@@ -62,3 +63,4 @@
 .label{
     box-shadow: 5px 5px 15px gray;
 }
+*/

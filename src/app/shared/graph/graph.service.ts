@@ -10,6 +10,6 @@ export class GraphService {
   constructor(private http:HttpClient) { }
 
   getChartsData(date:string){
-    return this.http.get<Report>('http://localhost:3000/graph/'+date);
+    return this.http.get<Report>('https://capibara.losnarvaez.com/graph/'+date);
   }
 }

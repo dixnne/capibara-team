@@ -13,20 +13,24 @@
                     }
                     <div class="circle-lg bg-orange mx-3 mt-auto"></div>
                     @if (myDevs[5] != undefined) {
-                        <img [routerLink]="['/dev', 2]" class="dev1 animate__animated animate__rubberBand" [src]="myDevs[2].data.image" alt="">
+                        <img [routerLink]="['/dev', myDevs[5].id]" class="dev1 animate__animated animate__rubberBand" [src]="myDevs[5].data.image" alt="">
                     }
                     <div class="circle-md bg-brown mb-3 mx-3 mt-auto"></div>
                     <div class="circle-sm bg-orange mb-auto"></div>
                 </div>
                 <div class="col-lg-3 mb-2 d-flex justify-content-center">
-                    <div class="circle-sm bg-yellow mt-auto"></div>
+                    @if (myDevs[8] != undefined) {
+                        <img [routerLink]="['/dev', myDevs[8].id]" class="dev2 mt-auto animate__animated animate__rubberBand" [src]="myDevs[8].data.image" alt="">
+                    }
                     <div class="circle-md bg-brown mb-auto"></div>
                     @if (myDevs[3] != undefined) {
-                        <img [routerLink]="['/dev', 3]" class="dev2 my-auto animate__animated animate__rubberBand" [src]="myDevs[3].data.image" alt="">
+                        <img [routerLink]="['/dev', myDevs[3].id]" class="dev2 my-auto animate__animated animate__rubberBand" [src]="myDevs[3].data.image" alt="">
                     }
                 </div>
                 <div class="col-lg-3 mb-2 d-flex flex-column align-items-center">
-                    <div class="circle-md bg-brown ms-auto"></div>
+                    @if (myDevs[6] != undefined) {
+                        <img [routerLink]="['/dev', myDevs[6].id]" class="dev1 ms-auto animate__animated animate__rubberBand" [src]="imgURL + myDevs[6].data.image" alt="">
+                    }
                     <div class="circle-sm bg-orange mx-auto"></div>
                 </div>
                 <div class="col-lg-6 mb-2 d-flex flex-column align-items-center justify-content-center">
@@ -40,11 +44,13 @@
                 </div>
                 <div class="col-lg-4 mb-2 d-flex justify-content-end grow">
                     @if (myDevs[4] != undefined) {
-                        <img [routerLink]="['/dev', 4]" class="dev3 my-auto animate__animated animate__rubberBand" [src]="myDevs[4].data.image" alt="">
+                        <img [routerLink]="['/dev', myDevs[4].id]" class="dev3 my-auto animate__animated animate__rubberBand" [src]="myDevs[4].data.image" alt="">
                     }
                 </div>
                 <div class="col-lg-5 mb-2 d-flex justify-content-center grow">
-                    <div class="circle-md bg-brown mt-auto mx-3 mb-3"></div>
+                    @if (myDevs[7] != undefined) {
+                        <img [routerLink]="['/dev', myDevs[7].id]" class="dev1 mt-auto mx-3 mb-3 animate__animated animate__rubberBand" [src]="imgURL + myDevs[7].data.image" alt="">
+                    }
                     <div class="circle-sm bg-orange mb-auto"></div>
                     <div class="circle-lg bg-yellow mt-auto"></div>
                 </div>

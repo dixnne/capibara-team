@@ -9,6 +9,9 @@ import { GraphService } from '../../../shared/graph/graph.service';
 import { AdminGraphComponent } from '../admin-graph/admin-graph.component';
 import { Graph1Component } from '../graph1/graph1.component';
 import { Report } from '../../../interfaces/graph-report';
+import { UserService } from '../../../shared/user.service';
+import { DevsService } from '../../../shared/devs.service';
+import { PetsService } from '../../../shared/pets.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,14 +28,31 @@ export class DashboardComponent implements OnInit {
   pipe?:DatePipe;
   newUserChart?:any;
   screenViewChart?:any;
-  constructor(private grphService:GraphService){
+  pets: number = 0;
+  users: number = 0;
+  devs: number = 0;
+
+  constructor(
+    private grphService:GraphService,
+    private userService: UserService,
+    private devsService: DevsService,
+    private petsService: PetsService
+  ){
     const currentYear = new Date().getFullYear();
     this.yearRange = `${currentYear - 10}:${currentYear + 10}`;
     this.selectedDate = new Date();
     this.pipe=new DatePipe('en-US');
     this.grphService.getChartsData(this.pipe!.transform(this.selectedDate,'yyyy-MM-dd')!).subscribe((data:Report)=>{
       this.reporte=data;
-      
+    });
+    this.userService.getUsers().subscribe(res => {
+      this.users = res.length;
+    })
+    this.petsService.getPets().subscribe(res => {
+      this.pets = res.length;
+    })
+    this.devsService.getDevs().subscribe(res => {
+      this.devs = res.length;
     })
   }
   cambiarFecha(date:Date){
