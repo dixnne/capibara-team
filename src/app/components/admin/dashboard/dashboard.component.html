@@ -1,6 +1,58 @@
 <section class="d-flex">
     <app-sidebar></app-sidebar>
-    <div class="py-4 w-100">
-        
+    <div class="py-4 w-100 acme-regular">
+        <div class="div">
+            <div class="container div1 bg-brown border">
+              <h2>Breeds of Dogs we have</h2>
+              <div class="tab">
+                <h3>amount</h3>
+              </div>
+            </div>
+          
+            <div class="container div2 bg-brown border">
+              <h2>Dogs avail to adopt</h2>
+              <div class="tab">
+                <h3>amount</h3>
+              </div>
+            </div>
+          
+            <div class="container div3 bg-brown border">
+              <h2>Cats avail to adopt</h2>
+                <div class="tab">
+                  <h3>amount</h3>
+                </div>
+              </div>
+          </div>
+
+          <div class="bg-orange label border" style="display: flex;justify-content: center; align-items: center; flex-direction: column; border-radius: 1rem; margin: 2rem; padding: 1.5rem;">
+            <label for=""><h1 style="color: white;" >Mes</h1></label>
+            <p-calendar [(ngModel)]="selectedDate" view="month" dateFormat="mm/yy" [yearNavigator]="true" [monthNavigator]="true"
+            [yearRange]="yearRange!" (onSelect)="cambiarFecha($event)" [readonlyInput]="true"></p-calendar>
+          </div>
+
+          <div class="div">
+            <div class="div4 bg-yellow border">
+              <h2>Registers on the site per day</h2>
+              
+              <div class="graph1">
+                <!-- <app-admin-graph></app-admin-graph> -->
+                <div class="chart"> 
+                  <canvas id="myChart" width="12rem" height="8rem"></canvas>
+                </div>
+              </div>
+          
+            </div>
+            <div class="div5 bg-yellow border">
+              <h2>Visits on site per day</h2>
+          
+              <div class="graph2">
+                <!-- <app-graph1></app-graph1> -->
+                <div class="chart"> 
+                  <canvas id="graph2" width="12rem" height="8rem"></canvas>
+                </div>
+              </div>
+          
+            </div>
+          </div>
     </div>
 </section>

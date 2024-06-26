@@ -1,0 +1,64 @@
+.div{
+    display: flex;
+    align-items: center;
+    text-align: center; /* mover si se agrega cualquier contenido */
+    color: white;
+}
+.div1{
+    margin: 1.5rem;
+    width: 40rem;
+    height: 10rem;
+    text-align: justify;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px gray;
+    border-radius: 1rem;
+}
+.div2{
+    margin: 1.5rem;
+    width: 40.5rem;
+    height: 10rem;
+    text-align: justify;
+    padding: 2rem;  
+    box-shadow: 5px 5px 15px gray;
+    border-radius: 1rem;
+}
+.div3{
+    margin: 1.5rem;
+    width: 40rem;
+    height: 10rem;
+    text-align: justify;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px gray;
+    border-radius: 1rem;
+}
+.div4{
+    margin: 1.5rem;
+    width: 61.5rem;
+    height: 45rem;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px gray;
+    border-radius: 1rem;
+}
+.div5{
+    margin: 2rem;
+    width: 61.5rem;
+    height: 45rem;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px gray;
+    border-radius: 1rem;
+}
+.tab{
+    text-align: left;
+    padding: 1rem;
+}
+.graph1{
+    padding: 3rem;
+}
+.graph2{
+    padding: 3rem;  
+}
+.label{
+    box-shadow: 5px 5px 15px gray;
+}

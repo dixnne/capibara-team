@@ -24,6 +24,9 @@ import { AddDevComponent } from './components/admin/add-dev/add-dev.component';
 import { EditPetComponent } from './components/admin/edit-pet/edit-pet.component';
 import { EditDevComponent } from './components/admin/edit-dev/edit-dev.component';
 import { EditUserComponent } from './components/admin/edit-user/edit-user.component';
+import { AdminGraphComponent } from './components/admin/admin-graph/admin-graph.component';
+import { Graph1Component } from './components/admin/graph1/graph1.component';
+
 import { ContactComponent } from './components/contact/contact.component';
 import { FaqsComponent } from './components/faqs/faqs.component';
 
@@ -52,4 +55,6 @@ export const routes: Routes = [
   { path: 'addDev', component: AddDevComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faqs', component: FaqsComponent },
+  { path: 'admin/graph', component: AdminGraphComponent},
+  { path: 'admin/graph1', component: Graph1Component },
 ];
